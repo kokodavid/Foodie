@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimary" />
+
+    <ImageView
+        android:layout_margin="8dp"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:src="@drawable/foodie" />
+
+
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:layout_width="83dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/foodieword" />
+
+    <ImageView
+        android:id="@+id/favs"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="302dp"
+        android:layout_marginLeft="302dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:src="@drawable/ic_favorite_border_black_24dp" />
+
+    <TextView
+        android:id="@+id/cocktailText"
+        android:text="Popular Cocktails"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/cocktailLatest"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/cocktailText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        />
+
+    <include android:id="@+id/shimmerMeal"
+        layout="@layout/item_view_pager_header_shimmer" />
+
+    <TextView
+        android:id="@+id/CategoriesText"
+        android:text="Recipe Categories"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/cocktailLatest"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerHeader"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/CategoriesText"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"/>
+
+    <include android:id="@+id/shimmerMeal2"
+        layout="@layout/categories_shimmer" />
+
+    <TextView
+        android:id="@+id/topMeals"
+        android:text="Latest Recipes"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/viewPagerHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/recyclerLatest"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/topMeals"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        />
+
+    <include android:id="@+id/shimmerCategory"
+        layout="@layout/item_recycler_category_shimmer" />
+
+
+
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+

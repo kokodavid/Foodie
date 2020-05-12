@@ -2,4 +2,15 @@
     <string name="app_name">Foodie</string>
     <string name="search_your_recipes">Search Recipes…</string>
     <string name="meal_categories">Meal Categories</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dot_loading">Loading</string>
+    <string name="category">Category</string>
+    <string name="country">Country</string>
+    <string name="tags">Tags</string>
+    <string name="instructions">Instructions</string>
+    <string name="Ingredients">Ingredients</string>
+    <string name="youtube">Youtube</string>
+    <string name="favorite">favorite</string>
 </resources>

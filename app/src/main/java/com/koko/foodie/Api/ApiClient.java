@@ -10,7 +10,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
+    private static final String BASE_URL = "https://www.themealdb.com/api/json/v2/9973533/";
+
+    private static final String COCKTAIL_BASE_URL = "https://www.thecocktaildb.com/api/json/v2/9973533/";
+
+    private static final String BEER_BASE_URL = "https://api.punkapi.com/v2/";
+
+
 
     public static Retrofit getFoodClient() {
         return new Retrofit.Builder().baseUrl(BASE_URL)
@@ -18,6 +24,22 @@ public class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
+    public static Retrofit getCocktailClient() {
+        return new Retrofit.Builder().baseUrl(COCKTAIL_BASE_URL)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static Retrofit getBeerClient() {
+        return new Retrofit.Builder().baseUrl(BEER_BASE_URL)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+
 
     private static Interceptor provideLoggingInterceptor() {
         return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -31,4 +53,7 @@ public class ApiClient {
                 .addNetworkInterceptor(provideLoggingInterceptor())
                 .build();
     }
+
+
+
 }

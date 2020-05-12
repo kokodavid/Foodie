@@ -1,117 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"   >
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground">
-        <RelativeLayout
-            android:id="@+id/headerView"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="300dp">
+        android:layout_height="65dp"
+        android:background="@color/colorPrimary" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@color/colorPrimary"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="15dp"
-                android:id="@+id/search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                app:cardBackgroundColor="@color/colorPrimaryDark"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
-                
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:padding="10dp"
-                    android:text="@string/search_your_recipes"
-                    android:textColor="@color/colorWhite"
-                    android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/ic_search"
-                    android:drawableStart="@drawable/ic_search"
-                    android:drawablePadding="10dp"
-                    />
+    <ImageView
+        android:layout_margin="8dp"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:src="@drawable/foodie" />
 
 
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:layout_width="83dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/foodieword" />
 
-            </androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="302dp"
+        android:layout_marginLeft="302dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:src="@drawable/ic_favorite_border_black_24dp" />
 
-            <TextView
-                android:id="@+id/Categories"
-                android:text="Categories"
-                android:textSize="19sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/search"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="35dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/cocktailText"
+        android:text="Popular Cocktails"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/cocktailLatest"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/cocktailText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        />
+
+    <include android:id="@+id/shimmerMeal"
+        layout="@layout/item_view_pager_header_shimmer" />
+
+    <TextView
+        android:id="@+id/CategoriesText"
+        android:text="Recipe Categories"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/cocktailLatest"
+        android:layout_marginLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerHeader"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/CategoriesText"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"/>
+
+    <include android:id="@+id/shimmerMeal"
+        layout="@layout/categories_shimmer" />
+
+    <TextView
+        android:id="@+id/topMeals"
+        android:text="Latest Recipes"
+        android:textSize="19sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/viewPagerHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
-            
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPagerHeader"
-                android:foregroundGravity="center"
-                android:overScrollMode="never"
-                android:clipToPadding="false"
-                android:layout_below="@+id/search"
-                android:layout_marginTop="60dp"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/recyclerLatest"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:layout_below="@+id/topMeals"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
 
-                <include android:id="@+id/shimmerMeal"
-                layout="@layout/item_view_pager_header_shimmer" />
+        />
 
-            
-            <TextView
-                android:id="@+id/topMeals"
-                android:text="Latest Recipes"
-                android:textSize="19sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_below="@+id/viewPagerHeader"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerLatest"
-                android:scrollbars="none"
-                android:layout_below="@+id/topMeals"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                />
+    <include android:id="@+id/shimmerCategory"
+        layout="@layout/item_recycler_category_shimmer" />
 
 
-           <include android:id="@+id/shimmerCategory"
-                layout="@layout/item_recycler_category_shimmer" />
 
 
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
+
+
+
+
+
+
+
+

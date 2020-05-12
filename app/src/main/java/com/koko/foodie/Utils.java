@@ -13,6 +13,14 @@ public class Utils {
         return ApiClient.getFoodClient().create(Api.class);
     }
 
+        public static Api getCocktailApi() {
+            return ApiClient.getCocktailClient().create(Api.class);
+        }
+
+    public static Api getBeerApi() {
+        return ApiClient.getBeerClient().create(Api.class);
+    }
+
     public static AlertDialog showDialogMessage(Context context, String title, String message) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle(title).setMessage(message).show();
         if (alertDialog.isShowing()) {
