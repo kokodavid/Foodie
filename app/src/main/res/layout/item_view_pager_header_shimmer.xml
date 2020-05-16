@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="4dp"
         android:layout_marginStart="4dp"
@@ -21,25 +21,21 @@
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="80dp">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <View
-                    android:layout_marginBottom="45dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="170dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:background="#DFDFDF" />
                 <View
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="70dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="30dp"
                     android:background="#DFDFDF" />
             </RelativeLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>

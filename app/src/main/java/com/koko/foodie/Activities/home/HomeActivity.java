@@ -1,10 +1,13 @@
 package com.koko.foodie.Activities.home;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,21 +18,23 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
 import com.koko.foodie.Activities.Database.FoodieRoomDB;
 import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
+import com.koko.foodie.Activities.Favorite.FavoritesActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.LatestViewPager;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
-import com.koko.foodie.Common;
+import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,14 +45,16 @@ import butterknife.ButterKnife;
 // TODO 31 implement the HomeView interface at the end
 public class HomeActivity extends AppCompatActivity implements HomeView {
 
-    @BindView(R.id.favs)
-    ImageView favsbutton;
+
     @BindView(R.id.viewPagerHeader)
     ViewPager viewPagerCategory;
+    @BindView(R.id.favs)
+    ImageView FavoriteList;
     @BindView(R.id.recyclerLatest)
     ViewPager latestRecyclerView;
     @BindView(R.id.cocktailLatest)
     ViewPager latestCocktail;
+
     private ImageView errorImage;
     private TextView errorTitle, errorMessage;
     private Button btnRetry;
@@ -86,12 +93,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
             }
         });
 
-        favsbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        initDB();
 
-            }
+        FavoriteList.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
+            startActivity(intent);
         });
+
 
 //        AdView adView = new AdView(this);
 //        adView.setAdSize(AdSize.BANNER);
@@ -100,6 +108,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 //        mAdView = findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
 //        mAdView.loadAd(adRequest);
+
+
     }
 
     @Override
@@ -123,7 +133,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setMeals(List<Meals.Meal> meal) {
         LatestViewPager viewPager = new LatestViewPager(meal, this);
         latestRecyclerView.setAdapter(viewPager);
-        latestRecyclerView.setPadding(20, 0, 150, 0);
+        latestRecyclerView.setPadding(10, 0, 360, 0);
         viewPager.notifyDataSetChanged();
 
         viewPager.setOnItemClickListener(new LatestViewPager.ClickListener() {
@@ -143,7 +153,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setCategory(List<Categories.Category> category) {
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(category, this);
         viewPagerCategory.setAdapter(pagerAdapter);
-        viewPagerCategory.setPadding(20, 0, 150, 0);
+        viewPagerCategory.setPadding(10, 0, 380, 0);
         pagerAdapter.notifyDataSetChanged();
 
         pagerAdapter.setOnItemClickListener((view, position) -> {
@@ -159,8 +169,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setCocktail(List<Cocktail.Drink> cocktail) {
         CocktailViewPager CocktailPager = new CocktailViewPager(cocktail, this);
         latestCocktail.setAdapter(CocktailPager);
-        latestCocktail.setPadding(20, 0, 150, 0);
+        latestCocktail.setPadding(10, 0, 360, 0);
         CocktailPager.notifyDataSetChanged();
+
 
         CocktailPager.setOnItemClickListener(new CocktailViewPager.ClickListener() {
             @Override
@@ -180,28 +191,16 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
 
-    public void showErrorMessage(int imageView, String title, String message) {
-
-        if (errorLayout.getVisibility() == View.GONE) {
-            errorLayout.setVisibility(View.VISIBLE);
-        }
-
-        errorImage.setImageResource(imageView);
-        errorTitle.setText(title);
-        errorMessage.setText(message);
-
-        btnRetry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        // TODO 36 Overriding the interface
-
-    }
-
     public void initDB(){
         Common.foodieRoomDB = FoodieRoomDB.getInstance(this);
         Common.favoriteRespository = FavoriteRespository.getInstance(FavoriteDataSource.getInstance(Common.foodieRoomDB.favoriteDAO()));
     }
+
+    private boolean loadMyFragment(Fragment fm) {
+
+        return false;
+    }
+
+
+
 }

@@ -13,6 +13,5 @@ public interface IFavoriteDataSource {
 
     void insertFav(Favorite...favorites);
 
-
     void delete(Favorite favorite);
 }

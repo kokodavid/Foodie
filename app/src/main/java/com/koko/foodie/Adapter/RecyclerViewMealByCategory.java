@@ -1,6 +1,7 @@
 package com.koko.foodie.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.koko.foodie.Activities.Favorite.Favorite;
-import com.koko.foodie.Common;
+import com.koko.foodie.Utils.Common;
+import com.koko.foodie.DataSource.IFavoriteDataSource;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 import com.squareup.picasso.Picasso;
@@ -21,11 +23,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerViewMealByCategory.RecyclerViewHolder> {
+public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerViewMealByCategory.RecyclerViewHolder>  {
 
     private List<Meals.Meal> meals;
     private Context context;
     private static ClickListener clickListener;
+    private IFavoriteDataSource IFavoriteDataSource;
+
 
     public RecyclerViewMealByCategory(Context context, List<Meals.Meal> meals) {
         this.meals = meals;
@@ -40,13 +44,23 @@ public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewMealByCategory.RecyclerViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerViewMealByCategory.RecyclerViewHolder viewHolder,final int i) {
 
         String strMealThumb = meals.get(i).getStrMealThumb();
         Picasso.get().load(strMealThumb).placeholder(R.drawable.shadow_bottom_to_top).into(viewHolder.mealThumb);
 
         String strMealName = meals.get(i).getStrMeal();
         viewHolder.mealName.setText(strMealName);
+
+        String strMealId = meals.get(i).getIdMeal();
+        viewHolder.fav.setTag(strMealId);
+
+        Common common = new Common();
+
+        Log.e("Nikubaya --->", ""+Integer.parseInt(meals.get(i).getIdMeal()));
+
+
+
 
         if (Common.favoriteRespository.isFavorite(Integer.parseInt(meals.get(i).getIdMeal())) == 1) {
             viewHolder.fav.setImageResource(R.drawable.ic_favorite);
@@ -59,13 +73,16 @@ public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerVie
                 if (Common.favoriteRespository.isFavorite(Integer.parseInt(meals.get(i).getIdMeal())) != 1)
                 {
                     addOrRemoveFavorites(meals.get(i),true);
-                    viewHolder.fav.setImageResource(R.drawable.ic_favorite_border);
+                    viewHolder.fav.setImageResource(R.drawable.ic_favorite);
                 }else{
                     addOrRemoveFavorites(meals.get(i),false);
-                    viewHolder.fav.setImageResource(R.drawable.ic_favorite);
+                    viewHolder.fav.setImageResource(R.drawable.ic_favorite_border);
+
                 }
             }
         });
+
+
 
     }
 

@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 @Dao
@@ -20,6 +21,7 @@ public interface FavoriteDAO {
 
     @Insert
     void insertFav(Favorite...favorites);
+
     @Delete
      void delete(Favorite favorite);
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <View
         android:id="@+id/view"
@@ -40,7 +41,7 @@
 
     <TextView
         android:id="@+id/cocktailText"
-        android:text="Popular Cocktails"
+        android:text="Meal Categories"
         android:textSize="19sp"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
@@ -51,13 +52,13 @@
         android:layout_height="wrap_content"/>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/cocktailLatest"
+        android:id="@+id/viewPagerHeader"
         android:foregroundGravity="center"
         android:overScrollMode="never"
         android:clipToPadding="false"
         android:layout_below="@+id/cocktailText"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         />
 
     <include android:id="@+id/shimmerMeal"
@@ -65,25 +66,25 @@
 
     <TextView
         android:id="@+id/CategoriesText"
-        android:text="Recipe Categories"
+        android:text="Cocktails"
         android:textSize="19sp"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
         android:layout_marginRight="16dp"
-        android:layout_below="@+id/cocktailLatest"
+        android:layout_below="@+id/viewPagerHeader"
         android:layout_marginLeft="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerHeader"
+        android:id="@+id/cocktailLatest"
         android:foregroundGravity="center"
         android:overScrollMode="never"
         android:clipToPadding="false"
         android:layout_below="@+id/CategoriesText"
         android:layout_width="match_parent"
-        android:layout_height="170dp"/>
+        android:layout_height="200dp"/>
 
     <include android:id="@+id/shimmerMeal2"
         layout="@layout/categories_shimmer" />
@@ -96,7 +97,7 @@
         android:textStyle="bold"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_below="@+id/viewPagerHeader"
+        android:layout_below="@+id/cocktailLatest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -108,7 +109,7 @@
         android:clipToPadding="false"
         android:layout_below="@+id/topMeals"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
 
         />
 
@@ -117,6 +118,20 @@
 
 
 
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomnav"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_marginRight="8dp"-->
+<!--        android:layout_marginBottom="56dp"-->
+<!--        android:background="@drawable/corner_shape"-->
+<!--        android:elevation="8dp"-->
+<!--        app:menu="@menu/bottom_navigation"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        />-->
 
 
 

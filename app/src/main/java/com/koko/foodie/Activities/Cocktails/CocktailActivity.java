@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,18 +17,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.koko.foodie.Activities.detail.DetailPresenter;
-import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;

@@ -8,7 +8,7 @@ import io.reactivex.Flowable;
 
 public class FavoriteRespository implements IFavoriteDataSource {
 
-    private IFavoriteDataSource iFavoriteDataSource;
+    public IFavoriteDataSource iFavoriteDataSource;
 
     public FavoriteRespository(IFavoriteDataSource iFavoriteDataSource) {
         this.iFavoriteDataSource = iFavoriteDataSource;
@@ -27,6 +27,7 @@ public class FavoriteRespository implements IFavoriteDataSource {
     public Flowable<List<Favorite>> getFavorites() {
         return iFavoriteDataSource.getFavorites();
     }
+
 
     @Override
     public int isFavorite(int itemId) {

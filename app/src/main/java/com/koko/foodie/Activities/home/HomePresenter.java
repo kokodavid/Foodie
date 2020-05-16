@@ -1,13 +1,11 @@
 package com.koko.foodie.Activities.home;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;

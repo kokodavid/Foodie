@@ -2,7 +2,6 @@ package com.koko.foodie.Activities.category;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -10,9 +9,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
+import com.koko.foodie.Activities.Database.FoodieRoomDB;
+import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
+import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.home.HomeActivity;
-import com.koko.foodie.Adapter.ViewPagerAdapter;
 import com.koko.foodie.Adapter.ViewPagerCategoryAdapter;
+import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.R;
 
@@ -28,7 +30,6 @@ public class CategoryActivity extends AppCompatActivity {
     @BindView(R.id.categoriesDetail) ViewPager categoriesPager;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +38,11 @@ public class CategoryActivity extends AppCompatActivity {
 
         initActionBar();
         initIntent();
+        initDB();
         //TODO 9. Init getIntent() data from home activity
 
         //TODO 11. Declare fragment viewPager adapter
+
     }
 
     private void initIntent() {
@@ -68,5 +71,10 @@ public class CategoryActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    public void initDB(){
+        Common.foodieRoomDB = FoodieRoomDB.getInstance(this);
+        Common.favoriteRespository = FavoriteRespository.getInstance(FavoriteDataSource.getInstance(Common.foodieRoomDB.favoriteDAO()));
     }
 }

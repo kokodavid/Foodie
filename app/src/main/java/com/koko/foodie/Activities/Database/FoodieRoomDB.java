@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.koko.foodie.Activities.Favorite.Favorite;
 import com.koko.foodie.Activities.Favorite.FavoriteDAO;
 
-@Database(entities = {Favorite.class}, version = 1)
+@Database(entities = {Favorite.class}, version = 2)
 public abstract class FoodieRoomDB extends RoomDatabase {
 
 

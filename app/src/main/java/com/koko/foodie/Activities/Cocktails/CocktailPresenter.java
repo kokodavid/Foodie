@@ -2,8 +2,7 @@ package com.koko.foodie.Activities.Cocktails;
 
 import androidx.annotation.NonNull;
 
-import com.koko.foodie.Activities.detail.DetailPresenter;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;

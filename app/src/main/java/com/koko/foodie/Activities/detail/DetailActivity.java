@@ -22,7 +22,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -65,8 +65,8 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    @BindView(R.id.youtube)
-    TextView youtube;
+    @BindView(R.id.yt)
+    ImageView youtube;
 
 
     @Override

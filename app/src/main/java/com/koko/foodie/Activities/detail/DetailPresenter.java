@@ -3,7 +3,7 @@ package com.koko.foodie.Activities.detail;
 import androidx.annotation.NonNull;
 
 import com.koko.foodie.Models.Meals;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;

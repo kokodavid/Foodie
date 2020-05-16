@@ -5,19 +5,25 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Utils.Foodie"
         android:allowBackup="true"
         android:icon="@drawable/foodie"
         android:label="@string/app_name"
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.Search.SearchActivity"></activity>
+        <activity
+            android:name=".Activities.Favorite.FavoritesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2470974563764561~9284103397"/>
+            android:value="ca-app-pub-2470974563764561~9284103397" />
 
-        <activity android:name=".Activities.Cocktails.CocktailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activities.Cocktails.CocktailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.detail.DetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />

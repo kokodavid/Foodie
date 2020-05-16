@@ -17,13 +17,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.RecyclerViewMealByCategory;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
-import com.koko.foodie.Utils;
+import com.koko.foodie.Utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
