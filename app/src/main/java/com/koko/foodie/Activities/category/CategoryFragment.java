@@ -40,12 +40,12 @@ public class CategoryFragment extends Fragment implements CategoryView  {
     RecyclerView recyclerView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    @BindView(R.id.imageCategory)
-    ImageView imageCategory;
-    @BindView(R.id.imageCategoryBg)
+//    @BindView(R.id.imageCategory)
+//    ImageView imageCategory;
+//    @BindView(R.id.imageCategoryBg)
     ImageView imageCategoryBg;
-    @BindView(R.id.textCategory)
-    TextView textCategory;
+//    @BindView(R.id.textCategory)
+//    TextView textCategory;
 
     AlertDialog.Builder descDialog;
 
@@ -63,9 +63,9 @@ public class CategoryFragment extends Fragment implements CategoryView  {
         super.onViewCreated(view, savedInstanceState);
 
         if (getArguments() != null){
-            textCategory.setText(getArguments().getString("DESC"));
-            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategory);
-            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategoryBg);
+//            textCategory.setText(getArguments().getString("DESC"));
+//            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategory);
+//            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategoryBg);
 
             descDialog = new AlertDialog.Builder(getActivity()).setTitle(getArguments().getString("NAME")).setMessage(getArguments().getString("DESC"));
 
@@ -111,14 +111,14 @@ public class CategoryFragment extends Fragment implements CategoryView  {
         Utils.showDialogMessage(getActivity(), "Error ", message);
     }
 
-    @OnClick(R.id.cardCategory)
-    public void onClick(){
-        descDialog.setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                descDialog.show();
-            }
-        });
-    }
+//    @OnClick(R.id.cardCategory)
+//    public void onClick(){
+//        descDialog.setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                descDialog.show();
+//            }
+//        });
+//    }
 
 }

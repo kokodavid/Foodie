@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Search.SearchActivity">
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimary" />
+
+    <ImageView
+        android:layout_margin="8dp"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:src="@drawable/foodie" />
+
+
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:layout_width="83dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/foodieword" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp">
+
+        <EditText
+            android:id="@+id/searchView"
+            android:drawableLeft="@drawable/ic_search"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:hint="Search Recipes"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:maxLines="1"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchRecycler"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="160dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

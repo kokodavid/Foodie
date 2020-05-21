@@ -1,5 +1,6 @@
 package com.koko.foodie.Activities.Favorite;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -10,10 +11,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
@@ -39,6 +42,8 @@ import static com.koko.foodie.Activities.home.HomeActivity.EXTRA_DETAIL;
 public class FavoritesActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
 
     @BindView(R.id.favList) RecyclerView favListRecycler;
+    @BindView(R.id.bottomnav)
+    BottomNavigationView bm;
     Context context;
 
     CompositeDisposable compositeDisposable;
@@ -66,6 +71,22 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerItem
         snackbar.show();
 
         loadFavoritesItem();
+
+        bm=(BottomNavigationView)findViewById(R.id.bottomnav);
+        bm.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        Intent intent = new Intent(FavoritesActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
 
     }
@@ -123,7 +144,7 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerItem
             favoriteAdapter.removeItem(deletedIndex);
             Common.favoriteRespository.delete(deletedItem);
 
-            Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout), new StringBuilder(name).append("Removed From Favorites" + "").toString(),Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), new StringBuilder(name).append("Removed From Favorites" + "").toString(),Snackbar.LENGTH_LONG);
 
             snackbar.setAction("UNDO", new View.OnClickListener() {
                 @Override

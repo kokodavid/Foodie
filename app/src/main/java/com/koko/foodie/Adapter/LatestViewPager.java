@@ -15,6 +15,7 @@ import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -65,6 +66,11 @@ public class LatestViewPager extends PagerAdapter {
 
         container.addView(view, 0);
         return view;
+    }
+
+    public void filterList(ArrayList<Meals.Meal> filteredNames) {
+        this.meals= filteredNames;
+        notifyDataSetChanged();
     }
 
     @Override

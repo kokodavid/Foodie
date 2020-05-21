@@ -20,7 +20,7 @@ public interface Api {
 
     @GET("filter.php")
     Call<Meals> getMealByCategory(@Query("c") String category);
-
+    
     @GET("search.php")
     Call<Meals> getMealByName(@Query("s") String mealName);
 
@@ -29,6 +29,7 @@ public interface Api {
 
     @GET("search.php")
     Call<Cocktail> getCocktailByName(@Query("s") String cocktailName);
+
 
 
 }

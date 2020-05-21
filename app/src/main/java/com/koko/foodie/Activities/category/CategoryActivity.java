@@ -14,10 +14,12 @@ import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Adapter.ViewPagerCategoryAdapter;
+import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,10 +27,10 @@ import butterknife.ButterKnife;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolBar) Toolbar toolbar;
+//    @BindView(R.id.toolBar) Toolbar toolbar;
     @BindView(R.id.tabLayout) TabLayout tabLayout;
     @BindView(R.id.categoriesDetail) ViewPager categoriesPager;
-
+    List<Meals.Meal> foodlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
         ButterKnife.bind(this);
 
-        initActionBar();
+//        initActionBar();
         initIntent();
         initDB();
         //TODO 9. Init getIntent() data from home activity
@@ -56,12 +58,12 @@ public class CategoryActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void initActionBar() {
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
+//    private void initActionBar() {
+//        setSupportActionBar(toolbar);
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        }
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,5 +78,10 @@ public class CategoryActivity extends AppCompatActivity {
     public void initDB(){
         Common.foodieRoomDB = FoodieRoomDB.getInstance(this);
         Common.favoriteRespository = FavoriteRespository.getInstance(FavoriteDataSource.getInstance(Common.foodieRoomDB.favoriteDAO()));
+        ArrayList<Meals.Meal> filter  = new ArrayList<>();
+
+
+        }
     }
-}
+
+

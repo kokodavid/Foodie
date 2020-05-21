@@ -14,4 +14,6 @@ public interface HomeView {
     void setCategory(List<Categories.Category>category);
     void setCocktail(List<Cocktail.Drink>cocktail);
     void onErrorLoading(String message);
+    void setMeal(List<Meals.Meal> meal);
+
 }

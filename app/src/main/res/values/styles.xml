@@ -6,6 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/sf</item>
+
+    </style>
+
+
+    <style name="AppThemeCategory" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/sf</item>
+        <item name="android:textColor">@color/colorWhite</item>
+
     </style>
 
 
@@ -34,5 +47,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <style name="SplashScreenTheme" parent = "Theme.AppCompat.Light.NoActionBar.FullScreen">
+    <item name="android:windowBackground">@drawable/foodie</item>
+</style>
 
 </resources>

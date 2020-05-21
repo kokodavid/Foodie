@@ -10,17 +10,28 @@
     android:fitsSystemWindows="true"
     tools:context=".Activities.category.CategoryActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <View
+        android:id="@+id/viewff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarLayoutTheme">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:layout_height="65dp"
+        android:background="@color/colorPrimary" />
+
+    <ImageView
+        android:layout_margin="8dp"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:src="@drawable/foodie" />
+
+
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:layout_width="83dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/foodieword" />
+
         <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="65dp"
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,8 +39,8 @@
             app:tabIndicatorColor="@color/colorPrimary"
             app:tabMode="scrollable"
             app:tabContentStart="85dp"/>
-    </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="120dp"
         android:id="@+id/categoriesDetail"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"

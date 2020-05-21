@@ -7,6 +7,9 @@ import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,14 +18,16 @@ public class HomePresenter extends HomeActivity {
 
     private HomeView view;
 
+    public List<Meals.Meal> meals = new ArrayList<>();
+
     public HomePresenter(HomeView view) {
         this.view = view;
     }
 
-    void getMeals() {
+    public List<Meals.Meal> getMeals() {
 
         view.showLoading();
-       Call<Meals> mealsCall = Utils.getApi().getMeal();
+       Call<Meals> mealsCall = Utils.getApi().getMealByName("");
         mealsCall.enqueue(new Callback<Meals>() {
             @Override
             public void onResponse(@NonNull Call<Meals> call, @NonNull Response<Meals> response) {
@@ -30,6 +35,7 @@ public class HomePresenter extends HomeActivity {
                 if (response.isSuccessful() && response.body() != null) {
 
                     view.setMeals(response.body().getMeals());
+                    meals = response.body().getMeals();
 
                 }
                 else {
@@ -39,6 +45,8 @@ public class HomePresenter extends HomeActivity {
                 }
             }
 
+
+
             @Override
             public void onFailure(@NonNull Call<Meals> call,@NonNull Throwable t) {
                 view.hideloading();
@@ -47,6 +55,7 @@ public class HomePresenter extends HomeActivity {
 
             }
         });
+    return meals;
     }
 
 
@@ -113,7 +122,36 @@ public class HomePresenter extends HomeActivity {
         });
     }
 
+//    public void getMealById(String mealName){
 
+        public List<Meals.Meal> getMealsById(String mealName) {
+        view.showLoading();
+
+        Utils.getApi().getMealByName("")
+                .enqueue(new Callback<Meals>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Meals> call, @NonNull Response<Meals> response) {
+                        view.hideloading();
+                        if (response.isSuccessful() && response.body() != null){
+                            meals = response.body().getMeals();
+
+                        }else{
+                            view.onErrorLoading(response.message());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<Meals> call,@NonNull Throwable t) {
+                        view.hideloading();
+                        view.onErrorLoading(t.getLocalizedMessage());
+                    }
+                });
+
+            return meals;
+        }
 
     }
+
+
+
 

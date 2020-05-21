@@ -2,6 +2,7 @@ package com.koko.foodie.Activities.home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
@@ -25,6 +26,7 @@ import com.koko.foodie.Activities.Database.FoodieRoomDB;
 import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
+import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
@@ -48,12 +50,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @BindView(R.id.viewPagerHeader)
     ViewPager viewPagerCategory;
-    @BindView(R.id.favs)
-    ImageView FavoriteList;
+    @BindView(R.id.bottomnav)
+    BottomNavigationView bm;
     @BindView(R.id.recyclerLatest)
     ViewPager latestRecyclerView;
     @BindView(R.id.cocktailLatest)
     ViewPager latestCocktail;
+    @BindView(R.id.searchView)
+    CardView search;
 
     private ImageView errorImage;
     private TextView errorTitle, errorMessage;
@@ -95,10 +99,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
         initDB();
 
-        FavoriteList.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
-            startActivity(intent);
-        });
+//        FavoriteList.setOnClickListener(v -> {
+//            Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
+//            startActivity(intent);
+//        });
 
 
 //        AdView adView = new AdView(this);
@@ -108,6 +112,31 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 //        mAdView = findViewById(R.id.adView);
 //        AdRequest adRequest = new AdRequest.Builder().build();
 //        mAdView.loadAd(adRequest);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            }
+        });
+
+        bm=(BottomNavigationView)findViewById(R.id.bottomnav);
+        bm.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.favorites:
+                        Intent favorites = new Intent(HomeActivity.this, FavoritesActivity.class);
+                        favorites.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(favorites);
+                        break;
+                    }
+                return true;
+            }
+        });
 
 
     }
@@ -188,6 +217,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this, "Title", message);
+    }
+
+    @Override
+    public void setMeal(List<Meals.Meal> meal) {
+
     }
 
 
