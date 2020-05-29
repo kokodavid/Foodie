@@ -26,15 +26,15 @@ import butterknife.ButterKnife;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RecyclerViewHolder>{
 
-    private List<Meals.Meal> meals;
+    private List<Meals.Meal> mealList;
     private Context context;
     private static SearchAdapter.ClickListener clickListener;
 
 
-    public SearchAdapter(List<Meals.Meal> meals, Context context) {
-        this.meals = meals;
+    public SearchAdapter(List<Meals.Meal> meals, Context context ) {
+        this.mealList = meals;
         this.context = context;
-        notifyDataSetChanged();
+        mealList = new ArrayList<>(meals);
     }
 
 
@@ -48,26 +48,31 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        String strImage = meals.get(position).getStrMealThumb();
+        String strImage = mealList.get(position).getStrMealThumb();
         Picasso.get().load(strImage).placeholder(R.drawable.ic_circle).into(holder.searchImage);
 
-        String strMealName = meals.get(position).getStrMeal();
+        String strMealName = mealList.get(position).getStrMeal();
         holder.searchName.setText(strMealName);
     }
 
     @Override
     public int getItemCount() {
-        return meals.size();
+        return mealList.size();
+
     }
 
-    public void filterList(ArrayList<Meals.Meal> filteredNames) {
-        this.meals = filteredNames;
-        notifyDataSetChanged();
-    }
+
 
 
     public void setOnItemClickListener(ClickListener clickListener) {
         SearchAdapter.clickListener = (SearchAdapter.ClickListener) clickListener;
+    }
+
+    public void filteredList(ArrayList<Meals.Meal> filterList) {
+        mealList.clear();
+        mealList.addAll(filterList);
+        this.notifyDataSetChanged();
+
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -79,12 +84,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.RecyclerVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View v) {
             clickListener.onClick(v, getAdapterPosition());
         }
+
+
     }
 
 

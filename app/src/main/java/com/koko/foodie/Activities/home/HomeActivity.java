@@ -56,8 +56,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     ViewPager latestRecyclerView;
     @BindView(R.id.cocktailLatest)
     ViewPager latestCocktail;
-    @BindView(R.id.searchView)
-    CardView search;
+//    @BindView(R.id.searchView)
+//    CardView search;
 
     private ImageView errorImage;
     private TextView errorTitle, errorMessage;
@@ -113,15 +113,15 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 //        AdRequest adRequest = new AdRequest.Builder().build();
 //        mAdView.loadAd(adRequest);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            }
-        });
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+//                startActivity(intent);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//            }
+//        });
 
         bm=(BottomNavigationView)findViewById(R.id.bottomnav);
         bm.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

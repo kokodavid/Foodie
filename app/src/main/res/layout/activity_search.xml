@@ -54,6 +54,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecycler"
+
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="160dp"

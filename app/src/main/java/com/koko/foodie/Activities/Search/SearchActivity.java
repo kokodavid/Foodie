@@ -1,17 +1,21 @@
 package com.koko.foodie.Activities.Search;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.SearchAdapter;
@@ -19,7 +23,9 @@ import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,15 +43,12 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     EditText searchView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    private SearchAdapter adapter;
+    public SearchAdapter adapter;
 
-    private List<Meals.Meal> mealList;
+    public List<Meals.Meal> mealList = new ArrayList<>();
 
-    SearchAdapter searchAdapter;
 
-    String filter;
 
-    ArrayList<Meals.Meal> filteredNames;
 
 
 
@@ -59,7 +62,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         presenter = new SearchPresenter(this);
         presenter.getMealsById("");
 
-
+        adapter = new SearchAdapter(mealList, getApplicationContext());
 
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -74,6 +77,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
             @Override
             public void afterTextChanged(Editable s) {
+                Log.e("Haiyaaa", ""+s);
+
                 filter(s.toString());
             }
         });
@@ -82,34 +87,34 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     }
 
-    private void filter(String toString) {
+    private void filter(String text) {
 
-        //new array list that will hold the filtered data
-        filteredNames = new ArrayList<>();
+        ArrayList<Meals.Meal> filterList = new ArrayList<>();
 
-        ArrayList<Meals.Meal> filteredNames = new ArrayList<>();
+       Log.e("YEZZZZ", ""+mealList.size());
 
-        for (Meals.Meal meal : mealList) {
-            if (meal.getStrMeal().toLowerCase().contains(toString.toLowerCase())) {
-                filteredNames.add(meal);
+        for (Meals.Meal item: mealList){
+            if (item.getStrMeal().toLowerCase().contains(text)){
+
+                filterList.add(item);
+
             }
-
         }
-
-
-        adapter.filterList(filteredNames);
-
+        adapter.notifyDataSetChanged();
+        adapter.filteredList(filterList);
+//        Toast.makeText(this, filterList.get(0).getStrMeal(), Toast.LENGTH_SHORT).show();
+//        Log.d("Alafuu", ""+ filterList.get(0).getStrMeal());
     }
+
+
     @Override
     public void showLoading() {
         progressBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override
     public void hideloading() {
         progressBar.setVisibility(View.GONE);
-
     }
 
     @Override
@@ -125,17 +130,17 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         recyclerView.setClipToPadding(false);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        mealList.addAll(meal);
 
-        adapter.setOnItemClickListener(new SearchAdapter.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                TextView mealName = view.findViewById(R.id.searchName);
-                Intent intent = new Intent(SearchActivity.this, DetailActivity.class);
-                intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
-                startActivity(intent);
-            }
+        adapter.setOnItemClickListener((view, position) -> {
+            TextView mealName = view.findViewById(R.id.searchName);
+            Intent intent = new Intent(SearchActivity.this, DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
+            startActivity(intent);
         });
 
     }
+
+
 }
 

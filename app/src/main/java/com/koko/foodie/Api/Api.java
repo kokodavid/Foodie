@@ -24,8 +24,8 @@ public interface Api {
     @GET("search.php")
     Call<Meals> getMealByName(@Query("s") String mealName);
 
-    @GET("popular.php")
-    Call<Cocktail> getPopularCocktail();
+    @GET("search.php")
+    Call<Cocktail> getPopularCocktail(@Query("s") String cocktailName);
 
     @GET("search.php")
     Call<Cocktail> getCocktailByName(@Query("s") String cocktailName);

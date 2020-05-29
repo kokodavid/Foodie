@@ -98,7 +98,7 @@ public class HomePresenter extends HomeActivity {
 
     void getCocktails(){
         view.showLoading();
-        Call<Cocktail> cocktailCall = Utils.getCocktailApi().getPopularCocktail();
+        Call<Cocktail> cocktailCall = Utils.getCocktailApi().getPopularCocktail("");
         cocktailCall.enqueue(new Callback<Cocktail>() {
             @Override
             public void onResponse(@NonNull Call<Cocktail> call,@NonNull Response<Cocktail> response) {
