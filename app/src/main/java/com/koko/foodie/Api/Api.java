@@ -3,6 +3,7 @@ package com.koko.foodie.Api;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
+import com.koko.foodie.Models.Wine;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -30,6 +31,6 @@ public interface Api {
     @GET("search.php")
     Call<Cocktail> getCocktailByName(@Query("s") String cocktailName);
 
-
-
+    @GET("pairing")
+    Call<Wine> getWines(@Query("food") String foodPair , @Query("apiKey") String apiKey);
 }

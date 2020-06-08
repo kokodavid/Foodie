@@ -16,10 +16,20 @@ public class ApiClient {
 
     private static final String BEER_BASE_URL = "https://api.punkapi.com/v2/";
 
+    private static final String WINE_PAIRING = "https://api.spoonacular.com/food/wine/";
+
+    public String API = "6792adb5e9b544dc990c2499f73befb6";
 
 
     public static Retrofit getFoodClient() {
         return new Retrofit.Builder().baseUrl(BASE_URL)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static Retrofit getWineClient() {
+        return new Retrofit.Builder().baseUrl(WINE_PAIRING)
                 .client(provideOkHttp())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

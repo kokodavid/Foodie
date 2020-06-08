@@ -2,7 +2,6 @@ package com.koko.foodie.Activities.home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
@@ -26,7 +25,7 @@ import com.koko.foodie.Activities.Database.FoodieRoomDB;
 import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
-import com.koko.foodie.Activities.Search.SearchActivity;
+import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
@@ -132,6 +131,12 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
                         Intent favorites = new Intent(HomeActivity.this, FavoritesActivity.class);
                         favorites.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(favorites);
+                        break;
+
+                    case R.id.add_recipe:
+                        Intent addRecipe = new Intent(HomeActivity.this, UploadRecipeActivity.class);
+                        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(addRecipe);
                         break;
                     }
                 return true;
