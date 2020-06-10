@@ -6,27 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.SplashScreenActivity"
-    android:background="@drawable/foodiesplash">
+    android:background="@drawable/foodienew"
+    >
+
 
     <ImageView
-        android:layout_width="191dp"
-        android:layout_height="161dp"
-        android:src="@drawable/foodie"
+        android:id="@+id/imageView"
+        android:layout_width="187dp"
+        android:layout_height="162dp"
+        android:src="@drawable/foodiewhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.186" />
 
-    <ImageView
-        android:layout_width="231dp"
-        android:layout_height="203dp"
-        android:src="@drawable/foodieword"
+    <Button
+        android:id="@+id/getStarted"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_gradient_b"
+        android:onClick="getStarted"
+        android:text="Get Started"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.875" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

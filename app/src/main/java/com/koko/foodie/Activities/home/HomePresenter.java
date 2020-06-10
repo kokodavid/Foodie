@@ -27,7 +27,7 @@ public class HomePresenter extends HomeActivity {
     public List<Meals.Meal> getMeals() {
 
         view.showLoading();
-       Call<Meals> mealsCall = Utils.getApi().getMealByName("");
+       Call<Meals> mealsCall = Utils.getApi().getMeal();
         mealsCall.enqueue(new Callback<Meals>() {
             @Override
             public void onResponse(@NonNull Call<Meals> call, @NonNull Response<Meals> response) {
@@ -98,7 +98,7 @@ public class HomePresenter extends HomeActivity {
 
     void getCocktails(){
         view.showLoading();
-        Call<Cocktail> cocktailCall = Utils.getCocktailApi().getPopularCocktail("");
+        Call<Cocktail> cocktailCall = Utils.getCocktailApi().getPopularCocktail();
         cocktailCall.enqueue(new Callback<Cocktail>() {
             @Override
             public void onResponse(@NonNull Call<Cocktail> call,@NonNull Response<Cocktail> response) {

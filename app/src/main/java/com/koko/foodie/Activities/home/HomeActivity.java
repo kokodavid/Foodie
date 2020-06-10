@@ -6,11 +6,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ import com.koko.foodie.Activities.Database.FoodieRoomDB;
 import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
+import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
@@ -42,6 +45,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import info.hoang8f.android.segmented.SegmentedGroup;
 
 // TODO 31 implement the HomeView interface at the end
 public class HomeActivity extends AppCompatActivity implements HomeView {
@@ -55,6 +59,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     ViewPager latestRecyclerView;
     @BindView(R.id.cocktailLatest)
     ViewPager latestCocktail;
+    @BindView(R.id.segmented2)
+    SegmentedGroup segmentedGroup;
+    @BindView(R.id.button2)
+    RadioButton radioButton;
+
+    @BindView(R.id.rootView)
+    RelativeLayout rootView;
+
 //    @BindView(R.id.searchView)
 //    CardView search;
 
@@ -89,6 +101,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
+
+
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -144,6 +158,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         });
 
 
+        SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
+        segmented2.setTintColor(getResources().getColor(R.color.fade));
+
+
     }
 
     @Override
@@ -167,7 +185,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setMeals(List<Meals.Meal> meal) {
         LatestViewPager viewPager = new LatestViewPager(meal, this);
         latestRecyclerView.setAdapter(viewPager);
-        latestRecyclerView.setPadding(10, 0, 360, 0);
+        latestRecyclerView.setPadding(10, 0, 400, 0);
         viewPager.notifyDataSetChanged();
 
         viewPager.setOnItemClickListener(new LatestViewPager.ClickListener() {
@@ -187,7 +205,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setCategory(List<Categories.Category> category) {
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(category, this);
         viewPagerCategory.setAdapter(pagerAdapter);
-        viewPagerCategory.setPadding(10, 0, 380, 0);
+        viewPagerCategory.setPadding(10, 0, 500, 0);
         pagerAdapter.notifyDataSetChanged();
 
         pagerAdapter.setOnItemClickListener((view, position) -> {
@@ -241,5 +259,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
 
-
+    public void Explore(View view) {
+        Intent addRecipe = new Intent(HomeActivity.this, SearchActivity.class);
+        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(addRecipe);
+    }
 }

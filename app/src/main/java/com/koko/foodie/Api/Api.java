@@ -25,12 +25,13 @@ public interface Api {
     @GET("search.php")
     Call<Meals> getMealByName(@Query("s") String mealName);
 
-    @GET("search.php")
-    Call<Cocktail> getPopularCocktail(@Query("s") String cocktailName);
+    @GET("popular.php")
+    Call<Cocktail> getPopularCocktail();
 
     @GET("search.php")
     Call<Cocktail> getCocktailByName(@Query("s") String cocktailName);
 
     @GET("pairing")
-    Call<Wine> getWines(@Query("food") String foodPair , @Query("apiKey") String apiKey);
+    Call<Wine> getWines(@Query("food") String foodPair ,
+                        @Query("apiKey") String apiKey);
 }

@@ -18,7 +18,9 @@ public class ApiClient {
 
     private static final String WINE_PAIRING = "https://api.spoonacular.com/food/wine/";
 
-    public String API = "6792adb5e9b544dc990c2499f73befb6";
+    private static final String MEAL_GENERATOR = "https://api.spoonacular.com/mealplanner/generate/";
+
+
 
 
     public static Retrofit getFoodClient() {

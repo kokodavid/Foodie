@@ -25,10 +25,11 @@ public class WinePairingAdapter extends RecyclerView.Adapter<WinePairingAdapter.
     private List<Wine.ProductMatch> wines;
     private List<Wine> winess;
     private Context context;
+    private String pairingText;
 
-    public WinePairingAdapter(List<Wine.ProductMatch> wines, Context context) {
+    public WinePairingAdapter(List<Wine.ProductMatch> wines, Context context, String pairingText) {
         this.wines = wines;
-        this.winess = winess;
+        this.pairingText = pairingText;
         this.context = context;
     }
 
@@ -59,8 +60,8 @@ public class WinePairingAdapter extends RecyclerView.Adapter<WinePairingAdapter.
 //        String pairedWines = winess.get(position).getPairedWines();
 //        holder.pairedWines.setText((CharSequence) pairedWines);
 
-        String pairingText = winess.get(position).getPairingText();
-        holder.pairedWines.setText(pairingText);
+
+        holder.pairedText.setText(pairingText);
 
     }
 
@@ -82,7 +83,7 @@ public class WinePairingAdapter extends RecyclerView.Adapter<WinePairingAdapter.
 
 
         @BindView(R.id.WineText)
-        TextView pairedWines;
+        TextView pairedText;
 
 
         RecyclerViewHolder(@NonNull View itemView) {

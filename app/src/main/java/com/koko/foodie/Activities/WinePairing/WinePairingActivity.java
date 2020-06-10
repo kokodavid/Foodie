@@ -71,7 +71,7 @@ public class WinePairingActivity extends AppCompatActivity implements WineView {
 
     @Override
     public void setWine(List<Wine.ProductMatch> wines,String WineText) {
-        WinePairingAdapter adapter = new WinePairingAdapter(wines,getBaseContext());
+        WinePairingAdapter adapter = new WinePairingAdapter(wines,getBaseContext(), WineText);
         winesRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
         winesRecycler.setClipToPadding(false);
         winesRecycler.setAdapter(adapter);

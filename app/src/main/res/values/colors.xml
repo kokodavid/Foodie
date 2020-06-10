@@ -11,5 +11,12 @@
     <color name="colorWhiteDark">#DBDBDB</color>
     <color name="colorPrimaryLight">#CA7474</color>
     <color name="colorBackground">#F4F7F7</color>
-    <color name="yellow">#ff9933</color>
+
+
+    <color name="background">#121212</color>
+    <color name="bottomNavBackground">#2B2B2B</color>
+
+    <color name="fade">#90ff9720</color>
+    <color name="start">#ff9720</color>
+    <color name="end">#99f64807</color>
 </resources>
