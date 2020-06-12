@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#3700B3</color>
+    <color name="colorAccent">#ff9720</color>
 
     <color name="colorNull">#00000000</color>
     <color name="colorIcons">#7C7F81</color>
@@ -15,6 +15,8 @@
 
     <color name="background">#121212</color>
     <color name="bottomNavBackground">#2B2B2B</color>
+    <color name="circleBackground">#992B2B2B</color>
+
 
     <color name="fade">#90ff9720</color>
     <color name="start">#ff9720</color>

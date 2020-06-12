@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
+import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
+import com.koko.foodie.Models.SpoonMeals;
 import com.koko.foodie.Utils.Utils;
 
 import java.util.ArrayList;
@@ -118,6 +120,31 @@ public class HomePresenter extends HomeActivity {
 
 
 
+            }
+        });
+    }
+
+    void getAllFood(){
+        view.showLoading();
+
+        Call<Food> foodCall = Utils.getFoodApi().getFood("","6792adb5e9b544dc990c2499f73befb6","16");
+        foodCall.enqueue(new Callback<Food>() {
+            @Override
+            public void onResponse( @NonNull Call<Food> call,@NonNull Response<Food> response) {
+                view.hideloading();
+                if (response.isSuccessful() && response.body() != null){
+                    view.setFood(response.body().getResults());
+                }else{
+                    view.onErrorLoading(response.message());
+                }
+
+
+        }
+
+            @Override
+            public void onFailure(@NonNull Call<Food> call,@NonNull Throwable t) {
+                view.showLoading();
+                t.getLocalizedMessage();
             }
         });
     }

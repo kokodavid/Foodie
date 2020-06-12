@@ -20,11 +20,20 @@ public class ApiClient {
 
     private static final String MEAL_GENERATOR = "https://api.spoonacular.com/mealplanner/generate/";
 
+    private static final String SPOON_MEALS = "https://api.spoonacular.com/recipes/";
+
 
 
 
     public static Retrofit getFoodClient() {
         return new Retrofit.Builder().baseUrl(BASE_URL)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static Retrofit getSpoonClient() {
+        return new Retrofit.Builder().baseUrl(SPOON_MEALS)
                 .client(provideOkHttp())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

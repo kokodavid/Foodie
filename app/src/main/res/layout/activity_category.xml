@@ -11,24 +11,25 @@
     tools:context=".Activities.category.CategoryActivity">
 
     <View
-        android:id="@+id/viewff"
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/background" />
 
     <ImageView
-        android:layout_margin="8dp"
-        android:layout_width="71dp"
-        android:layout_height="55dp"
-        android:src="@drawable/foodie" />
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
 
 
-    <ImageView
-        android:layout_marginTop="8dp"
-        android:layout_width="83dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="60dp"
-        android:src="@drawable/foodieword" />
+
 
         <com.google.android.material.tabs.TabLayout
             android:layout_marginTop="65dp"
@@ -36,12 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorHeight="3dp"
-            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorColor="@color/start"
             app:tabMode="scrollable"
+            android:background="@color/background"
             app:tabContentStart="85dp"/>
     <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="110dp"
         android:id="@+id/categoriesDetail"
+        android:background="@color/background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

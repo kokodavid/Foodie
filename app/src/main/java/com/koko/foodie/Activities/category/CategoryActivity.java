@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -54,6 +55,8 @@ public class CategoryActivity extends AppCompatActivity {
         ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(getSupportFragmentManager(), categories);
         categoriesPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(categoriesPager);
+        tabLayout.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.start)));
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.start));
         categoriesPager.setCurrentItem(position,true);
         adapter.notifyDataSetChanged();
     }

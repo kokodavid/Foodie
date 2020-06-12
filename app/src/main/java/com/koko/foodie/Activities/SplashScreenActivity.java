@@ -19,6 +19,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     @BindView(R.id.getStarted)
     Button getStarted;
+    private static int SPLASH_TIME_OUT = 2000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         ButterKnife.bind(this);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent homeIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
 
 
     }

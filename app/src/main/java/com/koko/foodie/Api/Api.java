@@ -2,7 +2,9 @@ package com.koko.foodie.Api;
 
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
+import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
+import com.koko.foodie.Models.SpoonMeals;
 import com.koko.foodie.Models.Wine;
 
 import retrofit2.Call;
@@ -15,6 +17,10 @@ public interface Api {
     @GET("latest.php")
     Call<Meals> getMeal();
 
+    @GET("search")
+    Call<Food> getFood(@Query("") String Food,
+                       @Query("apiKey") String apiKey,
+                       @Query("number") String number);
 
     @GET("categories.php")
     Call<Categories> getCategories();

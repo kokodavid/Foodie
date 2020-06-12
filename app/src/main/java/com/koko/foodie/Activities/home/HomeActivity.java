@@ -2,10 +2,13 @@ package com.koko.foodie.Activities.home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -32,8 +35,15 @@ import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
+import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
+import com.koko.foodie.Adapter.RecyclerViewMealByCategory;
+import com.koko.foodie.Adapter.SearchAdapter;
+import com.koko.foodie.Adapter.SpoonAdapter;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
+import com.koko.foodie.Adapter.WinePairingAdapter;
+import com.koko.foodie.Models.Food;
+import com.koko.foodie.Models.SpoonMeals;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
@@ -67,15 +77,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.rootView)
     RelativeLayout rootView;
 
-//    @BindView(R.id.searchView)
-//    CardView search;
-
-    private ImageView errorImage;
-    private TextView errorTitle, errorMessage;
-    private Button btnRetry;
-    private RelativeLayout errorLayout;
-    private AdView mAdView;
-
+    @BindView(R.id.spoonRecycler)
+    RecyclerView spoonRecycler;
 
 
 
@@ -95,12 +98,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         presenter.getCategories();
         presenter.getMeals();
         presenter.getCocktails();
+        presenter.getAllFood();
 
-        errorLayout = findViewById(R.id.errorLayout);
-        errorImage = findViewById(R.id.errorImage);
-        errorTitle = findViewById(R.id.errorTitle);
-        errorMessage = findViewById(R.id.errorMessage);
-        btnRetry = findViewById(R.id.btnRetry);
 
 
 
@@ -112,30 +111,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
         initDB();
 
-//        FavoriteList.setOnClickListener(v -> {
-//            Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
-//            startActivity(intent);
-//        });
-
-
-//        AdView adView = new AdView(this);
-//        adView.setAdSize(AdSize.BANNER);
-//        adView.setAdUnitId("ca-app-pub-2470974563764561/9347967981");
-//
-//        mAdView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
-
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
-//                startActivity(intent);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//
-//            }
-//        });
-
+        bm.setItemRippleColor(ColorStateList.valueOf(getResources().getColor(R.color.start)));
         bm=(BottomNavigationView)findViewById(R.id.bottomnav);
         bm.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -236,16 +212,23 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         });
     }
 
+    @Override
+    public void setFood(List<Food> food) {
+        FoodAdapter adapter = new FoodAdapter(getBaseContext(),food);
+        spoonRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
+        spoonRecycler.setClipToPadding(false);
+        spoonRecycler.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this, "Title", message);
     }
 
-    @Override
-    public void setMeal(List<Meals.Meal> meal) {
 
-    }
+
 
 
     public void initDB(){

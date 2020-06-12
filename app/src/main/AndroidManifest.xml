@@ -15,11 +15,8 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.WinePairing.WinePairingActivity">
-
-
-
-        </activity>
+        <activity android:name=".Activities.Explore.ExploreActivity"></activity>
+        <activity android:name=".Activities.WinePairing.WinePairingActivity"></activity>
         <activity
             android:name=".Activities.UploadRecipeActivity"
             android:launchMode="singleTask"
@@ -45,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.category.CategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.home.HomeActivity"
             android:launchMode="singleTask"
@@ -53,13 +50,11 @@
         <activity
             android:name=".Activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Activities.MainActivity"

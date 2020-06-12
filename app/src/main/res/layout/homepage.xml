@@ -181,7 +181,7 @@
                     android:clipToPadding="false"
                     android:layout_below="@+id/catText"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     />
 
                 <include
@@ -194,7 +194,18 @@
 
                      />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/spoonRecycler"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/viewPagerHeader"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="50dp"
+                    android:layout_height="match_parent"/>
+
             </RelativeLayout>
+
+
+
 
 
 

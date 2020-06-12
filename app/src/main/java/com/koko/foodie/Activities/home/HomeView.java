@@ -2,7 +2,9 @@ package com.koko.foodie.Activities.home;
 
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
+import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
+import com.koko.foodie.Models.SpoonMeals;
 
 import java.util.List;
 
@@ -14,6 +16,6 @@ public interface HomeView {
     void setCategory(List<Categories.Category>category);
     void setCocktail(List<Cocktail.Drink>cocktail);
     void onErrorLoading(String message);
-    void setMeal(List<Meals.Meal> meal);
+    void setFood(List<Food> food);
 
 }
