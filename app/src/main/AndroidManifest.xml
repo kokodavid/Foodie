@@ -15,8 +15,9 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Explore.ExploreActivity"></activity>
-        <activity android:name=".Activities.WinePairing.WinePairingActivity"></activity>
+        <activity android:name=".Activities.FoodDetails.FoodDetailActivity"></activity>
+        <activity android:name=".Activities.Explore.ExploreActivity" />
+        <activity android:name=".Activities.WinePairing.WinePairingActivity" />
         <activity
             android:name=".Activities.UploadRecipeActivity"
             android:launchMode="singleTask"
