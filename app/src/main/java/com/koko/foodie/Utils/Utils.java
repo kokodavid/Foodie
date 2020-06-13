@@ -17,6 +17,10 @@ public class Utils {
             return ApiClient.getCocktailClient().create(Api.class);
         }
 
+    public static Api getFoodDetailsApi() {
+        return ApiClient.getFoodDetailClient().create(Api.class);
+    }
+
     public static Api getWinesApi() {
         return ApiClient.getWineClient().create(Api.class);
     }

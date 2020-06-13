@@ -20,7 +20,6 @@ import static android.content.ContentValues.TAG;
 public class WinePresenter extends WinePairingActivity {
 
     private WineView view;
-
     public WinePresenter(WineView view) {
         this.view = view;
     }

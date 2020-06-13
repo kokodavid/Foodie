@@ -3,6 +3,7 @@ package com.koko.foodie.Api;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Food;
+import com.koko.foodie.Models.FoodInfo;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Models.SpoonMeals;
 import com.koko.foodie.Models.Wine;
@@ -40,4 +41,9 @@ public interface Api {
     @GET("pairing")
     Call<Wine> getWines(@Query("food") String foodPair ,
                         @Query("apiKey") String apiKey);
+
+    @GET("pairing")
+    Call<FoodInfo> getFoodInformation(@Query("id") String Id ,
+                                      @Query("information") String info,
+                                      @Query("apiKey") String apiKey);
 }
