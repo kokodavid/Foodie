@@ -14,8 +14,8 @@ public interface FoodDetailView {
     void showLoading();
     void hideloading();
     void onErrorLoading(String message);
-    void setFoodInfo(List<TestModelB.ExtendedIngredient> foodName,List<TestModelB.AnalyzedInstruction> instructions);
-    void setFoodInstructions(List<TestModelB.AnalyzedInstruction> foodInstructions);
+    void setFoodInfo(List<TestModelB.ExtendedIngredient> foodName,List<TestModelB.AnalyzedInstruction> instructions,String image);
+
 
 
 }

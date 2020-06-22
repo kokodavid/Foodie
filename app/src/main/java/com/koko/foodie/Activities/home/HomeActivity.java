@@ -88,6 +88,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.spoonRecycler)
     RecyclerView spoonRecycler;
 
+
+
     List<TestModelB>list;
 
     HomePresenter presenter;
@@ -107,6 +109,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         presenter.getMeals();
         presenter.getCocktails();
         presenter.getAllFood();
+
 
 
 
@@ -233,18 +236,25 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
             public void onClick(View view, int position) {
                 TextView foodId = view.findViewById(R.id.id);
                 TextView foodName = view.findViewById(R.id.mealName);
+                TextView servingTime = view.findViewById(R.id.readyIn);
+                TextView servingPeople = view.findViewById(R.id.servings);
+
+
                 ImageView foodImage = view.findViewById(R.id.mealThumb);
 
 
                 SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("name",foodName.getText().toString());
+                editor.putString("servingPeople",servingTime.getText().toString());
+                editor.putString("servingTime",servingPeople.getText().toString());
                 editor.commit();
 
 
 
                 Intent intent = new Intent(HomeActivity.this, FoodDetailActivity.class);
                 intent.putExtra(EXTRA_POSITION,foodId.getText().toString());
+
 
                 startActivity(intent);
 

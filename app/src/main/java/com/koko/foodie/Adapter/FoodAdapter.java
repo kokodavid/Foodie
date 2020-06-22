@@ -1,6 +1,7 @@
 package com.koko.foodie.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Models.SpoonMeals;
@@ -53,6 +55,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
                 .resize(600,200)
                 .placeholder(R.drawable.ic_circle)
                 .into(holder.mealThumb);
+
 
         String FoodName = food.get(position).getTitle();
         holder.mealName.setText(FoodName);

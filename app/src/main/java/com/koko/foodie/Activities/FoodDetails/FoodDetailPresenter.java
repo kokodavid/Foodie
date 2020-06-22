@@ -32,7 +32,9 @@ public class FoodDetailPresenter extends FoodDetailActivity {
             @Override
             public void onResponse(@NonNull Call<TestModelB> call,@NonNull Response<TestModelB> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    view.setFoodInfo(response.body().getExtendedIngredients(),response.body().getAnalyzedInstructions());
+                    view.setFoodInfo(response.body().getExtendedIngredients(),response.body().getAnalyzedInstructions(),response.body().getImage());
+
+
                 }else
                     view.onErrorLoading(response.message());
             }
@@ -44,5 +46,7 @@ public class FoodDetailPresenter extends FoodDetailActivity {
             }
         });
     }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.koko.foodie.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +25,13 @@ public class TestAdapter extends PagerAdapter {
 
     private List<TestModelB.ExtendedIngredient> fodie;
     private List<TestModelB.AnalyzedInstruction> instructions;
+    private String image;
     private Context context;
 
-    public TestAdapter(List<TestModelB.ExtendedIngredient> fodie,List<TestModelB.AnalyzedInstruction> instructions, Context context) {
+    public TestAdapter(List<TestModelB.ExtendedIngredient> fodie,List<TestModelB.AnalyzedInstruction> instructions, Context context,String image) {
         this.fodie = fodie;
         this.instructions = instructions;
+        this.image = image;
         this.context = context;
     }
 
@@ -53,7 +56,8 @@ public class TestAdapter extends PagerAdapter {
         TextView DetailAmount = view.findViewById(R.id.amount);
 
         String Image = fodie.get(position).getImage();
-        Picasso.get().load("https://spoonacular.com/recipeImages/" + Image).into(DetailImage);
+        Picasso.get().load("https://spoonacular.com/cdn/ingredients_250x250/" + Image).into(DetailImage);
+
 
         String name = fodie.get(position).getName();
         DetailName.setText(name);
