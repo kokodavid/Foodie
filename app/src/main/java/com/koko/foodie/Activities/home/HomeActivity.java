@@ -8,7 +8,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,9 +30,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
 import com.koko.foodie.Activities.Database.FoodieRoomDB;
+import com.koko.foodie.Activities.Explore.ExploreActivity;
 import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
+import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
+import com.koko.foodie.Activities.MainActivity;
 import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
@@ -39,17 +45,19 @@ import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
 import com.koko.foodie.Adapter.RecyclerViewMealByCategory;
 import com.koko.foodie.Adapter.SearchAdapter;
-import com.koko.foodie.Adapter.SpoonAdapter;
+
 import com.koko.foodie.Adapter.ViewPagerAdapter;
 import com.koko.foodie.Adapter.WinePairingAdapter;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.SpoonMeals;
+import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Utils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -80,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.spoonRecycler)
     RecyclerView spoonRecycler;
 
-
+    List<TestModelB>list;
 
     HomePresenter presenter;
 
@@ -219,6 +227,33 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         spoonRecycler.setClipToPadding(false);
         spoonRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        adapter.setOnItemClickListener(new FoodAdapter.ClickListener(){
+            @Override
+            public void onClick(View view, int position) {
+                TextView foodId = view.findViewById(R.id.id);
+                TextView foodName = view.findViewById(R.id.mealName);
+                ImageView foodImage = view.findViewById(R.id.mealThumb);
+
+
+                SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("name",foodName.getText().toString());
+                editor.commit();
+
+
+
+                Intent intent = new Intent(HomeActivity.this, FoodDetailActivity.class);
+                intent.putExtra(EXTRA_POSITION,foodId.getText().toString());
+
+                startActivity(intent);
+
+
+            }
+        });
+
+
+
     }
 
 
@@ -243,8 +278,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
 
     public void Explore(View view) {
-        Intent addRecipe = new Intent(HomeActivity.this, SearchActivity.class);
+        Intent addRecipe = new Intent(HomeActivity.this, ExploreActivity.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
+    }
+
+    public void SendImage(View view) {
+
+
     }
 }

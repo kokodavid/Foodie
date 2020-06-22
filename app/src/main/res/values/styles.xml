@@ -61,4 +61,7 @@
     <item name="android:windowBackground">@drawable/foodie</item>
 </style>
 
+    <style name="CustomText" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">23sp</item>
+    </style>
 </resources>

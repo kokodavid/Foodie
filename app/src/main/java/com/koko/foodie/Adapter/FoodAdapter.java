@@ -28,6 +28,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
 
     private List<Food> food;
     private Context context;
+    private static FoodAdapter.ClickListener clickListener;
+
 
     public FoodAdapter(Context context, List<Food> food) {
         this.food = food;
@@ -46,13 +48,20 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
     @Override
     public void onBindViewHolder(@NonNull FoodAdapter.RecyclerViewHolder holder, int position) {
         String foodImage = food.get(position).getImage();
-        Picasso.get().load("https://spoonacular.com/recipeImages/" + foodImage).placeholder(R.drawable.ic_circle).into(holder.mealThumb);
+        Picasso.get().load("https://spoonacular.com/recipeImages/" + foodImage)
+                .centerCrop()
+                .resize(600,200)
+                .placeholder(R.drawable.ic_circle)
+                .into(holder.mealThumb);
 
         String FoodName = food.get(position).getTitle();
         holder.mealName.setText(FoodName);
 
         Integer FoodServings = food.get(position).getServings();
         holder.servings.setText(Integer.toString(FoodServings));
+
+        Integer id = food.get(position).getId();
+        holder.id.setText(Integer.toString(id));
 
         Integer FoodReadyIn = food.get(position).getReadyInMinutes();
         holder.readyIn.setText(Integer.toString(FoodReadyIn));
@@ -64,11 +73,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
     }
 
 
-    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+
+
+    public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.mealThumb)
         ImageView mealThumb;
         @BindView(R.id.mealName)
         TextView mealName;
+        @BindView(R.id.id)
+        TextView id;
         @BindView(R.id.servings)
         TextView servings;
         @BindView(R.id.readyIn)
@@ -76,8 +89,25 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
         RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
 
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v, getAdapterPosition());
+
+
+        }
+    }
+
+
+    public void setOnItemClickListener(FoodAdapter.ClickListener clickListener) {
+        FoodAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onClick(View view, int position);
     }
 }

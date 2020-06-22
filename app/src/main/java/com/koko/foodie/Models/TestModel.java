@@ -1,11 +1,10 @@
 package com.koko.foodie.Models;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class SpoonMeals {
+public class TestModel {
 
     @SerializedName("extendedIngredients")
     @Expose
@@ -57,7 +56,9 @@ public class SpoonMeals {
         @SerializedName("metaInformation")
         @Expose
         private List<String> metaInformation = null;
-
+        @SerializedName("measures")
+        @Expose
+        private Measures measures;
 
         public Integer getId() {
             return id;
@@ -153,6 +154,117 @@ public class SpoonMeals {
 
         public void setMetaInformation(List<String> metaInformation) {
             this.metaInformation = metaInformation;
+        }
+
+        public Measures getMeasures() {
+            return measures;
+        }
+
+        public void setMeasures(Measures measures) {
+            this.measures = measures;
+        }
+
+    }
+
+    public class Measures {
+
+        @SerializedName("us")
+        @Expose
+        private Us us;
+        @SerializedName("metric")
+        @Expose
+        private Metric metric;
+
+        public Us getUs() {
+            return us;
+        }
+
+        public void setUs(Us us) {
+            this.us = us;
+        }
+
+        public Metric getMetric() {
+            return metric;
+        }
+
+        public void setMetric(Metric metric) {
+            this.metric = metric;
+        }
+
+    }
+
+    public class Metric {
+
+        @SerializedName("amount")
+        @Expose
+        private Float amount;
+        @SerializedName("unitShort")
+        @Expose
+        private String unitShort;
+        @SerializedName("unitLong")
+        @Expose
+        private String unitLong;
+
+        public Float getAmount() {
+            return amount;
+        }
+
+        public void setAmount(Float amount) {
+            this.amount = amount;
+        }
+
+        public String getUnitShort() {
+            return unitShort;
+        }
+
+        public void setUnitShort(String unitShort) {
+            this.unitShort = unitShort;
+        }
+
+        public String getUnitLong() {
+            return unitLong;
+        }
+
+        public void setUnitLong(String unitLong) {
+            this.unitLong = unitLong;
+        }
+
+    }
+
+    public class Us {
+
+        @SerializedName("amount")
+        @Expose
+        private Float amount;
+        @SerializedName("unitShort")
+        @Expose
+        private String unitShort;
+        @SerializedName("unitLong")
+        @Expose
+        private String unitLong;
+
+        public Float getAmount() {
+            return amount;
+        }
+
+        public void setAmount(Float amount) {
+            this.amount = amount;
+        }
+
+        public String getUnitShort() {
+            return unitShort;
+        }
+
+        public void setUnitShort(String unitShort) {
+            this.unitShort = unitShort;
+        }
+
+        public String getUnitLong() {
+            return unitLong;
+        }
+
+        public void setUnitLong(String unitLong) {
+            this.unitLong = unitLong;
         }
 
     }

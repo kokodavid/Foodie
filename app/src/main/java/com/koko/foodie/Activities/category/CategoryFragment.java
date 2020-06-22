@@ -95,6 +95,9 @@ public class CategoryFragment extends Fragment implements CategoryView  {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+
+
+
         adapter.setOnItemClickListener(new RecyclerViewMealByCategory.ClickListener() {
             @Override
             public void onClick(View view, int position) {

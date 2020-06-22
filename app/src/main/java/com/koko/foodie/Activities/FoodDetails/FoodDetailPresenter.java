@@ -1,15 +1,23 @@
 package com.koko.foodie.Activities.FoodDetails;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 
+import com.koko.foodie.Models.FodieA;
 import com.koko.foodie.Models.FoodInfo;
+import com.koko.foodie.Models.SpoonMeals;
+import com.koko.foodie.Models.TestModel;
+import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.Utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FoodDetailPresenter {
+
+public class FoodDetailPresenter extends FoodDetailActivity {
+
 
     private FoodDetailView view;
 
@@ -18,19 +26,21 @@ public class FoodDetailPresenter {
     }
 
 
-    void getFoodDetails(){
-        Call<FoodInfo> foodInfoCall = Utils.getFoodDetailsApi().getFoodInformation("1","information?","6792adb5e9b544dc990c2499f73befb6");
-        foodInfoCall.enqueue(new Callback<FoodInfo>() {
+    void getFoodDetails(int id){
+        Call<TestModelB> foodInfoCall = Utils.getFoodDetailsApi().getFoodInformation(id, "6792adb5e9b544dc990c2499f73befb6");
+        foodInfoCall.enqueue(new Callback<TestModelB>() {
             @Override
-            public void onResponse(@NonNull Call<FoodInfo> call,@NonNull Response<FoodInfo> response) {
+            public void onResponse(@NonNull Call<TestModelB> call,@NonNull Response<TestModelB> response) {
                 if (response.isSuccessful() && response.body() != null){
-                    view.setFoodInfo(response.body().getName());
-                }
+                    view.setFoodInfo(response.body().getExtendedIngredients(),response.body().getAnalyzedInstructions());
+                }else
+                    view.onErrorLoading(response.message());
             }
 
             @Override
-            public void onFailure(@NonNull Call<FoodInfo> call,@NonNull Throwable t) {
-
+            public void onFailure(@NonNull Call<TestModelB> call, @NonNull Throwable t) {
+                view.showLoading();
+                t.getLocalizedMessage();
             }
         });
     }

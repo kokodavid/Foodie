@@ -23,7 +23,7 @@ public class ApiClient {
     private static final String SPOON_MEALS = "https://api.spoonacular.com/recipes/";
 
 
-    private static final String SPOON_MEALS_DETAILS = "https://api.spoonacular.com/recipes";
+    private static final String SPOON_MEALS_DETAILS = "https://api.spoonacular.com/recipes/";
 
 
     public static Retrofit getFoodDetailClient() {
