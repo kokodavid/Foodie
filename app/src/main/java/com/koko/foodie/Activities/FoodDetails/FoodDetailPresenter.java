@@ -11,6 +11,9 @@ import com.koko.foodie.Models.TestModel;
 import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.Utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,6 +23,10 @@ public class FoodDetailPresenter extends FoodDetailActivity {
 
 
     private FoodDetailView view;
+
+    List<TestModelB.Step> steps = new ArrayList<>();
+
+
 
     public FoodDetailPresenter(FoodDetailView view){
         this.view = view;
@@ -33,7 +40,7 @@ public class FoodDetailPresenter extends FoodDetailActivity {
             public void onResponse(@NonNull Call<TestModelB> call,@NonNull Response<TestModelB> response) {
                 if (response.isSuccessful() && response.body() != null){
                     view.setFoodInfo(response.body().getExtendedIngredients(),response.body().getAnalyzedInstructions(),response.body().getImage());
-
+                    steps = response.body().getAnalyzedInstructions().get(0).getSteps();
 
                 }else
                     view.onErrorLoading(response.message());

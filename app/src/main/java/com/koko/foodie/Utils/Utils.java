@@ -21,6 +21,11 @@ public class Utils {
         return ApiClient.getFoodDetailClient().create(Api.class);
     }
 
+    public static Api getSearchResults() {
+        return ApiClient.getFoodSearch().create(Api.class);
+    }
+
+
     public static Api getWinesApi() {
         return ApiClient.getWineClient().create(Api.class);
     }

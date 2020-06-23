@@ -46,6 +46,11 @@ public interface Api {
     Call<Wine> getWines(@Query("food") String foodPair ,
                         @Query("apiKey") String apiKey);
 
+    @GET("search")
+    Call<Food> getSearchedFood(@Query("query") String foodPair ,
+                        @Query("apiKey") String apiKey,
+                        @Query("number") String number);
+
     @GET("{id}/information")
     Call<TestModelB> getFoodInformation(@Path ("id") int id, @Query("apiKey") String apiKey);
 }

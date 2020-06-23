@@ -240,7 +240,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
                 TextView servingPeople = view.findViewById(R.id.servings);
 
 
-                ImageView foodImage = view.findViewById(R.id.mealThumb);
+
 
 
                 SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);

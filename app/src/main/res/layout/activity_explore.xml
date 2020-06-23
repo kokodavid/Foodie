@@ -77,50 +77,140 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <GridLayout
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
+
+                <GridLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
 
-                            <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="10dp"
-                            android:layout_marginTop="15dp"
-                                android:layout_marginLeft="20dp"
-                            android:elevation="10dp"
-                            android:layout_width="140dp"
-                            android:layout_height="180dp">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cocktails"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:elevation="10dp"
+                        android:layout_width="140dp"
+                        android:layout_height="180dp">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="180dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/card"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/card"/>
 
-                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
-                            <androidx.cardview.widget.CardView
-                                app:cardCornerRadius="10dp"
-                                android:layout_marginTop="15dp"
-                                android:layout_marginLeft="25dp"
-                                android:layout_marginRight="20dp"
-                                android:elevation="15dp"
-                                android:layout_width="140dp"
-                                android:layout_height="180dp">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/addRecipes"
+                        android:onClick="addRecipes"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="20dp"
+                        android:elevation="15dp"
+                        android:layout_width="140dp"
+                        android:layout_height="180dp">
 
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="180dp"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/add_recipe_card"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/add_recipe_card"/>
 
-                            </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
-            </GridLayout>
+                </GridLayout>
 
+                <GridLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="220dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:onClick="WinePairing"
+                        android:id="@+id/winePairing"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:elevation="10dp"
+                        android:layout_width="140dp"
+                        android:layout_height="180dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/card"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:onClick="search"
+                        android:id="@+id/search"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="20dp"
+                        android:elevation="15dp"
+                        android:layout_width="140dp"
+                        android:layout_height="180dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/add_recipe_card"/>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="420dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:onClick="WinePairing"
+                        android:id="@+id/mealPlanning"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:elevation="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="180dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/card"/>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+                </GridLayout>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
         </androidx.core.widget.NestedScrollView>

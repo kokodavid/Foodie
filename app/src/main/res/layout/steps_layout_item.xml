@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:background="@color/bottomNavBackground"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="190dp"
     android:layout_margin="5dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="3dp"
-    android:foreground="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
 
@@ -22,18 +19,8 @@
 
         <TextView
             android:id="@+id/stepNumber"
-            android:layout_width="49dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="340dp"
-            android:layout_marginRight="340dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="100"
             android:textColor="@android:color/white" />
 
@@ -50,7 +37,7 @@
             android:layout_marginStart="33dp"
             android:layout_marginLeft="33dp"
             android:layout_marginTop="50dp"
-            android:text="@string/common_google_play_services_enable_text"
+            android:text="common_google_play_services_enable_text"
             android:textColor="@android:color/white"
             android:layout_marginEnd="28dp"
             android:layout_marginRight="28dp"

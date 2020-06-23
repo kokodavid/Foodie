@@ -38,20 +38,26 @@ public class StepsAdapter extends PagerAdapter {
         );
 
         TextView stepNumber = view.findViewById(R.id.stepNumber);
-        TextView stepInstructions = view.findViewById(R.id.amount);
+        TextView stepInstructions = view.findViewById(R.id.stepInstructions);
 
-        int number = instructions.get(position).getNumber();
-        stepNumber.setText(number);
+
+        Integer number = instructions.get(position).getNumber();
+        stepNumber.setText(Integer.toString(number));
 
         String unit = instructions.get(position).getStep();
         stepInstructions.setText(unit);
 
-
+        container.addView(view,0);
         return view;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return false;
+        return view.equals(object);
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        container.removeView((View)object);
     }
 }

@@ -2,6 +2,7 @@ package com.koko.foodie.Activities.Search;
 
 import androidx.annotation.NonNull;
 
+import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Utils.Utils;
 
@@ -17,42 +18,35 @@ public class SearchPresenter {
 
     private SearchView view;
 
-    public List<Meals.Meal> meals = new ArrayList<>();
 
 
     public SearchPresenter(SearchView view) {
         this.view = view;
     }
 
+    void getSearch(String name){
+
+        Call<Food> foodCall = Utils.getSearchResults().getSearchedFood(name,"6792adb5e9b544dc990c2499f73befb6","500");
+        foodCall.enqueue(new Callback<Food>() {
+            @Override
+            public void onResponse(@NonNull Call<Food> call,@NonNull Response<Food> response) {
+                if (response.isSuccessful() && response.body() != null){
+                    view.setSearch(response.body().getResults());
+                }else {
+                    view.onErrorLoading(response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Food> call,@NonNull Throwable t) {
+                view.showLoading();
+                t.getLocalizedMessage();
+            }
+        });
 
 
-
-    public List<Meals.Meal> getMealsById(String mealName) {
-        view.showLoading();
-
-        Utils.getApi().getMealByName(mealName)
-                .enqueue(new Callback<Meals>() {
-                    @Override
-                    public void onResponse(@NonNull Call<Meals> call, @NonNull Response<Meals> response) {
-                        view.hideloading();
-                        if (response.isSuccessful() && response.body() != null){
-                            view.setMeal(response.body().getMeals());
-                            meals = response.body().getMeals();
-
-
-
-                        }else{
-                            view.onErrorLoading(response.message());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<Meals> call,@NonNull Throwable t) {
-                        view.hideloading();
-                        view.onErrorLoading(t.getLocalizedMessage());
-                    }
-                });
-
-        return meals;
     }
+
+
+
 }

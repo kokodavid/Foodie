@@ -25,6 +25,15 @@ public class ApiClient {
 
     private static final String SPOON_MEALS_DETAILS = "https://api.spoonacular.com/recipes/";
 
+    private static final String SEARCH = "https://api.spoonacular.com/recipes/";
+
+    public static Retrofit getFoodSearch() {
+        return new Retrofit.Builder().baseUrl(SEARCH)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
 
     public static Retrofit getFoodDetailClient() {
         return new Retrofit.Builder().baseUrl(SPOON_MEALS_DETAILS)

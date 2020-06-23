@@ -13,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.koko.foodie.Adapter.CocktailViewPager;
+import com.koko.foodie.Adapter.StepsAdapter;
 import com.koko.foodie.Adapter.TestAdapter;
 import com.koko.foodie.Models.FodieA;
 import com.koko.foodie.Models.Food;
@@ -45,6 +47,8 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
 
     @BindView(R.id.detailViewPager)
     ViewPager detailPager;
+    @BindView(R.id.stepViewpager)
+    ViewPager stepViewpager;
 
     @BindView(R.id.FoodDetailToolbar)
     Toolbar toolbar;
@@ -162,12 +166,18 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
     @Override
     public void setFoodInfo(List<TestModelB.ExtendedIngredient> foodName,List<TestModelB.AnalyzedInstruction> instructions,String image) {
 
+
         TestAdapter testAdapter = new TestAdapter(foodName,instructions, getBaseContext(),image);
         detailPager.setPadding(10, 0, 40, 0);
         detailPager.setAdapter(testAdapter);
         Picasso.get().load(image).into(mealThumb);
         testAdapter.notifyDataSetChanged();
 
+        StepsAdapter stepsAdapter = new StepsAdapter(instructions.get(0).getSteps(), getApplicationContext());
+        Log.d("stepsss", String.valueOf(instructions.get(0).getSteps().size()));
+        stepViewpager.setPadding(10, 0, 40, 0);
+        stepViewpager.setAdapter(stepsAdapter);
+        stepsAdapter.notifyDataSetChanged();
 
     }
 
