@@ -18,9 +18,10 @@ public class ApiClient {
 
     private static final String WINE_PAIRING = "https://api.spoonacular.com/food/wine/";
 
-    private static final String MEAL_GENERATOR = "https://api.spoonacular.com/mealplanner/generate/";
+    private static final String MEAL_GENERATOR = "https://api.spoonacular.com/mealplanner/";
 
     private static final String SPOON_MEALS = "https://api.spoonacular.com/recipes/";
+
 
 
     private static final String SPOON_MEALS_DETAILS = "https://api.spoonacular.com/recipes/";
@@ -34,6 +35,12 @@ public class ApiClient {
                 .build();
     }
 
+    public static Retrofit getMealPlanner() {
+        return new Retrofit.Builder().baseUrl(MEAL_GENERATOR)
+                .client(provideOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
 
     public static Retrofit getFoodDetailClient() {
         return new Retrofit.Builder().baseUrl(SPOON_MEALS_DETAILS)

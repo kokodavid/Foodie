@@ -15,6 +15,7 @@ import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.WinePairing.WinePairingActivity;
 import com.koko.foodie.Activities.home.HomeActivity;
+import com.koko.foodie.Activities.mealPlanner.MealPlanner;
 import com.koko.foodie.R;
 
 import butterknife.BindView;
@@ -70,6 +71,12 @@ public class ExploreActivity extends AppCompatActivity {
 
     public void AllCocktails(View view) {
         Intent addRecipe = new Intent(ExploreActivity.this, AllCocktails.class);
+        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(addRecipe);
+    }
+
+    public void mealPlanner(View view) {
+        Intent addRecipe = new Intent(ExploreActivity.this, MealPlanner.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }

@@ -2,12 +2,9 @@ package com.koko.foodie.Api;
 
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
-import com.koko.foodie.Models.FodieA;
 import com.koko.foodie.Models.Food;
-import com.koko.foodie.Models.FoodInfo;
+import com.koko.foodie.Models.MealPlan;
 import com.koko.foodie.Models.Meals;
-import com.koko.foodie.Models.SpoonMeals;
-import com.koko.foodie.Models.TestModel;
 import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.Models.Wine;
 
@@ -41,6 +38,14 @@ public interface Api {
 
     @GET("search.php")
     Call<Cocktail> getCocktailByName(@Query("s") String cocktailName);
+
+    @GET("generate")
+    Call<MealPlan> getMealPlan(@Query("timeFrame") String timeFrame,
+                               @Query("targetCalories") Integer targetCalories,
+                               @Query("diet") String diet,
+                               @Query("exclude") String exclude,
+                               @Query("apiKey") String apiKey
+                           );
 
     @GET("pairing")
     Call<Wine> getWines(@Query("food") String foodPair ,

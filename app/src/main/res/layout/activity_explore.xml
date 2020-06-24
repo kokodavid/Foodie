@@ -188,7 +188,7 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:onClick="WinePairing"
+                        android:onClick="mealPlanner"
                         android:id="@+id/mealPlanning"
                         app:cardCornerRadius="10dp"
                         android:layout_marginTop="15dp"
