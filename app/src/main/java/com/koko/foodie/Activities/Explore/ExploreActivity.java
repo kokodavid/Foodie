@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
+import com.koko.foodie.Activities.Cocktails.AllCocktails;
 import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.WinePairing.WinePairingActivity;
@@ -63,6 +64,12 @@ public class ExploreActivity extends AppCompatActivity {
 
     public void search(View view) {
         Intent addRecipe = new Intent(ExploreActivity.this, SearchActivity.class);
+        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(addRecipe);
+    }
+
+    public void AllCocktails(View view) {
+        Intent addRecipe = new Intent(ExploreActivity.this, AllCocktails.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }
