@@ -8,5 +8,5 @@ public interface MealView {
     void showLoading();
     void hideloading();
     void onErrorLoading(String message);
-    void setMealPlan(List<MealPlan> plan,MealPlan.Nutrients nutrients);
+    void setMealPlan(List<MealPlan.Meal> plan,MealPlan.Nutrients nutrients);
 }

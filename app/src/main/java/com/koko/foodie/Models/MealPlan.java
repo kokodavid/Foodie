@@ -8,16 +8,16 @@ public class MealPlan {
 
     @SerializedName("meals")
     @Expose
-    private List<MealPlan> meals = null;
+    private List<Meal> meals = null;
     @SerializedName("nutrients")
     @Expose
     private Nutrients nutrients;
 
-    public List<MealPlan> getMeals() {
+    public List<Meal> getMeals() {
         return meals;
     }
 
-    public void setMeals(List<MealPlan> meals) {
+    public void setMeals(List<Meal> meals) {
         this.meals = meals;
     }
 
