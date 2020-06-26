@@ -19,6 +19,7 @@
 
 
     <color name="fade">#90ff9720</color>
+    <color name="textColor">#AEAEAE</color>
     <color name="start">#ff9720</color>
     <color name="end">#99f64807</color>
 </resources>

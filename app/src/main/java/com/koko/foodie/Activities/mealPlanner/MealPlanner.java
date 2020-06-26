@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
 import com.koko.foodie.Activities.home.HomeActivity;
@@ -24,23 +27,25 @@ import butterknife.ButterKnife;
 
 import static com.koko.foodie.Activities.home.HomeActivity.EXTRA_POSITION;
 
-public class MealPlanner extends AppCompatActivity implements MealView {
+public class MealPlanner extends AppCompatActivity implements MealView, AdapterView.OnItemSelectedListener {
 
     MealPlannerpresenter presenter;
-    @BindView(R.id.diet)
-    EditText diet;
+//    @BindView(R.id.diet)
+//    EditText diet;
     @BindView(R.id.calories)
     EditText calories;
     @BindView(R.id.exclude)
     EditText exclude;
     @BindView(R.id.generatedMealsPager)
     ViewPager viewPager;
+    @BindView(R.id.spinner)
+    Spinner spinner;
+
+
 
     String dietValue;
     String numberValue;
     String excludeValue;
-
-
 
 
     @Override
@@ -50,6 +55,8 @@ public class MealPlanner extends AppCompatActivity implements MealView {
         ButterKnife.bind(this);
 
         presenter = new MealPlannerpresenter(this);
+        spinner.setOnItemSelectedListener(this);
+
     }
 
     @Override
@@ -100,11 +107,23 @@ public class MealPlanner extends AppCompatActivity implements MealView {
     }
 
     public void GenerateMeal(View view) {
-        dietValue = diet.getText().toString();
+//        dietValue = diet.getText().toString();
         numberValue = calories.getText().toString();
         int caloriesValue = Integer.valueOf(numberValue);
         excludeValue = exclude.getText().toString();
 
         presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        dietValue = parent.getSelectedItem().toString();
+        ((TextView) view).setTextColor(getResources().getColor(R.color.textColor));
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

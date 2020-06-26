@@ -52,25 +52,25 @@ public class ExploreActivity extends AppCompatActivity {
     }
 
     public void addRecipes(View view) {
-        Intent addRecipe = new Intent(ExploreActivity.this, UploadRecipeActivity.class);
+        Intent addRecipe = new Intent(ExploreActivity.this, AllCocktails.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }
 
     public void WinePairing(View view) {
-        Intent addRecipe = new Intent(ExploreActivity.this, WinePairingActivity.class);
+        Intent addRecipe = new Intent(ExploreActivity.this, MealPlanner.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }
 
     public void search(View view) {
-        Intent addRecipe = new Intent(ExploreActivity.this, SearchActivity.class);
+        Intent addRecipe = new Intent(ExploreActivity.this, UploadRecipeActivity.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }
 
     public void AllCocktails(View view) {
-        Intent addRecipe = new Intent(ExploreActivity.this, AllCocktails.class);
+        Intent addRecipe = new Intent(ExploreActivity.this, WinePairingActivity.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }

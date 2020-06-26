@@ -15,7 +15,9 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.mealPlanner.MealPlanner"></activity>
+        <activity android:name=".Activities.mealPlanner.MealPlanner"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"></activity>
         <activity android:name=".Activities.Cocktails.AllCocktails" />
         <activity
             android:name=".Activities.FoodDetails.FoodDetailActivity"

@@ -13,4 +13,17 @@
     <string name="ingredients">Ingredients</string>
     <string name="youtube">Watch on </string>
     <string name="favorite">favorite</string>
+
+    <string name="choose">Choose a Diet</string>
+    <string-array name="Diets">
+        <item>Gluten Free</item>
+        <item>Ketogenic</item>
+        <item>Vegetarian</item>
+        <item>Lacto-Vegetarian</item>
+        <item>Vegan</item>
+        <item>Pescetarian</item>
+        <item>Paleo</item>
+        <item>Primal</item>
+        <item>Whole30</item>
+    </string-array>
 </resources>

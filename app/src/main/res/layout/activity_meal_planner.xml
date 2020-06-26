@@ -5,101 +5,219 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.mealPlanner.MealPlanner">
+    tools:context=".Activities.mealPlanner.MealPlanner"
+    android:background="@color/background">
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="75dp"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp">
-
-        <EditText
-            android:id="@+id/diet"
-            android:drawableLeft="@drawable/ic_search"
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:hint="Choose a diet"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackground"
-            android:maxLines="1"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="150dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp">
-
-        <EditText
-            android:id="@+id/calories"
-            android:drawableLeft="@drawable/ic_search"
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:hint="How Many Calories"
-            android:inputType="number"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackground"
-            android:maxLines="1"/>
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="235dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp">
-
-        <EditText
-            android:id="@+id/exclude"
-            android:drawableLeft="@drawable/ic_search"
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:hint="What would you Like to Exclude"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackground"
-            android:maxLines="1"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/Generate"
-        android:onClick="GenerateMeal"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="330dp"
-        android:layout_height="wrap_content"
-        android:text="Generate"
+        android:layout_height="75dp"
+        android:background="@drawable/actionbar"
         />
 
-    <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="380dp"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/generatedMealsPager"/>
+        android:text="Meal Planner"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_anchor="@id/view"
+        app:layout_anchorGravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's generate your Meals for the day"
+        android:textColor="@android:color/white"
+        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="85dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="115dp"
+        android:background="@color/background">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:cardBackgroundColor="@color/bottomNavBackground"
+                    app:cardCornerRadius="18dp">
+
+                    <!--    <androidx.viewpager.widget.ViewPager-->
+                    <!--        android:layout_marginRight="10dp"-->
+                    <!--        android:layout_marginLeft="10dp"-->
+                    <!--        android:layout_marginTop="10dp"-->
+                    <!--        android:layout_marginBottom="10dp"-->
+                    <!--        android:id="@+id/dietPager"-->
+                    <!--        android:layout_width="match_parent"-->
+                    <!--        android:layout_height="80dp"/>-->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dip"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose a Diet:"
+                        android:textColor="@android:color/white" />
 
 
-    <!--    <EditText-->
-<!--        android:id="@+id/diet"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:hint="diet" />-->
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/border"
+                            android:layout_marginRight="10dp"
+                            android:entries="@array/Diets"
+                            android:prompt="@string/choose"
+                            />
 
-<!--    <EditText-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        android:id="@+id/exclude"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:text="exclude" />-->
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="With"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="85dp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                        <EditText
+                            android:id="@+id/calories"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="110dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/border"
+                            android:hint="How many calories ?"
+                            android:textColorHint="#AEAEAE"
+                            android:textSize="14sp"
+                            android:textColor="@color/textColor"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:padding="15dp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="And Exclude"
+                            android:textColor="@android:color/white"
+                            android:layout_marginTop="165dp"
+                            android:layout_marginLeft="10dp"/>
+
+
+                        <EditText
+                            android:id="@+id/exclude"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="190dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/border"
+                            android:textColorHint="#AEAEAE"
+                            android:hint="What would you Like to Exclude"
+                            android:textSize="14sp"
+                            android:textColor="@color/textColor"
+                            android:maxLines="1"
+                            android:padding="15dp" />
+
+
+                    <Button
+                        android:id="@+id/Generate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="250dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button_gradient_b"
+                        android:onClick="GenerateMeal"
+                        android:text="Generate"
+                        android:textColor="@android:color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Meal Plan"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="325dp"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Regenerate"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:textColor="@color/start"
+                    android:layout_marginTop="325dp"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/refresh"
+                    android:layout_marginTop="330dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"/>
+
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/generatedMealsPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="360dp" />
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </FrameLayout>
+
+
+
+
+
+
+
+
+
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

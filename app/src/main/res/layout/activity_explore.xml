@@ -103,7 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="180dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/card"/>
+                            android:src="@drawable/wine_pairing"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -122,7 +122,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="180dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/add_recipe_card"/>
+                            android:src="@drawable/cocktail_final"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -152,7 +152,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="180dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/card"/>
+                            android:src="@drawable/meal_plan_generator"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -171,45 +171,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="180dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/add_recipe_card"/>
+                            android:src="@drawable/add_recipe_final"/>
 
                     </androidx.cardview.widget.CardView>
 
 
                 </GridLayout>
 
-                <GridLayout
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="420dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:onClick="mealPlanner"
-                        android:id="@+id/mealPlanning"
-                        app:cardCornerRadius="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginLeft="20dp"
-                        android:elevation="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_marginRight="20dp"
-                        android:layout_height="180dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="180dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/card"/>
-
-                    </androidx.cardview.widget.CardView>
-
-
-
-
-                </GridLayout>
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

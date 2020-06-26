@@ -88,6 +88,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     @BindView(R.id.spoonRecycler)
     RecyclerView spoonRecycler;
 
+    @BindView(R.id.searchPage)
+    ImageView search;
 
 
     List<TestModelB>list;
@@ -111,6 +113,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         presenter.getAllFood();
 
 
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addRecipe = new Intent(HomeActivity.this, SearchActivity.class);
+                addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(addRecipe);
+            }
+        });
 
 
 
