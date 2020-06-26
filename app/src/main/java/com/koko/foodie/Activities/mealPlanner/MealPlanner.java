@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
 import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Adapter.GeneratedMealsPager;
+import com.koko.foodie.Adapter.GeneratedMealsRecycler;
 import com.koko.foodie.Models.MealPlan;
 import com.koko.foodie.R;
 import com.squareup.picasso.Picasso;
@@ -76,8 +77,10 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
 
     @Override
     public void setMealPlan(List<MealPlan.Meal> plan, MealPlan.Nutrients nutrients) {
-        GeneratedMealsPager adapter = new GeneratedMealsPager(plan,getBaseContext());
-        viewPager.setPadding(10, 0, 40, 0);
+
+
+        GeneratedMealsRecycler adapter = new GeneratedMealsRecycler()
+
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -125,5 +128,12 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void regenerate(View view) {
+        numberValue = calories.getText().toString();
+        int caloriesValue = Integer.valueOf(numberValue);
+        excludeValue = exclude.getText().toString();
+        presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
     }
 }

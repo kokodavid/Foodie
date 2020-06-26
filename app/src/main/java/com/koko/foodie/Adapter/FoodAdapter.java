@@ -1,30 +1,30 @@
 package com.koko.foodie.Adapter;
 
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+        import androidx.annotation.NonNull;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import com.koko.foodie.Activities.home.HomeActivity;
-import com.koko.foodie.Models.Food;
-import com.koko.foodie.Models.Meals;
-import com.koko.foodie.Models.SpoonMeals;
-import com.koko.foodie.R;
-import com.squareup.picasso.Picasso;
+        import com.koko.foodie.Activities.home.HomeActivity;
+        import com.koko.foodie.Models.Food;
+        import com.koko.foodie.Models.Meals;
+        import com.koko.foodie.Models.SpoonMeals;
+        import com.koko.foodie.R;
+        import com.squareup.picasso.Picasso;
 
-import java.util.List;
+        import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+        import butterknife.BindView;
+        import butterknife.ButterKnife;
 
-import static android.content.ContentValues.TAG;
+        import static android.content.ContentValues.TAG;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHolder> {
 
