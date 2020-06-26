@@ -1,6 +1,8 @@
 package com.koko.foodie.Activities.mealPlanner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -38,7 +40,7 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     @BindView(R.id.exclude)
     EditText exclude;
     @BindView(R.id.generatedMealsPager)
-    ViewPager viewPager;
+    RecyclerView viewPager;
     @BindView(R.id.spinner)
     Spinner spinner;
 
@@ -78,33 +80,34 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     @Override
     public void setMealPlan(List<MealPlan.Meal> plan, MealPlan.Nutrients nutrients) {
 
-
-        GeneratedMealsRecycler adapter = new GeneratedMealsRecycler()
-
+        GeneratedMealsRecycler adapter = new GeneratedMealsRecycler(getBaseContext(),plan);
+        viewPager.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
+        viewPager.setClipToPadding(false);
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        adapter.setOnClickListener(new GeneratedMealsPager.ClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                TextView foodId = v.findViewById(R.id.id);
-                Intent intent = new Intent(MealPlanner.this, FoodDetailActivity.class);
-                intent.putExtra(EXTRA_POSITION,foodId.getText().toString());
-                startActivity(intent);
+       adapter.setOnItemClickListener(new GeneratedMealsRecycler.ClickListener() {
+           @Override
+           public void onClick(View view, int position) {
+               TextView foodId = view.findViewById(R.id.id);
+               Intent intent = new Intent(MealPlanner.this, FoodDetailActivity.class);
+               intent.putExtra(EXTRA_POSITION,foodId.getText().toString());
+               startActivity(intent);
 
-                TextView foodName = v.findViewById(R.id.mealName);
-                TextView servingTime = v.findViewById(R.id.readyIn);
-                TextView servingPeople = v.findViewById(R.id.servings);
+               TextView foodName = view.findViewById(R.id.mealName);
+               TextView servingTime = view.findViewById(R.id.readyIn);
+               TextView servingPeople = view.findViewById(R.id.servings);
 
-                SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("name",foodName.getText().toString());
-                editor.putString("servingPeople",servingTime.getText().toString());
-                editor.putString("servingTime",servingPeople.getText().toString());
-                editor.commit();
+               SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
+               SharedPreferences.Editor editor = sharedPref.edit();
+               editor.putString("name",foodName.getText().toString());
+               editor.putString("servingPeople",servingTime.getText().toString());
+               editor.putString("servingTime",servingPeople.getText().toString());
+               editor.commit();
+           }
+       });
 
-            }
-        });
+
 
 
     }

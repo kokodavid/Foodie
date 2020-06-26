@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GeneratedMealsRecycler extends RecyclerView.Adapter<GeneratedMealsRecycler.RecyclerViewHolder{
+public class GeneratedMealsRecycler extends RecyclerView.Adapter<GeneratedMealsRecycler.RecyclerViewHolder>{
     private List<MealPlan.Meal> meals;
     private Context context;
     private static GeneratedMealsRecycler.ClickListener clickListener;

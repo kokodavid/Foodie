@@ -199,7 +199,7 @@
                     android:layout_marginRight="25dp"/>
 
 
-                <androidx.viewpager.widget.ViewPager
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/generatedMealsPager"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
