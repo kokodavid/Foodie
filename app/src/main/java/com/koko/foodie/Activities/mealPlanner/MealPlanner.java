@@ -81,7 +81,7 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     public void setMealPlan(List<MealPlan.Meal> plan, MealPlan.Nutrients nutrients) {
 
         GeneratedMealsRecycler adapter = new GeneratedMealsRecycler(getBaseContext(),plan);
-        viewPager.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
+        viewPager.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
         viewPager.setClipToPadding(false);
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -95,13 +95,11 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
                startActivity(intent);
 
                TextView foodName = view.findViewById(R.id.mealName);
-               TextView servingTime = view.findViewById(R.id.readyIn);
                TextView servingPeople = view.findViewById(R.id.servings);
 
                SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
                SharedPreferences.Editor editor = sharedPref.edit();
                editor.putString("name",foodName.getText().toString());
-               editor.putString("servingPeople",servingTime.getText().toString());
                editor.putString("servingTime",servingPeople.getText().toString());
                editor.commit();
            }
