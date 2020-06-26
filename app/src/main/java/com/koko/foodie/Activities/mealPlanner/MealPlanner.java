@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,9 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     RecyclerView viewPager;
     @BindView(R.id.spinner)
     Spinner spinner;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
 
 
 
@@ -59,17 +63,20 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
 
         presenter = new MealPlannerpresenter(this);
         spinner.setOnItemSelectedListener(this);
+        progressBar.setVisibility(View.INVISIBLE);
+
+
 
     }
 
     @Override
     public void showLoading() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideloading() {
-
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -115,8 +122,10 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         numberValue = calories.getText().toString();
         int caloriesValue = Integer.valueOf(numberValue);
         excludeValue = exclude.getText().toString();
-
+        progressBar.setVisibility(View.VISIBLE);
         presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
+
+
     }
 
     @Override
@@ -136,5 +145,7 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         int caloriesValue = Integer.valueOf(numberValue);
         excludeValue = exclude.getText().toString();
         presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
+        progressBar.setVisibility(View.VISIBLE);
+
     }
 }

@@ -80,11 +80,11 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="199dp"
-            android:layout_marginLeft="199dp"
-            android:layout_marginTop="71dp"
+            android:layout_marginStart="195dp"
+            android:layout_marginLeft="195dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="-8dp"
-            android:layout_marginRight="152dp"
+            android:layout_marginRight="136dp"
             android:text="Serving(s)"
             android:textColor="@android:color/white" />
 

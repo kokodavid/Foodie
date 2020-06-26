@@ -10,9 +10,11 @@
     app:cardElevation="3dp"
     android:foreground="?attr/selectableItemBackground"
     android:clickable="true"
+    app:cardBackgroundColor="@color/bottomNavBackground"
     android:focusable="true">
 
     <RelativeLayout
+        android:background="@color/bottomNavBackground"
         android:id="@+id/view_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -33,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DELETE"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:layout_centerVertical="true"
 
@@ -44,10 +47,11 @@
 
     <RelativeLayout
         android:id="@+id/view_foreground"
-        android:background="@color/colorWhite"
+        android:background="@color/bottomNavBackground"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <ImageView
             android:id="@+id/mealThumb"
             android:scaleType="centerCrop"
@@ -75,7 +79,7 @@
             android:gravity="center"
             android:maxLines="3"
             android:text="@string/meal_categories"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@android:color/white"
             android:textSize="16sp" />
     </RelativeLayout>
 
