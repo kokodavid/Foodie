@@ -103,8 +103,8 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
 
     private void setupActionBar() {
         setSupportActionBar(toolbar);
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorWhite));
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorPrimary));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.start));
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

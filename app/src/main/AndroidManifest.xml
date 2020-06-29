@@ -50,7 +50,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.category.CategoryActivity"
             android:theme="@style/AppTheme.NoActionBarr" />
