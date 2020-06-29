@@ -85,8 +85,8 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
         collapsingToolbarLayout.setTitle(name);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.CustomText);
 
-        servingsPeople.setText(servingPeople);
-        servingsTime.setText(servingTime);
+        servingsPeople.setText("Preparation :"+ " "+ servingPeople  + " " + "Minuets" + "     " + "||");
+        servingsTime.setText( "Serving(s) :" +" "+ servingTime);
 
 
 

@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -64,6 +65,9 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         presenter = new MealPlannerpresenter(this);
         spinner.setOnItemSelectedListener(this);
         progressBar.setVisibility(View.INVISIBLE);
+
+
+
 
 
 
@@ -125,6 +129,16 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         progressBar.setVisibility(View.VISIBLE);
         presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
 
+        if (numberValue.matches("")){
+            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (excludeValue.matches("")){
+            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
     }
 
@@ -146,6 +160,16 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         excludeValue = exclude.getText().toString();
         presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
         progressBar.setVisibility(View.VISIBLE);
+
+        if(TextUtils.isEmpty(numberValue)){
+            calories.setError("Input Number of Calories");
+            return;
+        }
+        if(TextUtils.isEmpty(excludeValue)){
+            calories.setError("What would you Like to Exclude ?");
+            return;
+        }
+
 
     }
 }
