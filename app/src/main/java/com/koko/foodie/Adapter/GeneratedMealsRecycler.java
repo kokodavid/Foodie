@@ -52,7 +52,7 @@ public class GeneratedMealsRecycler extends RecyclerView.Adapter<GeneratedMealsR
         holder.mealName.setText(FoodName);
 
         Integer FoodServings = meals.get(position).getServings();
-        holder.servings.setText(Integer.toString(FoodServings));
+        holder.servings.setText(Integer.toString(FoodServings) + " " + "Serving(s)");
 
         Integer id = meals.get(position).getId();
         holder.id.setText(Integer.toString(id));

@@ -127,14 +127,12 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
             if ((collapsingToolbarLayout.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout))) {
                 if (toolbar.getNavigationIcon() != null)
                     toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorPrimary),
-                        PorterDuff.Mode.SRC_ATOP);
+
 
             } else {
                 if (toolbar.getNavigationIcon() != null)
                     toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorWhite),
-                        PorterDuff.Mode.SRC_ATOP);
+
             }
         });
     }

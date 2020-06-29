@@ -116,15 +116,13 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
         appBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if ((collapsingToolbarLayout.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout))) {
                 if (toolbar.getNavigationIcon() != null)
-                    toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorPrimary),
-                        PorterDuff.Mode.SRC_ATOP);
+                    toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.background), PorterDuff.Mode.SRC_ATOP);
+
 
             } else {
                 if (toolbar.getNavigationIcon() != null)
                     toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorWhite),
-                        PorterDuff.Mode.SRC_ATOP);
+
             }
         });
     }
@@ -164,8 +162,8 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
     public void setMeal(Meals.Meal meal) {
         Picasso.get().load(meal.getStrMealThumb()).into(mealThumb);
         collapsingToolbarLayout.setTitle(meal.getStrMeal());
-        category.setText(meal.getStrCategory());
-        country.setText(meal.getStrArea());
+        category.setText("Category :" + " " + meal.getStrCategory()+ "     " + "||");
+        country.setText("Country :" + " " + meal.getStrArea());
         instructions.setText(meal.getStrInstructions());
         setupActionBar();
 

@@ -47,7 +47,8 @@
 
         <activity
             android:name=".Activities.Cocktails.CocktailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"/>
         <activity
             android:name=".Activities.detail.DetailActivity"
             android:launchMode="singleTask"

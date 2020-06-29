@@ -31,6 +31,7 @@
             android:src="@drawable/sample_image_meal" />
 
         <TextView
+            android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/id"/>
@@ -72,21 +73,7 @@
             android:text="Serve"
             android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="195dp"
-            android:layout_marginLeft="195dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginEnd="-8dp"
-            android:layout_marginRight="136dp"
-            android:text="Serving(s)"
-            android:textColor="@android:color/white" />
+
 
     </RelativeLayout>
 

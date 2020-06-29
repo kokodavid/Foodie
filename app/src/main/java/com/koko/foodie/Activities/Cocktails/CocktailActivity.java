@@ -52,8 +52,6 @@ public class CocktailActivity extends AppCompatActivity implements CocktailView 
     @BindView(R.id.category)
     TextView category;
 
-    @BindView(R.id.tags)
-    TextView tags;
 
     @BindView(R.id.instructions)
     TextView instructions;
@@ -103,8 +101,8 @@ public class CocktailActivity extends AppCompatActivity implements CocktailView 
 
     private void setupActionBar() {
         setSupportActionBar(toolbar);
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorWhite));
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorPrimary));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.start));
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorWhite));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -116,15 +114,13 @@ public class CocktailActivity extends AppCompatActivity implements CocktailView 
         appBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if ((collapsingToolbarLayout.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout))) {
                 if (toolbar.getNavigationIcon() != null)
-                    toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorPrimary),
-                        PorterDuff.Mode.SRC_ATOP);
+                    toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.background), PorterDuff.Mode.SRC_ATOP);
+
 
             } else {
                 if (toolbar.getNavigationIcon() != null)
                     toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
-                favoriteItemColor.mutate().setColorFilter(getResources().getColor(R.color.colorWhite),
-                        PorterDuff.Mode.SRC_ATOP);
+
             }
         });
     }
@@ -164,8 +160,7 @@ public class CocktailActivity extends AppCompatActivity implements CocktailView 
     public void setCocktail(Cocktail.Drink cocktail) {
         Picasso.get().load(cocktail.getStrDrinkThumb()).into(drinkThumb);
         collapsingToolbarLayout.setTitle(cocktail.getStrDrink());
-        category.setText(cocktail.getStrCategory());
-        tags.setText(cocktail.getStrTags());
+        category.setText("Category :" + " " +cocktail.getStrCategory());
         instructions.setText(cocktail.getStrInstructions());
         setupActionBar();
 

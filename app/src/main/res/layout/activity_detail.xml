@@ -53,12 +53,11 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
@@ -67,97 +66,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_marginTop="-8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
             <View
-                android:layout_marginTop="-7dp"
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/bottomNavBackground"/>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp">
-                <androidx.cardview.widget.CardView
-                    app:cardUseCompatPadding="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:text="Category"
+                        android:textColor="@android:color/white"
+                        android:hint="1"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/textCategory"
-                            android:text="@string/category"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:paddingTop="14dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/category"
-                            android:text="@string/dot_loading"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="14dp"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    app:cardUseCompatPadding="true"
-                    app:cardCornerRadius="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/category"/>
+                    <TextView
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="75dp"
+                        android:layout_alignParentRight="true"
+                        app:layout_anchor="@+id/view"
+                        android:layout_width="wrap_content"
+                        android:text="Country"
+                        android:textColor="@android:color/white"
+                        android:hint="1"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/Country"
-                            android:text="@string/country"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:paddingTop="14dp"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/country"
-                            android:text="@string/dot_loading"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="14dp"
-                            android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
+                        android:id="@+id/country"/>
 
             <TextView
+                android:id="@+id/ings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/ingredients"
                 android:textColor="@android:color/white"
                 android:textSize="18dp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_below="@+id/ings"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
@@ -209,6 +165,8 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/text1"
+                android:layout_below="@id/card1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/instructions"
@@ -224,6 +182,8 @@
                 />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_below="@+id/text1"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
@@ -245,6 +205,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
+                android:layout_below="@id/card2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -278,20 +239,12 @@
 
             </LinearLayout>
 
+        </RelativeLayout>
 
-<!--            <com.google.android.gms.ads.AdView-->
-<!--                android:id="@+id/adView"-->
-<!--                android:layout_width="398dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                app:adSize="BANNER"-->
-<!--                app:adUnitId="ca-app-pub-6935583358126825/9443336750"/>-->
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
