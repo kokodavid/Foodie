@@ -4,6 +4,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -21,8 +23,10 @@ import android.widget.TextView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.koko.foodie.Adapter.CocktailViewPager;
+import com.koko.foodie.Adapter.IngredientsRecycler;
 import com.koko.foodie.Adapter.StepsAdapter;
 import com.koko.foodie.Adapter.TestAdapter;
+import com.koko.foodie.Adapter.procedureRecycler;
 import com.koko.foodie.Models.FodieA;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.SpoonMeals;
@@ -46,9 +50,9 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
 
 
     @BindView(R.id.detailViewPager)
-    ViewPager detailPager;
+    RecyclerView detailPager;
     @BindView(R.id.stepViewpager)
-    ViewPager stepViewpager;
+    RecyclerView stepViewpager;
 
     @BindView(R.id.FoodDetailToolbar)
     Toolbar toolbar;
@@ -167,17 +171,18 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
     public void setFoodInfo(List<TestModelB.ExtendedIngredient> foodName,List<TestModelB.AnalyzedInstruction> instructions,String image) {
 
 
-        TestAdapter testAdapter = new TestAdapter(foodName,instructions, getBaseContext(),image);
-        detailPager.setPadding(10, 0, 40, 0);
+        IngredientsRecycler testAdapter = new IngredientsRecycler(foodName,instructions, getBaseContext(),image);
+        detailPager.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
+        detailPager.setClipToPadding(false);
         detailPager.setAdapter(testAdapter);
-        Picasso.get().load(image).into(mealThumb);
         testAdapter.notifyDataSetChanged();
+        Picasso.get().load(image).into(mealThumb);
 
-        StepsAdapter stepsAdapter = new StepsAdapter(instructions.get(0).getSteps(), getApplicationContext());
-        Log.d("stepsss", String.valueOf(instructions.get(0).getSteps().size()));
-        stepViewpager.setPadding(10, 0, 40, 0);
+        procedureRecycler stepsAdapter = new procedureRecycler(instructions.get(0).getSteps(), getApplicationContext());
+        stepViewpager.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
+        stepViewpager.setClipToPadding(false);
         stepViewpager.setAdapter(stepsAdapter);
-        stepsAdapter.notifyDataSetChanged();
+        testAdapter.notifyDataSetChanged();
 
     }
 

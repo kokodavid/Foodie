@@ -32,7 +32,7 @@ public class StepsAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(
-                R.layout.steps_layout_item,
+                R.layout.steps_item,
                 container,
                 false
         );
@@ -42,7 +42,7 @@ public class StepsAdapter extends PagerAdapter {
 
 
         Integer number = instructions.get(position).getNumber();
-        stepNumber.setText(Integer.toString(number));
+        stepNumber.setText("Step" + " " + Integer.toString(number) + ".");
 
         String unit = instructions.get(position).getStep();
         stepInstructions.setText(unit);
