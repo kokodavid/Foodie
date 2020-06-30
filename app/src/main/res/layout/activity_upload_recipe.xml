@@ -10,30 +10,31 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/colorPrimary" />
+        android:layout_height="75dp"
+        android:background="@drawable/actionbar"
+        />
 
     <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
 
-        android:layout_margin="8dp"
-        android:layout_width="71dp"
-        android:layout_height="55dp"
-        android:src="@drawable/foodie" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Recipe"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_anchor="@id/view"
+        app:layout_anchorGravity="center"/>
 
-    <ImageView
-        android:layout_gravity="right"
-        android:layout_margin="8dp"
-        android:layout_width="71dp"
-        android:layout_height="55dp"
-        android:onClick="logout"
-        android:src="@drawable/ic_baseline_add_24" />
-
-    <ImageView
-        android:layout_marginTop="8dp"
-        android:layout_width="83dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="60dp"
-        android:src="@drawable/foodieword" />
 
 
     <androidx.core.widget.NestedScrollView

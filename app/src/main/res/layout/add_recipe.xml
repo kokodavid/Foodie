@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/actionbar"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Recipe"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_anchor="@id/view"
+        app:layout_anchorGravity="center"/>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp"
+        android:background="@color/background">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardBackgroundColor="@color/bottomNavBackground"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_uploaded"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:onClick="btnSelectImage"
+                android:src="@drawable/upload"/>
+
+            <TextView
+                android:id="@+id/titletext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Recipe Title"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/image_uploaded"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/txt_recipe_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border"
+                android:hint="Recipe Title ?"
+                android:textColorHint="#AEAEAE"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:layout_below="@+id/titletext"/>
+
+            <GridLayout
+                android:id="@+id/gridlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/txt_recipe_name"
+                android:columnCount="2">
+
+                <EditText
+                    android:id="@+id/txt_recipe_country"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border"
+                    android:hint="Serving"
+                    android:textColorHint="#AEAEAE"
+                    android:textSize="14sp"
+                    android:textColor="@color/textColor"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:layout_below="@+id/titletext"/>
+
+                <EditText
+                    android:id="@+id/txt_recipe_category"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/border"
+                    android:hint="Category"
+                    android:textColorHint="#AEAEAE"
+                    android:textSize="14sp"
+                    android:textColor="@color/textColor"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:layout_below="@+id/titletext"/>
+
+            </GridLayout>
+
+            <EditText
+                android:id="@+id/cooktime"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border"
+                android:hint="Cook time in Min"
+                android:textColorHint="#AEAEAE"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:layout_below="@+id/gridlayout"/>
+
+            <TextView
+                android:id="@+id/titletext2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Ingredients"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/cooktime"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"/>
+
+            <EditText
+                android:id="@+id/txt_recipe_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border"
+                android:hint=""
+                android:textColorHint="#AEAEAE"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:layout_below="@+id/titletext2"/>
+
+            <TextView
+                android:id="@+id/titletext3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Procedure"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/txt_recipe_ingredients"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"/>
+
+            <EditText
+                android:id="@+id/direction"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_below="@+id/titletext3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/border"
+                android:hint=""
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="#AEAEAE"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/upload_recipe"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/direction"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="31dp"
+                android:layout_marginRight="31dp"
+                android:layout_toStartOf="@+id/cancel"
+                android:layout_toLeftOf="@+id/cancel"
+                android:background="@drawable/button_gradient_b"
+                android:hint="Add Recipe"
+                android:onClick="btnUploadRecipe"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginBottom="30dp"
+                android:textSize="15dp" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Cancel"
+                android:id="@+id/cancel"
+                android:textColorHint="@color/colorWhite"
+                android:background="@drawable/border"
+                android:onClick="btnUploadRecipe"
+                android:layout_below="@+id/direction"
+                android:layout_marginBottom="30dp"
+                android:layout_marginRight="10dp"
+                android:textSize="15dp"/>
+
+
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
