@@ -1,23 +1,32 @@
 package com.koko.foodie.Models;
 
 public class uploadData {
-
-    private String name;
-    private String category;
-    private String country;
-    private String ingredients;
     private String img;
+    private String name;
+    private  String count;
+    private String category;
+    private String time;
+    private String ingredients;
+    private String procedure;
 
 
-    public uploadData() {
+    public String getTime() {
+        return time;
     }
 
-    public uploadData(String name, String category, String country, String ingredients,String img) {
-        this.name = name;
-        this.category = category;
-        this.country = country;
-        this.ingredients = ingredients;
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public uploadData(String img, String name, String count, String category, String time, String ingredients, String procedure) {
         this.img = img;
+        this.name = name;
+        this.count = count;
+        this.category = category;
+        this.time = time;
+        this.ingredients = ingredients;
+        this.procedure = procedure;
+
 
     }
 
@@ -45,13 +54,6 @@ public class uploadData {
         this.category = category;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getIngredients() {
         return ingredients;
@@ -60,4 +62,24 @@ public class uploadData {
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
+
+    public String getProcedure() {
+        return procedure;
+    }
+
+    public void setProcedure(String procedure) {
+        this.procedure = procedure;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public uploadData() {
+    }
+
 }

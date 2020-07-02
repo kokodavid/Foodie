@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -35,8 +36,10 @@ import com.koko.foodie.R;
 
 import java.net.URI;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -52,18 +55,32 @@ public class UploadRecipeActivity extends AppCompatActivity {
     EditText recipe_name;
     @BindView(R.id.txt_recipe_category)
     EditText  recipe_category;
-    @BindView(R.id.txt_recipe_country)
-    EditText  recipe_country;
+    @BindView(R.id.txt_recipe_serving_count)
+    EditText  recipe_count;
     @BindView(R.id.txt_recipe_ingredients)
     EditText  recipe_ingredients;
+
+    @BindView(R.id.txt_recipe_cooktime)
+    EditText  recipe_cookTime;
+
+    @BindView(R.id.txt_recipe_procedure)
+    EditText  recipe_procedure;
+
+
+
     public Uri uri;
     public String imageUrl;
+
+    public static final String RECIPES = "Recipes";
+
+    private  DatabaseReference recipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
         ButterKnife.bind(this);
+
 
 
         List<AuthUI.IdpConfig> providers = Arrays.asList(
@@ -144,48 +161,66 @@ public class UploadRecipeActivity extends AppCompatActivity {
 
     public void uploadRecipe(){
 
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Recipe Uploading......");
+//        ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Recipe Uploading......");
 
         try {
-            progressDialog.show();
+//            progressDialog.show();
         }
         catch (WindowManager.BadTokenException e) {
             //use a log message
         }
 
         uploadData  uploadData = new uploadData(
+          imageUrl,
           recipe_name.getText().toString(),
+          recipe_count.getText().toString(),
           recipe_category.getText().toString(),
-          recipe_country.getText().toString(),
+          recipe_cookTime.getText().toString(),
           recipe_ingredients.getText().toString(),
-          imageUrl
+                recipe_procedure.getText().toString()
+
         );
+
+//        String uid = FirebaseAuth.getInstance().getUid();
+//
+//
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//
+//
+//
+//
+//        FirebaseDatabase.getInstance().getReference("Recipe")
+//                .child(uid).setValue(uploadData).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//
+//                if (task.isSuccessful()){
+////                    progressDialog.dismiss();
+//
+//                    Toast.makeText(UploadRecipeActivity.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
+//
+//                    finish();
+//                }
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(UploadRecipeActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+////                progressDialog.dismiss();
+//            }
+//        });
+//
 
         String uid = FirebaseAuth.getInstance().getUid();
 
-
-
-        FirebaseDatabase.getInstance().getReference("Recipe")
-                .child(uid).setValue(uploadData).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if (task.isSuccessful()){
-                    progressDialog.dismiss();
-
-                    Toast.makeText(UploadRecipeActivity.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UploadRecipeActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        });
+        recipes = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(RECIPES);
+        recipes.child(uid).setValue(uploadData);
 
     }
 
@@ -200,4 +235,6 @@ public class UploadRecipeActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }
