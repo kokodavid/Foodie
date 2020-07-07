@@ -4,7 +4,6 @@ import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
-import com.koko.foodie.Models.SpoonMeals;
 
 import java.util.List;
 
@@ -17,5 +16,6 @@ public interface HomeView {
     void setCocktail(List<Cocktail.Drink>cocktail);
     void onErrorLoading(String message);
     void setFood(List<Food> food);
+    void setFirebaseData(List<String> fRecipes);
 
 }
