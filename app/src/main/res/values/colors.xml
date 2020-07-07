@@ -16,6 +16,7 @@
     <color name="background">#121212</color>
     <color name="bottomNavBackground">#2B2B2B</color>
     <color name="circleBackground">#992B2B2B</color>
+    <color name="transparent">#80FFFFFF</color>
 
 
     <color name="fade">#90ff9720</color>

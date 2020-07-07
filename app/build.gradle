@@ -107,6 +107,7 @@ dependencies {
     //validator
     implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
 
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
 
 
 

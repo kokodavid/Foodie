@@ -2,7 +2,7 @@ package com.koko.foodie.Models;
 
 public class uploadData {
     private String img;
-    private String user_name;
+    private String uploaded_by;
     private String name;
     private  String count;
     private String category;
@@ -19,9 +19,9 @@ public class uploadData {
         this.time = time;
     }
 
-    public uploadData(String img, String user_name, String name, String count, String category, String time, String ingredients, String procedure) {
+    public uploadData(String img, String uploaded_by, String name, String count, String category, String time, String ingredients, String procedure) {
         this.img = img;
-        this.user_name = user_name;
+        this.uploaded_by = uploaded_by;
         this.name = name;
         this.count = count;
         this.category = category;
@@ -38,12 +38,12 @@ public class uploadData {
         this.img = img;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUploaded_by() {
+        return uploaded_by;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUploaded_by(String uploaded_by) {
+        this.uploaded_by = uploaded_by;
     }
 
     public String getName() {
