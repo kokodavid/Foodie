@@ -1,11 +1,10 @@
 package com.koko.foodie.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,7 +19,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -39,8 +37,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 
 public class UploadRecipeActivity extends AppCompatActivity implements Validator.ValidationListener {
 
@@ -70,9 +66,9 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
     EditText recipe_procedure;
     @BindView(R.id.upload_recipe)
     Button upload_recipe;
-    String user_name;
+    private ProgressDialog dialog;
     private Validator validator;
-    private DatabaseReference recipes;
+    private DatabaseReference recipes, indiv_recipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,17 +127,21 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
     }
 
     public void uploadRecipe() {
-//        ProgressDialog progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("Recipe Uploading......");
-
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Recipe Uploading");
+        progressDialog.show();
        /* try {         progressDialog.show();
         } catch (WindowManager.BadTokenException e) {
             //use a log message
         }*/
 
+       //get user information
+        //TODO: remove redundancy by getting during retrieval
+        String user_name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
         uploadData uploadData = new uploadData(
                 imageUrl,
-                "name",
+                user_name,
                 recipe_name.getText().toString(),
                 recipe_count.getText().toString(),
                 recipe_category.getText().toString(),
@@ -182,14 +182,16 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 //            }
 //        });
 //
-
+        String recipe_title = recipe_name.getText().toString();
         String uid = FirebaseAuth.getInstance().getUid();
         recipes = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(RECIPES);
-        recipes.child(uid).setValue(uploadData);
+        recipes.child(uid).push().setValue(recipe_title);
+        recipes.child(uid).child(recipe_title).setValue(uploadData);
         Toast.makeText(this, "Recipe successfully added", Toast.LENGTH_SHORT).show();
+        progressDialog.dismiss();
         finish();
 
     }
@@ -199,18 +201,14 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 handleSignInResult(task);
                 uploadImage();
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+
             }
         }
         if (resultCode == RESULT_OK) {
@@ -221,12 +219,12 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
     }
 
-    //google sign in result
+    //google sign in result **NOT HANDLING**
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             String name = account.getDisplayName();
-            Uri image_url = account.getPhotoUrl();
+            ;
         } catch (ApiException e) {
             e.printStackTrace();
         }
