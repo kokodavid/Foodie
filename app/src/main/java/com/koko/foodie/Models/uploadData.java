@@ -2,6 +2,7 @@ package com.koko.foodie.Models;
 
 public class uploadData {
     private String img;
+    private String user_name;
     private String name;
     private  String count;
     private String category;
@@ -18,20 +19,15 @@ public class uploadData {
         this.time = time;
     }
 
-    public uploadData(String img, String name, String count, String category, String time, String ingredients, String procedure) {
+    public uploadData(String img, String user_name, String name, String count, String category, String time, String ingredients, String procedure) {
         this.img = img;
+        this.user_name = user_name;
         this.name = name;
         this.count = count;
         this.category = category;
         this.time = time;
         this.ingredients = ingredients;
         this.procedure = procedure;
-
-
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getImg() {
@@ -42,8 +38,28 @@ public class uploadData {
         this.img = img;
     }
 
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 
     public String getCategory() {
@@ -53,7 +69,6 @@ public class uploadData {
     public void setCategory(String category) {
         this.category = category;
     }
-
 
     public String getIngredients() {
         return ingredients;
@@ -69,14 +84,6 @@ public class uploadData {
 
     public void setProcedure(String procedure) {
         this.procedure = procedure;
-    }
-
-    public String getCount() {
-        return count;
-    }
-
-    public void setCount(String count) {
-        this.count = count;
     }
 
     public uploadData() {

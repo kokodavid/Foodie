@@ -26,4 +26,6 @@
         <item>Primal</item>
         <item>Whole30</item>
     </string-array>
+
+    <string name="success">Recipe successfully uploaded</string>
 </resources>
