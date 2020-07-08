@@ -18,5 +18,4 @@ public interface HomeView {
     void setCocktail(List<Cocktail.Drink>cocktail);
     void onErrorLoading(String message);
     void setFood(List<Food> food);
-    void setFirebaseData(Iterable<DataSnapshot> children);
 }

@@ -151,22 +151,22 @@ public class HomePresenter extends HomeActivity {
         });
 
         //firebase userdata
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
-        Query firebaseQuery= reference.orderByKey();
-        firebaseQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<uploadData> fRecipes = new ArrayList<>();
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    view.setFirebaseData(ds.getChildren());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
+//        Query firebaseQuery= reference.orderByKey();
+//        firebaseQuery.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                List<uploadData> fRecipes = new ArrayList<>();
+//                for (DataSnapshot ds: dataSnapshot.getChildren()){
+//                    view.setFirebaseData(ds.getChildren());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
     }
 

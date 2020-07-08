@@ -242,10 +242,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
                 TextView servingTime = view.findViewById(R.id.readyIn);
                 TextView servingPeople = view.findViewById(R.id.servings);
 
-
-
-
-
                 SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("name",foodName.getText().toString());
@@ -269,15 +265,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     }
 
-    @Override
-    public void setFirebaseData(Iterable<DataSnapshot> children) {
-            UserRecipeAdapter adapter2 = new UserRecipeAdapter(getBaseContext(), children);
-            spoonRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
-            spoonRecycler.setClipToPadding(false);
-            spoonRecycler.setAdapter(adapter2);
-            adapter2.notifyDataSetChanged();
 
-    }
 
     @Override
     public void onErrorLoading(String message) {
@@ -302,8 +290,5 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         startActivity(addRecipe);
     }
 
-    public void SendImage(View view) {
 
-
-    }
 }

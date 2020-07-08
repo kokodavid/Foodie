@@ -108,6 +108,10 @@ dependencies {
     implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
 
     implementation 'com.kaopiz:kprogresshud:1.2.0'
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 
 
 

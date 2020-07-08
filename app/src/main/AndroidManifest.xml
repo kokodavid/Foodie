@@ -15,9 +15,16 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.mealPlanner.MealPlanner"
+        <activity android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr"></activity>
+        <activity android:name=".Activities.UploadedRecipes.FirebaseActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"/>
+        <activity
+            android:name=".Activities.mealPlanner.MealPlanner"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity android:name=".Activities.Cocktails.AllCocktails" />
         <activity
             android:name=".Activities.FoodDetails.FoodDetailActivity"
@@ -31,7 +38,7 @@
         <activity
             android:name=".Activities.UploadRecipeActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBarr"  />
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.Search.SearchActivity"
             android:launchMode="singleTask"
@@ -48,7 +55,7 @@
         <activity
             android:name=".Activities.Cocktails.CocktailActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBarr"/>
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.detail.DetailActivity"
             android:launchMode="singleTask"

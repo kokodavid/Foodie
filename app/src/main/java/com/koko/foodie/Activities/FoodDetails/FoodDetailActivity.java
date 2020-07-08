@@ -176,6 +176,7 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
         testAdapter.notifyDataSetChanged();
         Picasso.get().load(image).into(mealThumb);
 
+
         procedureRecycler stepsAdapter = new procedureRecycler(instructions.get(0).getSteps(), getApplicationContext());
         stepViewpager.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
         stepViewpager.setClipToPadding(false);

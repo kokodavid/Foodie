@@ -1,5 +1,6 @@
 package com.koko.foodie.Models;
 
+
 public class uploadData {
     private String img;
     private String uploaded_by;
@@ -9,6 +10,7 @@ public class uploadData {
     private String time;
     private String ingredients;
     private String procedure;
+
 
 
     public String getTime() {

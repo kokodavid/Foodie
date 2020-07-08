@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.koko.foodie.Activities.Cocktails.AllCocktails;
 import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
+import com.koko.foodie.Activities.UploadedRecipes.FirebaseActivity;
 import com.koko.foodie.Activities.WinePairing.WinePairingActivity;
 import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Activities.mealPlanner.MealPlanner;
@@ -77,6 +78,12 @@ public class ExploreActivity extends AppCompatActivity {
 
     public void mealPlanner(View view) {
         Intent addRecipe = new Intent(ExploreActivity.this, MealPlanner.class);
+        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(addRecipe);
+    }
+
+    public void forYou(View view) {
+        Intent addRecipe = new Intent(ExploreActivity.this, FirebaseActivity.class);
         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(addRecipe);
     }
