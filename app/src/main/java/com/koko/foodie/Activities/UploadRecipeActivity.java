@@ -149,7 +149,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
        //get user_name information
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String user_name = user.getEmail().replace("@gmail.com","");
+        assert user != null;
+        String user_name = user.getDisplayName();
         //TODO: remove redundancy by getting during retrieval
 
         uploadData uploadData = new uploadData(

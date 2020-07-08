@@ -150,18 +150,16 @@ public class HomePresenter extends HomeActivity {
             }
         });
 
-        //firebase
-
+        //firebase userdata
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Recipes");
         Query firebaseQuery= reference.orderByKey();
         firebaseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<String> fRecipes = new ArrayList<String>();
+                List<uploadData> fRecipes = new ArrayList<>();
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    fRecipes.add(ds.getValue().toString());
+                    view.setFirebaseData(ds.getChildren());
                 }
-                view.setFirebaseData(fRecipes);
             }
 
             @Override

@@ -76,8 +76,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
     }
 
 
-
-
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.mealThumb)
         ImageView mealThumb;

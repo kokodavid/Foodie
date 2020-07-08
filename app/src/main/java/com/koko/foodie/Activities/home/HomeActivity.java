@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -41,9 +40,11 @@ import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
 
+import com.koko.foodie.Adapter.UserRecipeAdapter;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.TestModelB;
+import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
@@ -269,8 +270,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
     @Override
-    public void setFirebaseData(List<String> fRecipes) {
-        //TODO: add adapter and populate
+    public void setFirebaseData(Iterable<DataSnapshot> children) {
+            UserRecipeAdapter adapter2 = new UserRecipeAdapter(getBaseContext(), children);
+            spoonRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
+            spoonRecycler.setClipToPadding(false);
+            spoonRecycler.setAdapter(adapter2);
+            adapter2.notifyDataSetChanged();
+
     }
 
     @Override
