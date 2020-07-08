@@ -10,23 +10,20 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
 import com.koko.foodie.Activities.Database.FoodieRoomDB;
@@ -35,7 +32,6 @@ import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
 import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
-import com.koko.foodie.Activities.MainActivity;
 import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
@@ -43,21 +39,18 @@ import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
-import com.koko.foodie.Adapter.RecyclerViewMealByCategory;
-import com.koko.foodie.Adapter.SearchAdapter;
 
+import com.koko.foodie.Adapter.UserRecipeAdapter;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
-import com.koko.foodie.Adapter.WinePairingAdapter;
 import com.koko.foodie.Models.Food;
-import com.koko.foodie.Models.SpoonMeals;
 import com.koko.foodie.Models.TestModelB;
+import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Utils;
 
-import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -218,7 +211,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     public void setCocktail(List<Cocktail.Drink> cocktail) {
         CocktailViewPager CocktailPager = new CocktailViewPager(cocktail, this);
         latestCocktail.setAdapter(CocktailPager);
-        latestCocktail.setPadding(10, 0, 360, 0);
+        latestCocktail.setPadding(10, 0, 400, 0);
         CocktailPager.notifyDataSetChanged();
 
 
@@ -276,14 +269,20 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     }
 
+    @Override
+    public void setFirebaseData(Iterable<DataSnapshot> children) {
+            UserRecipeAdapter adapter2 = new UserRecipeAdapter(getBaseContext(), children);
+            spoonRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
+            spoonRecycler.setClipToPadding(false);
+            spoonRecycler.setAdapter(adapter2);
+            adapter2.notifyDataSetChanged();
+
+    }
 
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this, "Title", message);
     }
-
-
-
 
 
     public void initDB(){

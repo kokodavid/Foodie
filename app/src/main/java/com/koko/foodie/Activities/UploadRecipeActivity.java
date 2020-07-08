@@ -99,7 +99,6 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
     }
 
-
     public void uploadImage() {
        kProgressHUD = new KProgressHUD(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -150,7 +149,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
        //get user_name information
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String user_name = user.getEmail().replace("@gmail.com","");
+        assert user != null;
+        String user_name = user.getDisplayName();
         //TODO: remove redundancy by getting during retrieval
 
         uploadData uploadData = new uploadData(
@@ -202,8 +202,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
                 .getInstance()
                 .getReference()
                 .child(RECIPES);
-        recipes.child(uid).push().setValue(recipe_title);
-        recipes.child(uid).child(recipe_title).setValue(uploadData);
+        recipes.child(recipe_title).setValue(uploadData);
         Toast.makeText(this, "Recipe successfully added", Toast.LENGTH_SHORT).show();
         kProgressHUD.dismiss();
         finish();
@@ -249,8 +248,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(task -> {
-                    Intent intent = new Intent(UploadRecipeActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(this,HomeActivity.class));
                 });
     }
 
@@ -271,5 +269,9 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void cancelUpload(View view) {
+        finish();
     }
 }
