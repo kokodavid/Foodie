@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.koko.foodie.Activities.home.HomeActivity;
@@ -25,6 +26,9 @@ public class AllCocktails extends AppCompatActivity implements AllCocktailsView 
     AllCocktailsPresenter presenter;
     @BindView(R.id.cocktailsRecycler)
     RecyclerView cocktailRecycler;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +42,20 @@ public class AllCocktails extends AppCompatActivity implements AllCocktailsView 
 
     @Override
     public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideloading() {
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 
     @Override
     public void setCocktail(List<Cocktail.Drink> cocktail) {
         CocktailRecycler recycler = new CocktailRecycler(getBaseContext(),cocktail);
-        cocktailRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
+        cocktailRecycler.setLayoutManager(new GridLayoutManager(getBaseContext(),1));
         cocktailRecycler.setClipToPadding(false);
         cocktailRecycler.setAdapter(recycler);
         recycler.notifyDataSetChanged();

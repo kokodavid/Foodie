@@ -36,7 +36,7 @@ public class CocktailRecycler extends RecyclerView.Adapter<CocktailRecycler.Recy
     @NonNull
     @Override
     public CocktailRecycler.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager_cocktail,
+        View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager_cocktail_one,
                 parent, false);
         return new CocktailRecycler.RecyclerViewHolder(view);
     }
@@ -45,7 +45,10 @@ public class CocktailRecycler extends RecyclerView.Adapter<CocktailRecycler.Recy
     public void onBindViewHolder(@NonNull CocktailRecycler.RecyclerViewHolder holder, int position) {
 
      String Cocktailname = food.get(position).getStrDrink();
-     holder.cocktailName.setText(Cocktailname);
+     holder.cocktailName.setText( Cocktailname);
+
+        String CocktailCategory = food.get(position).getStrCategory();
+        holder.cocktailCategory.setText("Category:"+" "+CocktailCategory);
 
      String CocktailImage = food.get(position).getStrDrinkThumb();
      Picasso.get().load(CocktailImage).into(holder.cocktailThumb);
@@ -65,6 +68,8 @@ public class CocktailRecycler extends RecyclerView.Adapter<CocktailRecycler.Recy
         ImageView cocktailThumb;
         @BindView(R.id.cocktailName)
         TextView cocktailName;
+        @BindView(R.id.cocktailCategory)
+        TextView cocktailCategory;
 
 
         RecyclerViewHolder(@NonNull View itemView) {

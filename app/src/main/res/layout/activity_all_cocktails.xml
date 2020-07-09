@@ -5,9 +5,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Cocktails.AllCocktails">
+    tools:context=".Activities.Cocktails.AllCocktails"
+    android:background="@color/background">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/actionbar"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cocktails"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_anchor="@id/view"
+        app:layout_anchorGravity="center"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_marginTop="75dp"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="85dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/cocktailsRecycler"/>

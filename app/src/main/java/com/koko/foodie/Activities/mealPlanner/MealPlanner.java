@@ -23,6 +23,9 @@ import com.koko.foodie.Adapter.GeneratedMealsPager;
 import com.koko.foodie.Adapter.GeneratedMealsRecycler;
 import com.koko.foodie.Models.MealPlan;
 import com.koko.foodie.R;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -32,13 +35,15 @@ import butterknife.ButterKnife;
 
 import static com.koko.foodie.Activities.home.HomeActivity.EXTRA_POSITION;
 
-public class MealPlanner extends AppCompatActivity implements MealView, AdapterView.OnItemSelectedListener {
+public class MealPlanner extends AppCompatActivity implements MealView, AdapterView.OnItemSelectedListener, Validator.ValidationListener {
 
     MealPlannerpresenter presenter;
 //    @BindView(R.id.diet)
 //    EditText diet;
+    @NotEmpty
     @BindView(R.id.calories)
     EditText calories;
+    @NotEmpty
     @BindView(R.id.exclude)
     EditText exclude;
     @BindView(R.id.generatedMealsPager)
@@ -48,6 +53,7 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+    private Validator validator;
 
 
 
@@ -66,7 +72,8 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
         spinner.setOnItemSelectedListener(this);
         progressBar.setVisibility(View.INVISIBLE);
 
-
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
 
 
@@ -122,23 +129,7 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     }
 
     public void GenerateMeal(View view) {
-//        dietValue = diet.getText().toString();
-        numberValue = calories.getText().toString();
-        int caloriesValue = Integer.valueOf(numberValue);
-        excludeValue = exclude.getText().toString();
-        progressBar.setVisibility(View.VISIBLE);
-        presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
-
-        if (numberValue.matches("")){
-            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (excludeValue.matches("")){
-            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
+        validator.validate();
 
     }
 
@@ -155,21 +146,32 @@ public class MealPlanner extends AppCompatActivity implements MealView, AdapterV
     }
 
     public void regenerate(View view) {
+
+        validator.validate();
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        //        dietValue = diet.getText().toString();
         numberValue = calories.getText().toString();
         int caloriesValue = Integer.valueOf(numberValue);
         excludeValue = exclude.getText().toString();
-        presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
         progressBar.setVisibility(View.VISIBLE);
-
-        if(TextUtils.isEmpty(numberValue)){
-            calories.setError("Input Number of Calories");
-            return;
-        }
-        if(TextUtils.isEmpty(excludeValue)){
-            calories.setError("What would you Like to Exclude ?");
-            return;
-        }
-
-
+        presenter.getMealPlanner(caloriesValue,dietValue,excludeValue);
     }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }

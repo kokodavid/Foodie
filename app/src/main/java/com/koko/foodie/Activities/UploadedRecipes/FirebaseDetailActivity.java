@@ -70,6 +70,7 @@ public class FirebaseDetailActivity extends AppCompatActivity {
 
 
     ArrayList<uploadData> mRecipes = new ArrayList<>();
+    List<uploadData> recipes;
 
 
     @Override
@@ -78,6 +79,7 @@ public class FirebaseDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_firebase_detail);
         ButterKnife.bind(this);
 
+//        Picasso.get().load(recipes.get(0).getImg()).into(mealThumb);
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");

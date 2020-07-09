@@ -25,7 +25,9 @@
             android:name=".Activities.mealPlanner.MealPlanner"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
-        <activity android:name=".Activities.Cocktails.AllCocktails" />
+        <activity android:name=".Activities.Cocktails.AllCocktails"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"/>
         <activity
             android:name=".Activities.FoodDetails.FoodDetailActivity"
             android:launchMode="singleTask"
@@ -34,7 +36,9 @@
             android:name=".Activities.Explore.ExploreActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
-        <activity android:name=".Activities.WinePairing.WinePairingActivity" />
+        <activity android:name=".Activities.WinePairing.WinePairingActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"/>
         <activity
             android:name=".Activities.UploadRecipeActivity"
             android:launchMode="singleTask"
