@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.koko.foodie.Activities.MainActivity;
@@ -42,6 +43,8 @@ public class WinePairingActivity extends AppCompatActivity implements WineView {
     @BindView(R.id.WinesRecycler)
     RecyclerView winesRecycler;
 
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +54,19 @@ public class WinePairingActivity extends AppCompatActivity implements WineView {
 
 
         presenter = new WinePresenter(this);
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 
     @Override
     public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideloading() {
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 
@@ -88,4 +94,7 @@ public class WinePairingActivity extends AppCompatActivity implements WineView {
         presenter.getWines(value);
     }
 
+    public void regenerate(View view) {
+        value = searchInput.getText().toString();
+        presenter.getWines(value);    }
 }

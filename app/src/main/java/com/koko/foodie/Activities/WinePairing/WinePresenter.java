@@ -28,13 +28,14 @@ public class WinePresenter extends WinePairingActivity {
     public List<Wine> wines;
 
     void getWines(String value){
-
+        view.showLoading();
             Call<Wine> winesCall = Utils.getWinesApi().getWines(
                     value,
                     "6792adb5e9b544dc990c2499f73befb6");
             winesCall.enqueue(new Callback<Wine>() {
                 @Override
                 public void onResponse(@NonNull Call<Wine> call,@NonNull Response<Wine> response) {
+                    view.hideloading();
                     if (response.isSuccessful() && response.body() != null){
                         view.setWine(response.body().getProductMatches(),response.body().getPairingText());
                         Log.d(TAG, "onResponse: nikubaya");
