@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     @BindView(R.id.getStarted)
     Button getStarted;
-    private static int SPLASH_TIME_OUT = 2000;
+    private static int SPLASH_TIME_OUT = 1000;
 
 
     @Override

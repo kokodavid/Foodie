@@ -5,68 +5,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     >
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/colorPrimary" />
-
-    <ImageView
-        android:layout_margin="8dp"
-        android:layout_width="71dp"
-        android:layout_height="55dp"
-        android:src="@drawable/foodie" />
-
-
-    <ImageView
-        android:layout_marginTop="8dp"
-        android:layout_width="83dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="60dp"
-        android:src="@drawable/foodieword" />
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="75dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp">
-
-        <EditText
-            android:id="@+id/searchView"
-            android:drawableLeft="@drawable/ic_search"
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:hint="Search Recipes"
-            android:layout_height="match_parent"
-            android:background="@color/colorBackground"
-            android:maxLines="1"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/searchFoods"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_height="wrap_content"
-        android:text="search"
+        android:layout_height="75dp"
+        android:background="@drawable/actionbar"
         />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Recipes"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_anchor="@id/view"
+        app:layout_anchorGravity="center"/>
+
+    <RelativeLayout
+        android:layout_marginTop="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="5dp"
+            android:id="@+id/card"
+            android:background="@drawable/border"
+            app:cardBackgroundColor="@color/bottomNavBackground"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="10dp">
+
+            <EditText
+                android:background="@color/fui_transparent"
+                android:id="@+id/searchView"
+                android:drawableLeft="@drawable/ic_search"
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:hint="Search Recipes"
+                android:textColor="@color/textColor"
+                android:layout_height="match_parent"
+                android:textColorHint="@color/textColor"
+                android:maxLines="1"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/card"
+            android:id="@+id/searchFoods"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="search"
+            android:background="@drawable/button_gradient_b"
+            android:textColor="@android:color/white"
+            />
+
+
+    </RelativeLayout>
 
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchRecycler"
-
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="229dp"
+                android:layout_marginTop="130dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_gravity="center_horizontal"

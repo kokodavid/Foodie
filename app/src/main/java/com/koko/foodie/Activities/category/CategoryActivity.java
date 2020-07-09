@@ -19,6 +19,7 @@ import com.koko.foodie.Models.Meals;
 import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.R;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,8 @@ import butterknife.ButterKnife;
 public class CategoryActivity extends AppCompatActivity {
 
 //    @BindView(R.id.toolBar) Toolbar toolbar;
-    @BindView(R.id.tabLayout) TabLayout tabLayout;
+    @BindView(R.id.tabLayout)
+SmartTabLayout tabLayout;
     @BindView(R.id.categoriesDetail) ViewPager categoriesPager;
     List<Meals.Meal> foodlist;
 
@@ -54,9 +56,11 @@ public class CategoryActivity extends AppCompatActivity {
         int position = intent.getIntExtra(HomeActivity.EXTRA_POSITION,0);
         ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(getSupportFragmentManager(), categories);
         categoriesPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(categoriesPager);
-        tabLayout.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.start)));
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.start));
+        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.tabLayout);
+        viewPagerTab.setViewPager(categoriesPager);
+//        tabLayout.setupWithViewPager(categoriesPager);
+//        tabLayout.setTabTextColors(ColorStateList.valueOf(getResources().getColor(R.color.colorWhite)));
+//        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorWhite));
         categoriesPager.setCurrentItem(position,true);
         adapter.notifyDataSetChanged();
     }

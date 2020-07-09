@@ -50,12 +50,6 @@ public class WinePairingAdapter extends RecyclerView.Adapter<WinePairingAdapter.
         String WineName = wines.get(position).getTitle();
         holder.WineTitle.setText(WineName);
 
-        String WineDescription = wines.get(position).getDescription();
-        holder.WineDescription.setText(WineDescription);
-
-        String WinePrice = wines.get(position).getPrice();
-        holder.WinePrice.setText(WinePrice);
-
 
 //        String pairedWines = winess.get(position).getPairedWines();
 //        holder.pairedWines.setText((CharSequence) pairedWines);
@@ -76,10 +70,7 @@ public class WinePairingAdapter extends RecyclerView.Adapter<WinePairingAdapter.
         ImageView wineImage;
         @BindView(R.id.WineTitle)
         TextView WineTitle;
-        @BindView(R.id.WineDescription)
-        TextView WineDescription;
-        @BindView(R.id.WinePrice)
-        TextView WinePrice;
+
 
 
         @BindView(R.id.WineText)

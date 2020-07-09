@@ -25,6 +25,7 @@ import com.koko.foodie.Adapter.procedureRecycler;
 import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
+import com.koko.foodie.SharedPref;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -73,13 +74,21 @@ public class FirebaseDetailActivity extends AppCompatActivity {
     List<uploadData> recipes;
 
 
+    SharedPref sharedPref = new SharedPref();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_detail);
         ButterKnife.bind(this);
 
-//        Picasso.get().load(recipes.get(0).getImg()).into(mealThumb);
+
+        sharedPref.initSharedPref(getApplicationContext());
+
+        Picasso.get().load(sharedPref.readStr("image", "")).into(mealThumb);
+
+
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
@@ -89,8 +98,8 @@ public class FirebaseDetailActivity extends AppCompatActivity {
         String ingredients = intent.getStringExtra("ingredients");
         String procedure = intent.getStringExtra("procedure");
 
-        servingsPeople.setText("Serving(s):" +" "+readyIn);
-        servingsTime.setText("Preparation:" +" "+serving + "Mins");
+        servingsPeople.setText("Serving(s):" +" "+serving);
+        servingsTime.setText("Preparation:" +" "+ readyIn+ "Mins");
         ingredientsDetail.setText(ingredients);
         procedureDetail.setText(procedure);
         UploadedBy.setText("By:"+ " " + uploadedBy);

@@ -63,9 +63,7 @@ public class CategoryFragment extends Fragment implements CategoryView  {
         super.onViewCreated(view, savedInstanceState);
 
         if (getArguments() != null){
-//            textCategory.setText(getArguments().getString("DESC"));
-//            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategory);
-//            Picasso.get().load(getArguments().getString("IMAGE")).into(imageCategoryBg);
+
 
             descDialog = new AlertDialog.Builder(getActivity()).setTitle(getArguments().getString("NAME")).setMessage(getArguments().getString("DESC"));
 

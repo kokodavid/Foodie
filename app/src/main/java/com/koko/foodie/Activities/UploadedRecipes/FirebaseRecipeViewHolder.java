@@ -21,6 +21,7 @@ import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
+import com.koko.foodie.SharedPref;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -36,6 +37,10 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
     public static final String EXTRA_POSITION = "position";
     public static final String EXTRA_DETAIL = "position";
 
+    SharedPref sharedPref = new SharedPref();
+
+    uploadData recipe;
+
     public  FirebaseRecipeViewHolder(View itemView){
         super(itemView);
         mView = itemView;
@@ -46,15 +51,28 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
 
      public void bindRecipe(uploadData recipe){
+
+
+        this.recipe = recipe;
+
          ImageView recipeImage = (ImageView) mView.findViewById(R.id.mealThumb);
          TextView recipeName = (TextView) mView.findViewById(R.id.mealName);
          TextView readyIn = (TextView) mView.findViewById(R.id.readyIn);
          TextView serving = (TextView) mView.findViewById(R.id.servings);
 
 
+
+
+
          TextView procedure = (TextView) mView.findViewById(R.id.procedure);
          TextView uploadedBy = (TextView) mView.findViewById(R.id.uploadedBy);
          TextView ingredients = (TextView) mView.findViewById(R.id.ingredients);
+
+
+        sharedPref.initSharedPref(mContext);
+
+
+
 
 
          Picasso.get().load(recipe.getImg()).into(recipeImage);
@@ -71,6 +89,8 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
 
         Intent intent = new Intent(mContext, FirebaseDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 
         TextView foodName = v.findViewById(R.id.mealName);
         TextView serving = v.findViewById(R.id.readyIn);
@@ -78,6 +98,10 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         TextView ingredients = v.findViewById(R.id.ingredients);
         TextView procedure = v.findViewById(R.id.procedure);
         TextView uploadedBy = v.findViewById(R.id.uploadedBy);
+
+
+        sharedPref.writeStr("image", recipe.getImg());
+
 
         intent.putExtra("serving", serving.getText());
         intent.putExtra("ingredients", ingredients.getText());

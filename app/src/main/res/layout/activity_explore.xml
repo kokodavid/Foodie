@@ -198,11 +198,10 @@
                         <androidx.cardview.widget.CardView
                             android:onClick="search"
                             android:id="@+id/search"
-                            app:cardCornerRadius="10dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginRight="20dp"
-                            android:elevation="15dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:elevation="10dp"
                             android:layout_width="140dp"
                             android:layout_height="180dp">
 

@@ -176,12 +176,15 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/border"
-                            android:hint=""
-                            android:inputType="text"
+                            android:hint="Put each ingredient on its own line.\nHint:\nBeef - 1kg\nChicken - 1kg"
                             android:padding="15dp"
                             android:textColor="@color/textColor"
                             android:textColorHint="#AEAEAE"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:lines="8"
+                            android:gravity="top|left"
+                            android:scrollbars="vertical"
+                            android:inputType="textMultiLine"/>
 
                         <TextView
                             android:id="@+id/titletext3"
@@ -204,12 +207,15 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="30dp"
                             android:background="@drawable/border"
-                            android:hint=""
-                            android:inputType="text"
+                            android:hint="Put each step on its own line."
                             android:padding="15dp"
                             android:textColor="@color/textColor"
                             android:textColorHint="#AEAEAE"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:lines="8"
+                            android:gravity="top|left"
+                            android:scrollbars="vertical"
+                            android:inputType="textMultiLine"/>
 
                         <Button
                             android:id="@+id/upload_recipe"

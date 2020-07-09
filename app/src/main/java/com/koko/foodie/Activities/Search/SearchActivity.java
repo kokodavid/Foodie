@@ -68,6 +68,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
 
+        progressBar.setVisibility(View.INVISIBLE);
+
 
         searchFoods.setOnClickListener(new View.OnClickListener() {
             @Override
