@@ -77,7 +77,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
          Picasso.get().load(recipe.getImg()).into(recipeImage);
          recipeName.setText(recipe.getName());
-         readyIn.setText(recipe.getTime());
+         readyIn.setText(recipe.getTime());f
          serving.setText(recipe.getCount());
          procedure.setText(recipe.getProcedure());
          uploadedBy.setText(recipe.getUploaded_by());
