@@ -15,19 +15,23 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
+        <activity android:name=".Activities.Profile.ProfileActivity"></activity>
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBarr"></activity>
-        <activity android:name=".Activities.UploadedRecipes.FirebaseActivity"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBarr"/>
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.mealPlanner.MealPlanner"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
-        <activity android:name=".Activities.Cocktails.AllCocktails"
+        <activity
+            android:name=".Activities.Cocktails.AllCocktails"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBarr"/>
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.FoodDetails.FoodDetailActivity"
             android:launchMode="singleTask"
@@ -36,9 +40,10 @@
             android:name=".Activities.Explore.ExploreActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
-        <activity android:name=".Activities.WinePairing.WinePairingActivity"
+        <activity
+            android:name=".Activities.WinePairing.WinePairingActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBarr"/>
+            android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.UploadRecipeActivity"
             android:launchMode="singleTask"
