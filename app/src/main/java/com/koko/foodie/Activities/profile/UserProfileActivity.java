@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,11 +22,9 @@ import com.koko.foodie.Activities.profile.UserRecipeViewHolder;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Preferences;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfileActivity extends AppCompatActivity implements UserProfileView {
 
@@ -35,7 +32,6 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     @BindView(R.id.user_recipes)
     RecyclerView recyclerView;
 
-    UserProfilePresenter presenter;
 
     DatabaseReference userRecipes;
     private FirebaseRecyclerAdapter<uploadData, UserRecipeViewHolder> mFirebaseAdapter;
@@ -47,8 +43,7 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
         setContentView(R.layout.activity_user_profile);
         ButterKnife.bind(this);
 
-        presenter = new UserProfilePresenter(this);
-        presenter.getUserinfo();
+
 //        presenter.getUserRecipes();
         String uid = Preferences.getUid(this);
         userRecipes = FirebaseDatabase.getInstance().getReference("Recipes");
