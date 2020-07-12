@@ -1,7 +1,9 @@
-package com.koko.foodie.Activities.profile;
+package com.koko.foodie.Activities.Profile;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.koko.foodie.Activities.Profile.UserProfileActivity;
+import com.koko.foodie.Activities.profile.UserProfileView;
 
 public class UserProfilePresenter extends UserProfileActivity {
 

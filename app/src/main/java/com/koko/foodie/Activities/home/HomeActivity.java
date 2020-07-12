@@ -30,11 +30,13 @@ import com.koko.foodie.Activities.Favorite.FavoriteDataSource;
 import com.koko.foodie.Activities.Favorite.FavoriteRespository;
 import com.koko.foodie.Activities.Favorite.FavoritesActivity;
 import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
+import com.koko.foodie.Activities.Profile.ProfileActivity;
+import com.koko.foodie.Activities.Profile.UserProfileActivity;
 import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
-import com.koko.foodie.Activities.profile.UserProfileActivity;
+
 import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
@@ -133,13 +135,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
                         startActivity(favorites);
                         break;
 
-                    case R.id.add_recipe:
-                        Intent addRecipe = new Intent(HomeActivity.this, UploadRecipeActivity.class);
-                        addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(addRecipe);
-                        break;
                     case R.id.user_profile:
-                        Intent profile = new Intent(HomeActivity.this, UserProfileActivity.class);
+                        Intent profile = new Intent(HomeActivity.this, ProfileActivity.class);
                         profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(profile);
                     }

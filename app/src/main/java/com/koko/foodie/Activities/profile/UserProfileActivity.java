@@ -1,4 +1,4 @@
-package com.koko.foodie.Activities.profile;
+package com.koko.foodie.Activities.Profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.koko.foodie.Activities.profile.UserProfileView;
+import com.koko.foodie.Activities.profile.UserRecipeViewHolder;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Preferences;
@@ -29,12 +31,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfileActivity extends AppCompatActivity implements UserProfileView {
 
-    @BindView(R.id.username)
-    TextView userName;
+
     @BindView(R.id.user_recipes)
     RecyclerView recyclerView;
-    @BindView(R.id.profile_image)
-    CircleImageView imageView;
+
     UserProfilePresenter presenter;
 
     DatabaseReference userRecipes;
@@ -80,8 +80,6 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     @Override
     public void setUserinfo(FirebaseUser user) {
         //set User info
-        Picasso.get().load(user.getPhotoUrl()).into(imageView);
-        userName.setText(user.getDisplayName());
 
     }
     @Override
