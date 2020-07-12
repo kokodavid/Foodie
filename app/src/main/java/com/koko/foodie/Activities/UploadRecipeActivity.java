@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,10 +18,15 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -66,6 +72,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
     EditText recipe_procedure;
     @BindView(R.id.upload_recipe)
     Button upload_recipe;
+    @BindView(R.id.cancel)
+    Button delete;
     private Validator validator;
     private DatabaseReference recipes;
     private KProgressHUD kProgressHUD;
@@ -75,24 +83,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
         ButterKnife.bind(this);
-        if (Preferences.getRName(this)!=null || !Preferences.getRName(this).isEmpty()) {
-            Intent intent = getIntent();
-            String name = intent.getStringExtra("name");
-            String readyIn = intent.getStringExtra("readyIn");
-            String serving = intent.getStringExtra("serving");
-            String uploadedBy = intent.getStringExtra("uploadedBy");
-            String ingredients = intent.getStringExtra("ingredients");
-            String procedure = intent.getStringExtra("procedure");
-
-            recipe_name.setText(name);
-//            recipe_category.setText();
-            recipe_count.setText(serving);
-            recipe_ingredients.setText(ingredients);
-            recipe_cookTime.setText(readyIn);
-            recipe_procedure.setText(procedure);
-
-            upload_recipe.setText("Update Recipe");
-
+        if (Preferences.getRName(this)!=null && !Preferences.getRName(this).isEmpty()) {
+            update();
         }
         // init validator
         validator = new Validator(this);
@@ -100,6 +92,67 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
 
 
+    }
+
+    private void update() {
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String readyIn = intent.getStringExtra("readyIn");
+        String serving = intent.getStringExtra("serving");
+        String uploadedBy = intent.getStringExtra("uploadedBy");
+        String ingredients = intent.getStringExtra("ingredients");
+        String procedure = intent.getStringExtra("procedure");
+
+        recipe_name.setText(name);
+//            recipe_category.setText();
+        recipe_count.setText(serving);
+        recipe_ingredients.setText(ingredients);
+        recipe_cookTime.setText(readyIn);
+        recipe_procedure.setText(procedure);
+
+        upload_recipe.setText("Update Recipe");
+
+        // update recipe
+        upload_recipe.setOnClickListener(v->{
+            Toast.makeText(this,"okay",Toast.LENGTH_SHORT).show();
+        });
+
+        // delete
+        delete.setOnClickListener(v->{
+            kProgressHUD = new KProgressHUD(this)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel("Please wait")
+                    .setDetailsLabel("Deleting recipe")
+                    .setCancellable(true)
+                    .setAnimationSpeed(2)
+                    .setDimAmount(0.5f)
+                    .show();
+            recipes= FirebaseDatabase.getInstance().getReference("Recipes");
+            Query query = recipes.child("name").equalTo(name);
+
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), new StringBuilder(name).append("Removed From Recipes" + "").toString(),Snackbar.LENGTH_LONG);
+                    snackbar.setAction("UNDO", v->{
+                        //TODO undo function
+                    });
+                    snackbar.show();
+                    for(DataSnapshot ds: dataSnapshot.getChildren()){
+                        ds.getRef().removeValue();
+                        kProgressHUD.dismiss();
+
+                    }
+                    finish();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                        finish();
+                }
+            });
+        });
     }
 
     public void btnSelectImage(View view) {
