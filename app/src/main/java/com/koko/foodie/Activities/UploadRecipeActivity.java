@@ -3,6 +3,7 @@ package com.koko.foodie.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,6 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -83,13 +83,12 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
         ButterKnife.bind(this);
-        if (Preferences.getRName(this)!=null && !Preferences.getRName(this).isEmpty()) {
+        if (Preferences.getRName(this) != null && !Preferences.getRName(this).isEmpty()) {
             update();
         }
         // init validator
         validator = new Validator(this);
         validator.setValidationListener(this);
-
 
 
     }
@@ -113,12 +112,12 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         upload_recipe.setText("Update Recipe");
 
         // update recipe
-        upload_recipe.setOnClickListener(v->{
-            Toast.makeText(this,"okay",Toast.LENGTH_SHORT).show();
+        upload_recipe.setOnClickListener(v -> {
+            Toast.makeText(this, "okay", Toast.LENGTH_SHORT).show();
         });
 
         // delete
-        delete.setOnClickListener(v->{
+        delete.setOnClickListener(v -> {
             kProgressHUD = new KProgressHUD(this)
                     .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                     .setLabel("Please wait")
@@ -127,29 +126,25 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
                     .setAnimationSpeed(2)
                     .setDimAmount(0.5f)
                     .show();
-            recipes= FirebaseDatabase.getInstance().getReference("Recipes");
-            Query query = recipes.child("name").equalTo(name);
+            recipes = FirebaseDatabase.getInstance().getReference(RECIPES);
+            Query query = recipes.orderByChild("name").equalTo(name);
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), new StringBuilder(name).append("Removed From Recipes" + "").toString(),Snackbar.LENGTH_LONG);
-                    snackbar.setAction("UNDO", v->{
-                        //TODO undo function
-                    });
-                    snackbar.show();
-                    for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         ds.getRef().removeValue();
                         kProgressHUD.dismiss();
-
+                        finish();
                     }
-                    finish();
+
 
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                        finish();
+                    Log.e("delete", databaseError.toString());
                 }
             });
         });
@@ -163,7 +158,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
     }
 
     public void uploadImage() {
-       kProgressHUD = new KProgressHUD(this)
+        kProgressHUD = new KProgressHUD(this)
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setLabel("Please wait")
                 .setDetailsLabel("Adding recipe")
@@ -210,7 +205,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
             //use a log message
         }*/
 
-       //get user_name information
+        //get user_name information
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         String user_name = user.getDisplayName();
@@ -313,7 +308,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(task -> {
-                    startActivity(new Intent(this,HomeActivity.class));
+                    startActivity(new Intent(this, HomeActivity.class));
                 });
     }
 
