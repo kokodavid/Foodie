@@ -15,11 +15,17 @@
         android:roundIcon="@drawable/foodie"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"></activity>
+
         <activity android:name=".Activities.Profile.ProfileActivity"></activity>
         <activity
             android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
+
         <activity
             android:name=".Activities.UploadedRecipes.FirebaseActivity"
             android:launchMode="singleTop"
@@ -54,6 +60,11 @@
             android:theme="@style/AppTheme.NoActionBarr" />
         <activity
             android:name=".Activities.Favorite.FavoritesActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+
+        <activity
+            android:name=".Activities.profile.UserProfileActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr" />
 

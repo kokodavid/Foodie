@@ -10,6 +10,7 @@ public class uploadData {
     private String time;
     private String ingredients;
     private String procedure;
+    private String uid;
 
 
 
@@ -21,7 +22,7 @@ public class uploadData {
         this.time = time;
     }
 
-    public uploadData(String img, String uploaded_by, String name, String count, String category, String time, String ingredients, String procedure) {
+    public uploadData(String img, String uploaded_by, String name, String count, String category, String time, String ingredients, String procedure, String uid) {
         this.img = img;
         this.uploaded_by = uploaded_by;
         this.name = name;
@@ -30,6 +31,7 @@ public class uploadData {
         this.time = time;
         this.ingredients = ingredients;
         this.procedure = procedure;
+        this.uid = uid;
     }
 
     public String getImg() {
@@ -86,6 +88,14 @@ public class uploadData {
 
     public void setProcedure(String procedure) {
         this.procedure = procedure;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public uploadData() {

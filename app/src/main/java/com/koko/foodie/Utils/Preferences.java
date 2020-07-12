@@ -9,16 +9,16 @@ public class Preferences {
 
     }
 
-    public static boolean saveName(String name, Context context) {
+    public static boolean saveUid(String uid, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor prefsEditor = preferences.edit();
-        prefsEditor.putString("name", name);
+        prefsEditor.putString("uid", uid);
         prefsEditor.apply();
         return true;
     }
 
-    public static String getName(Context context) {
+    public static String getUid(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString("name", null);
+        return preferences.getString("uid", null);
     }
 }

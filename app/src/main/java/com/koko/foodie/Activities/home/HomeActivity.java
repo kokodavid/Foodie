@@ -1,17 +1,10 @@
 package com.koko.foodie.Activities.home;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,11 +12,16 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DataSnapshot;
 import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
 import com.koko.foodie.Activities.Database.FoodieRoomDB;
@@ -36,19 +34,17 @@ import com.koko.foodie.Activities.Search.SearchActivity;
 import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
+import com.koko.foodie.Activities.profile.UserProfileActivity;
 import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
-
-import com.koko.foodie.Adapter.UserRecipeAdapter;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
-import com.koko.foodie.Models.Food;
-import com.koko.foodie.Models.TestModelB;
-import com.koko.foodie.Models.uploadData;
-import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Models.Categories;
+import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.Meals;
+import com.koko.foodie.Models.TestModelB;
 import com.koko.foodie.R;
+import com.koko.foodie.Utils.Common;
 import com.koko.foodie.Utils.Utils;
 
 import java.io.Serializable;
@@ -142,6 +138,10 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
                         addRecipe.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(addRecipe);
                         break;
+                    case R.id.user_profile:
+                        Intent profile = new Intent(HomeActivity.this, UserProfileActivity.class);
+                        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(profile);
                     }
                 return true;
             }
