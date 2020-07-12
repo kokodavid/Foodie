@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.profile.UserProfileActivity">
+   >
 
     <View
         android:id="@+id/view"
@@ -27,13 +27,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="My Recipe"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         app:layout_anchor="@id/view"
         app:layout_anchorGravity="center" />
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,63 +44,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
-
-                    <TextView
-                        android:id="@+id/username"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="John Doe"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/white"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_gravity="center_vertical"/>
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/imgUrl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Your Recipes"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="15sp"/>
+                android:layout_height="match_parent">
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/user_recipes"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="-15dp"
-                    android:layout_marginRight="-15dp"/>
+                  />
 
 
-            </LinearLayout>
+            </RelativeLayout>
+
+
+
 
         </androidx.core.widget.NestedScrollView>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

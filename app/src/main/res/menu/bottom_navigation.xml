@@ -8,9 +8,6 @@
         android:icon="@drawable/ic_favorite"
         android:title="Favorites"/>
 
-    <item android:id="@+id/add_recipe"
-        android:icon="@drawable/ic_baseline_add_24"
-        android:title="Add Recipe"/>
 
     <item android:id="@+id/user_profile"
         android:title="Profile"

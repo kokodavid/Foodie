@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.mealPlanner.MealPlanner"
+    tools:context=".Activities.Profile.ProfileActivity"
     android:background="@color/background">
 
     <View
@@ -49,8 +49,8 @@
             android:id="@+id/userImage"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/meal_plan_generator"/>
 
         <TextView
@@ -61,18 +61,18 @@
             android:textColor="@android:color/white"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="35dp"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:text="KokoDave"
             android:layout_toRightOf="@+id/userImage"
             />
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_below="@+id/userImage"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="270dp"
             app:cardBackgroundColor="@color/bottomNavBackground"
             app:cardCornerRadius="5dp">
 
@@ -81,6 +81,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:onClick="myRecipe"
                     android:id="@+id/myRecipe"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
@@ -95,6 +96,7 @@
 
 
                 <ImageView
+                    android:onClick="myRecipe"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_baseline_arrow_forward_ios_24"
@@ -107,7 +109,7 @@
 
                 <View
                     android:id="@+id/view1"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_width="fill_parent"
@@ -143,7 +145,7 @@
 
                 <View
                     android:id="@+id/view2"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_width="fill_parent"
@@ -170,7 +172,7 @@
 
                 <View
                     android:id="@+id/view3"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_width="fill_parent"
