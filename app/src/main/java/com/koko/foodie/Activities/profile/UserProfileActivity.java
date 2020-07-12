@@ -19,15 +19,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.koko.foodie.Activities.UploadedRecipes.FirebaseRecipeViewHolder;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Preferences;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfileActivity extends AppCompatActivity implements UserProfileView {
 
@@ -35,11 +36,13 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     TextView userName;
     @BindView(R.id.user_recipes)
     RecyclerView recyclerView;
+    @BindView(R.id.profile_image)
+    CircleImageView imageView;
     UserProfilePresenter presenter;
     ArrayList<DataSnapshot> user_recipes = new ArrayList<>();
 
     DatabaseReference userRecipes;
-    private FirebaseRecyclerAdapter<uploadData, FirebaseRecipeViewHolder> mFirebaseAdapter;
+    private FirebaseRecyclerAdapter<uploadData, UserRecipeViewHolder> mFirebaseAdapter;
     Query users;
 
     @Override
@@ -61,22 +64,29 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     private void setUpfirebaseAdapter() {
         FirebaseRecyclerOptions<uploadData> options = new FirebaseRecyclerOptions.Builder<uploadData>().setQuery(users, uploadData.class).build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<uploadData, FirebaseRecipeViewHolder>(options) {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<uploadData, UserRecipeViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int i, @NonNull uploadData uploadData) {
+            protected void onBindViewHolder(@NonNull UserRecipeViewHolder firebaseRecipeViewHolder, int i, @NonNull uploadData uploadData) {
                 firebaseRecipeViewHolder.bindRecipe(uploadData);
             }
 
             @NonNull
             @Override
-            public FirebaseRecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public UserRecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_meal_spoon_one, parent, false);
-                return new FirebaseRecipeViewHolder(view);
+                return new UserRecipeViewHolder(view);
             }
         };
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setClipToPadding(false);
         recyclerView.setAdapter(mFirebaseAdapter);
+    }
+    @Override
+    public void setUserinfo(FirebaseUser user) {
+        //set User info
+        Picasso.get().load(user.getPhotoUrl()).into(imageView);
+        userName.setText(user.getDisplayName());
+
     }
     @Override
     protected void onStart() {
@@ -93,11 +103,7 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     }
 
 
-    @Override
-    public void setUserinfo(FirebaseUser user) {
-        String mail = user.getPhotoUrl().toString();
-        userName.setText(mail);
-    }
+
 /*
     @Override
     public void setUserRecipes(ArrayList<DataSnapshot> userRecipes) {

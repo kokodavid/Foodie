@@ -115,6 +115,8 @@ dependencies {
 
     implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
 
+    //circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
 }
