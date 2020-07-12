@@ -75,11 +75,29 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
         ButterKnife.bind(this);
+        if (Preferences.getRName(this)!=null || !Preferences.getRName(this).isEmpty()) {
+            Intent intent = getIntent();
+            String name = intent.getStringExtra("name");
+            String readyIn = intent.getStringExtra("readyIn");
+            String serving = intent.getStringExtra("serving");
+            String uploadedBy = intent.getStringExtra("uploadedBy");
+            String ingredients = intent.getStringExtra("ingredients");
+            String procedure = intent.getStringExtra("procedure");
 
+            recipe_name.setText(name);
+//            recipe_category.setText();
+            recipe_count.setText(serving);
+            recipe_ingredients.setText(ingredients);
+            recipe_cookTime.setText(readyIn);
+            recipe_procedure.setText(procedure);
 
+            upload_recipe.setText("Update Recipe");
+
+        }
         // init validator
         validator = new Validator(this);
         validator.setValidationListener(this);
+
 
 
     }
@@ -267,5 +285,12 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
     public void cancelUpload(View view) {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Preferences.saveRName(null, this);
+
     }
 }

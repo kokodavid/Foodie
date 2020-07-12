@@ -8,35 +8,34 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.koko.foodie.Activities.UploadedRecipes.FirebaseDetailActivity;
+import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.SharedPref;
+import com.koko.foodie.Utils.Preferences;
 import com.squareup.picasso.Picasso;
 
 public class UserRecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        View mView;
-        Context mContext;
-public static final String EXTRA_CATEGORY = "category";
-public static final String EXTRA_POSITION = "position";
-public static final String EXTRA_DETAIL = "position";
+    public static final String EXTRA_CATEGORY = "category";
+    public static final String EXTRA_POSITION = "position";
+    public static final String EXTRA_DETAIL = "position";
+    View mView;
+    Context mContext;
+    SharedPref sharedPref = new SharedPref();
 
-        SharedPref sharedPref = new SharedPref();
+    uploadData recipe;
 
-        uploadData recipe;
-
-public  UserRecipeViewHolder(View itemView){
+    public UserRecipeViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
 
-        }
+    }
 
 
-
-    public void bindRecipe(uploadData recipe){
+    public void bindRecipe(uploadData recipe) {
 
 
         this.recipe = recipe;
@@ -47,18 +46,12 @@ public  UserRecipeViewHolder(View itemView){
         TextView serving = (TextView) mView.findViewById(R.id.servings);
 
 
-
-
-
         TextView procedure = (TextView) mView.findViewById(R.id.procedure);
         TextView uploadedBy = (TextView) mView.findViewById(R.id.uploadedBy);
         TextView ingredients = (TextView) mView.findViewById(R.id.ingredients);
 
 
         sharedPref.initSharedPref(mContext);
-
-
-
 
 
         Picasso.get().load(recipe.getImg()).into(recipeImage);
@@ -68,14 +61,14 @@ public  UserRecipeViewHolder(View itemView){
         procedure.setText(recipe.getProcedure());
         uploadedBy.setText(recipe.getUploaded_by());
         ingredients.setText(recipe.getIngredients());
-        }
+    }
 
-@Override
-public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
 
-    //TODO change to user edit activity
+        //TODO change to user edit activity
 
-        Intent intent = new Intent(mContext, FirebaseDetailActivity.class);
+        Intent intent = new Intent(mContext, UploadRecipeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         TextView foodName = v.findViewById(R.id.mealName);
         TextView serving = v.findViewById(R.id.readyIn);
@@ -86,17 +79,16 @@ public void onClick(View v) {
 
 
         sharedPref.writeStr("image", recipe.getImg());
-
-
+        Preferences.saveRName(foodName.getText().toString(), mContext);
         intent.putExtra("serving", serving.getText());
         intent.putExtra("ingredients", ingredients.getText());
         intent.putExtra("procedure", procedure.getText());
         intent.putExtra("uploadedBy", uploadedBy.getText());
 
-        intent.putExtra("name",foodName.getText());
-        intent.putExtra("readyIn",readyIn.getText());
+        intent.putExtra("name", foodName.getText());
+        intent.putExtra("readyIn", readyIn.getText());
 
         mContext.startActivity(intent);
 
-        }
-        }
+    }
+}

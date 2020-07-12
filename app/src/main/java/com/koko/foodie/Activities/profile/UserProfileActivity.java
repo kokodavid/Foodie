@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -23,8 +22,6 @@ import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.Utils.Preferences;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +36,6 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
     @BindView(R.id.profile_image)
     CircleImageView imageView;
     UserProfilePresenter presenter;
-    ArrayList<DataSnapshot> user_recipes = new ArrayList<>();
 
     DatabaseReference userRecipes;
     private FirebaseRecyclerAdapter<uploadData, UserRecipeViewHolder> mFirebaseAdapter;

@@ -21,4 +21,18 @@ public class Preferences {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString("uid", null);
     }
+
+    public static boolean saveRName(String rName, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor prefsEditor = preferences.edit();
+        prefsEditor.putString("rName", rName);
+        prefsEditor.apply();
+        return true;
+    }
+
+    public static String getRName(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString("rName", null);
+    }
+
 }
