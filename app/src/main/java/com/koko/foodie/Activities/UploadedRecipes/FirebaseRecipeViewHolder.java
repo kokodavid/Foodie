@@ -2,32 +2,16 @@ package com.koko.foodie.Activities.UploadedRecipes;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.koko.foodie.Activities.FoodDetails.FoodDetailActivity;
-import com.koko.foodie.Activities.home.HomeActivity;
-import com.koko.foodie.Models.Food;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
 import com.koko.foodie.SharedPref;
 import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -77,7 +61,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
          Picasso.get().load(recipe.getImg()).into(recipeImage);
          recipeName.setText(recipe.getName());
-         readyIn.setText(recipe.getTime());f
+         readyIn.setText(recipe.getTime());
          serving.setText(recipe.getCount());
          procedure.setText(recipe.getProcedure());
          uploadedBy.setText(recipe.getUploaded_by());
@@ -90,8 +74,6 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
         Intent intent = new Intent(mContext, FirebaseDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-
         TextView foodName = v.findViewById(R.id.mealName);
         TextView serving = v.findViewById(R.id.readyIn);
         TextView readyIn = v.findViewById(R.id.servings);

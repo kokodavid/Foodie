@@ -1,28 +1,19 @@
 package com.koko.foodie.Activities;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +27,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
+import com.koko.foodie.Utils.Preferences;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
@@ -151,8 +143,9 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         String user_name = user.getDisplayName();
-        //TODO: remove redundancy by getting during retrieval
-
+        String uid = FirebaseAuth.getInstance().getUid();
+        //save uid locally
+        Preferences.saveUid(uid, this);
         uploadData uploadData = new uploadData(
                 imageUrl,
                 user_name,
@@ -161,7 +154,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
                 recipe_category.getText().toString(),
                 recipe_cookTime.getText().toString(),
                 recipe_ingredients.getText().toString(),
-                recipe_procedure.getText().toString()
+                recipe_procedure.getText().toString(),
+                uid
 
         );
 
@@ -197,7 +191,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 //        });
 //
         String recipe_title = recipe_name.getText().toString();
-        String uid = FirebaseAuth.getInstance().getUid();
+//        String uid = FirebaseAuth.getInstance().getUid();
         recipes = FirebaseDatabase
                 .getInstance()
                 .getReference()
