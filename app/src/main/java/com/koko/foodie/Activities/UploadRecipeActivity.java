@@ -1,13 +1,16 @@
 package com.koko.foodie.Activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +41,7 @@ import com.koko.foodie.Utils.Preferences;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 import java.util.List;
@@ -74,6 +79,8 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
     Button upload_recipe;
     @BindView(R.id.cancel)
     Button delete;
+    @BindView(R.id.page_title)
+    TextView title;
     private Validator validator;
     private DatabaseReference recipes;
     private KProgressHUD kProgressHUD;
@@ -98,22 +105,34 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
         String name = intent.getStringExtra("name");
         String readyIn = intent.getStringExtra("readyIn");
         String serving = intent.getStringExtra("serving");
-        String uploadedBy = intent.getStringExtra("uploadedBy");
+        String imgUrl = intent.getStringExtra("imgUrl");
         String ingredients = intent.getStringExtra("ingredients");
         String procedure = intent.getStringExtra("procedure");
+        String category = intent.getStringExtra("category");
 
+        Picasso.get().load(imgUrl).into(recipeImage);
+        recipeImage.setEnabled(false);
         recipe_name.setText(name);
-//            recipe_category.setText();
+        recipe_name.setEnabled(false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            recipe_name.setTooltipText("Name cannot be edited");
+        }
         recipe_count.setText(serving);
         recipe_ingredients.setText(ingredients);
         recipe_cookTime.setText(readyIn);
         recipe_procedure.setText(procedure);
+        recipe_category.setText(category);
 
+        // UpdateUI
         upload_recipe.setText("Update Recipe");
+        delete.setText("Delete");
+        delete.setTextColor(Color.RED);
+        title.setText("Update Recipe");
+
 
         // update recipe
         upload_recipe.setOnClickListener(v -> {
-            Toast.makeText(this, "okay", Toast.LENGTH_SHORT).show();
+            update_recipe(name,imgUrl);
         });
 
         // delete
@@ -132,7 +151,14 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), new StringBuilder(name).append("Removed From Recipes" + "").toString(), Snackbar.LENGTH_LONG);
 
+                    snackbar.setAction("UNDO", v -> {
+                        finish();
+                        startActivity(getIntent());
+                    });
+                    snackbar.setActionTextColor(Color.YELLOW);
+                    snackbar.show();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         ds.getRef().removeValue();
                         kProgressHUD.dismiss();
@@ -148,6 +174,33 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
                 }
             });
         });
+
+
+    }
+
+    private void update_recipe(String name,String image_url) {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String user_name = user.getDisplayName();
+        String uid = FirebaseAuth.getInstance().getUid();
+
+        uploadData uploadData = new uploadData(
+                image_url,
+                user_name,
+                recipe_name.getText().toString(),
+                recipe_count.getText().toString(),
+                recipe_category.getText().toString(),
+                recipe_cookTime.getText().toString(),
+                recipe_ingredients.getText().toString(),
+                recipe_procedure.getText().toString(),
+                uid
+
+        );
+        recipes =  FirebaseDatabase.getInstance().getReference(RECIPES);
+
+        recipes.child(name).setValue(uploadData);
+        finish();
     }
 
     public void btnSelectImage(View view) {

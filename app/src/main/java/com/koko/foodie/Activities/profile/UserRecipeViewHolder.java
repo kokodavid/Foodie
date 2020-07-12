@@ -66,8 +66,6 @@ public class UserRecipeViewHolder extends RecyclerView.ViewHolder implements Vie
     @Override
     public void onClick(View v) {
 
-        //TODO change to user edit activity
-
         Intent intent = new Intent(mContext, UploadRecipeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         TextView foodName = v.findViewById(R.id.mealName);
@@ -84,7 +82,8 @@ public class UserRecipeViewHolder extends RecyclerView.ViewHolder implements Vie
         intent.putExtra("ingredients", ingredients.getText());
         intent.putExtra("procedure", procedure.getText());
         intent.putExtra("uploadedBy", uploadedBy.getText());
-
+        intent.putExtra("imgUrl", recipe.getImg());
+        intent.putExtra("category", recipe.getCategory());
         intent.putExtra("name", foodName.getText());
         intent.putExtra("readyIn", readyIn.getText());
 
