@@ -19,6 +19,13 @@
             android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBarr"></activity>
+
+        <activity android:name=".Activities.Profile.ProfileActivity"></activity>
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+
         <activity
             android:name=".Activities.UploadedRecipes.FirebaseActivity"
             android:launchMode="singleTop"
