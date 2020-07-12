@@ -115,12 +115,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
 
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
         initDB();
 
         bm.setItemRippleColor(ColorStateList.valueOf(getResources().getColor(R.color.start)));

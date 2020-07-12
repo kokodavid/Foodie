@@ -28,4 +28,11 @@
     </string-array>
 
     <string name="success">Recipe successfully uploaded</string>
+    <string name="about">Foodie is a Free App that provides Recipes for
+different Cocktails and Meals , All meals are
+categorized differently to help the User find all
+recipes with ease. We want to make it easier
+for foodies to do what they love- Cook, Eat and
+Share
+</string>
 </resources>

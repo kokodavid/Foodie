@@ -51,7 +51,7 @@
             android:layout_marginTop="25dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/meal_plan_generator"/>
+            android:src="@drawable/ic_baseline_person_24"/>
 
         <TextView
             android:id="@+id/userName"
@@ -62,9 +62,19 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="35dp"
             android:textSize="18dp"
-            android:text="KokoDave"
+            android:text="Username"
             android:layout_toRightOf="@+id/userImage"
             />
+
+
+        <ImageView
+            android:onClick="logout"
+            android:layout_below="@id/userName"
+            android:layout_width="100dp"
+            android:layout_toRightOf="@+id/userImage"
+            android:layout_marginLeft="20dp"
+            android:layout_height="50dp"
+            android:src="@drawable/disconnectcard"/>
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="30dp"
@@ -119,6 +129,7 @@
                     android:background="@color/textColor" />
 
                 <TextView
+                    android:onClick="about"
                     android:id="@+id/about"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
