@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.koko.foodie.Activities.Cocktails.CocktailActivity;
+import com.koko.foodie.Activities.Profile.ProfileActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 import com.koko.foodie.Activities.home.HomeActivity;
 import com.koko.foodie.Adapter.FavoriteAdapter;
@@ -81,6 +82,11 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerItem
                         Intent intent = new Intent(FavoritesActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        break;
+                    case R.id.user_profile:
+                        Intent user_profile = new Intent(FavoritesActivity.this, ProfileActivity.class);
+                        user_profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(user_profile);
                         break;
 
                 }

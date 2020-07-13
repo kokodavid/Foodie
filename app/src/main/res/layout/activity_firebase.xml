@@ -36,10 +36,18 @@
         app:layout_anchor="@id/view"
         app:layout_anchorGravity="center"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="75dp"
-        android:id="@+id/firebaseRecycler"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/firebaseRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </RelativeLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

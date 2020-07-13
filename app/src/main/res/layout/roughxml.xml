@@ -19,6 +19,11 @@
         android:background="@color/bottomNavBackground"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id"/>
 
         <ImageView
             android:id="@+id/mealThumb"
@@ -30,11 +35,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/sample_image_meal" />
 
-        <TextView
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/id"/>
         <TextView
             android:id="@+id/mealName"
             android:layout_width="214dp"

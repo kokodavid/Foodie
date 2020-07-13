@@ -47,7 +47,7 @@ public class IngredientsRecycler extends RecyclerView.Adapter<IngredientsRecycle
 
         String Image = fodie.get(position).getImage();
         Picasso.get().load("https://spoonacular.com/cdn/ingredients_250x250/" + Image)
-                .placeholder(R.drawable.sample_image_meal)
+                .placeholder(R.drawable.recipeholder)
                 .into(holder.DetailImage);
 
         String FoodName = fodie.get(position).getName();

@@ -125,6 +125,7 @@ public class UploadRecipeActivity extends AppCompatActivity implements Validator
 
         // UpdateUI
         upload_recipe.setText("Update Recipe");
+        upload_recipe.setTextColor(Color.WHITE);
         delete.setText("Delete");
         delete.setTextColor(Color.RED);
         title.setText("Update Recipe");

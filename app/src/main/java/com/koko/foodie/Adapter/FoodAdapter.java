@@ -53,7 +53,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.RecyclerViewHo
         Picasso.get().load("https://spoonacular.com/recipeImages/" + foodImage)
                 .centerCrop()
                 .resize(600,200)
-                .placeholder(R.drawable.ic_circle)
+                .placeholder(R.drawable.recipeholder)
                 .into(holder.mealThumb);
 
 

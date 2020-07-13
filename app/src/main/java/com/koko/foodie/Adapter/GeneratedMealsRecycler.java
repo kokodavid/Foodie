@@ -44,7 +44,7 @@ public class GeneratedMealsRecycler extends RecyclerView.Adapter<GeneratedMealsR
     public void onBindViewHolder(@NonNull GeneratedMealsRecycler.RecyclerViewHolder holder, int position) {
         String foodImage = meals.get(position).getImageType();
         Picasso.get().load("https://spoonacular.com/recipeImages/apple" + foodImage)
-                .placeholder(R.drawable.sample_image_meal)
+                .placeholder(R.drawable.recipeholder)
                 .into(holder.mealThumb);
 
 

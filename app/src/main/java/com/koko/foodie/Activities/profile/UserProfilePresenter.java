@@ -1,9 +1,11 @@
 package com.koko.foodie.Activities.Profile;
 
+import android.view.View;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.koko.foodie.Activities.Profile.UserProfileActivity;
-import com.koko.foodie.Activities.profile.UserProfileView;
+import com.koko.foodie.R;
 
 public class UserProfilePresenter extends UserProfileActivity {
 
@@ -14,8 +16,10 @@ public class UserProfilePresenter extends UserProfileActivity {
     }
 
     void getUserinfo() {
+        view.hideloading();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         view.setUserinfo(user);
+
     }
 
 //    void getUserRecipes(){

@@ -34,10 +34,12 @@ public class FoodDetailPresenter extends FoodDetailActivity {
 
 
     void getFoodDetails(int id){
+        view.showLoading();
         Call<TestModelB> foodInfoCall = Utils.getFoodDetailsApi().getFoodInformation(id, "6792adb5e9b544dc990c2499f73befb6");
         foodInfoCall.enqueue(new Callback<TestModelB>() {
             @Override
             public void onResponse(@NonNull Call<TestModelB> call,@NonNull Response<TestModelB> response) {
+                view.hideloading();
                 if (response.isSuccessful() && response.body() != null){
                     view.setFoodInfo(response.body().getExtendedIngredients(),response.body().getAnalyzedInstructions(),response.body().getImage());
                     steps = response.body().getAnalyzedInstructions().get(0).getSteps();

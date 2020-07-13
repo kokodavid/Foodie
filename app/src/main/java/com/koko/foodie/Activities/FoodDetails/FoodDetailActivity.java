@@ -17,7 +17,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -71,7 +73,8 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
 
     @BindView(R.id.readyTime)
     TextView servingsTime;
-
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
 
     @Override
@@ -99,7 +102,7 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
         String imageUrl = intent.getStringExtra("imageUrl");
         String foodId = intent.getStringExtra(EXTRA_POSITION);
 
-        Picasso.get().load("https://spoonacular.com/recipeImages/" + imageUrl).into(mealThumb);
+        Picasso.get().load("https://spoonacular.com/recipeImages/" + imageUrl).placeholder(R.drawable.recipeholder).into(mealThumb);
 
         int id = Integer.parseInt(foodId);
 
@@ -150,11 +153,13 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailV
 
     @Override
     public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideloading() {
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 

@@ -47,6 +47,8 @@ public class FirebaseActivity extends AppCompatActivity  {
 
 
 
+
+
 //        mRecipes.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -69,6 +71,7 @@ public class FirebaseActivity extends AppCompatActivity  {
                 .setQuery(mRecipes,uploadData.class)
                 .build();
 
+
         mFirebaseAdapter = new FirebaseRecyclerAdapter<uploadData, FirebaseRecipeViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int i, @NonNull uploadData uploadData) {
@@ -86,6 +89,7 @@ public class FirebaseActivity extends AppCompatActivity  {
         mRecyclerView.setClipToPadding(false);
         mRecyclerView.setAdapter(mFirebaseAdapter);
 
+
     }
 
     @Override
@@ -99,6 +103,7 @@ public class FirebaseActivity extends AppCompatActivity  {
         super.onStop();
         if(mFirebaseAdapter!= null) {
             mFirebaseAdapter.stopListening();
+
         }
     }
 

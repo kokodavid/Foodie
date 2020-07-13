@@ -54,7 +54,7 @@ public class UserRecipeViewHolder extends RecyclerView.ViewHolder implements Vie
         sharedPref.initSharedPref(mContext);
 
 
-        Picasso.get().load(recipe.getImg()).into(recipeImage);
+        Picasso.get().load(recipe.getImg()).placeholder(R.drawable.recipeholder).into(recipeImage);
         recipeName.setText(recipe.getName());
         readyIn.setText(recipe.getTime());
         serving.setText(recipe.getCount());

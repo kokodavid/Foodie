@@ -166,6 +166,7 @@
                     android:background="@color/textColor" />
 
                 <TextView
+                    android:onClick="share"
                     android:id="@+id/share"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
@@ -193,6 +194,7 @@
                     android:background="@color/textColor" />
 
                 <TextView
+                    android:onClick="rate"
                     android:id="@+id/Rate"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
@@ -221,6 +223,24 @@
 
 </androidx.core.widget.NestedScrollView>
 
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        app:itemTextColor="@color/textColor"
+        app:itemIconTint="@color/textColor"
+        app:itemRippleColor="@color/start"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottomNavBackground"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

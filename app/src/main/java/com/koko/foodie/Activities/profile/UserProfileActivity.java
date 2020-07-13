@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.koko.foodie.Activities.profile.UserProfileView;
 import com.koko.foodie.Activities.profile.UserRecipeViewHolder;
 import com.koko.foodie.Models.uploadData;
 import com.koko.foodie.R;
@@ -31,7 +31,6 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
 
     @BindView(R.id.user_recipes)
     RecyclerView recyclerView;
-
 
     DatabaseReference userRecipes;
     private FirebaseRecyclerAdapter<uploadData, UserRecipeViewHolder> mFirebaseAdapter;
@@ -48,6 +47,9 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
         String uid = Preferences.getUid(this);
         userRecipes = FirebaseDatabase.getInstance().getReference("Recipes");
         users = userRecipes.orderByChild("uid").equalTo(uid);
+
+
+
         setUpfirebaseAdapter();
 
     }
@@ -77,6 +79,24 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
         //set User info
 
     }
+
+    @Override
+    public void showLoading() {
+        findViewById(R.id.shimmerMeal2).setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void hideloading() {
+        findViewById(R.id.shimmerMeal2).setVisibility(View.GONE);
+
+    }
+
+    @Override
+    public void onErrorLoading(String message) {
+
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -88,6 +108,7 @@ public class UserProfileActivity extends AppCompatActivity implements UserProfil
         super.onStop();
         if(mFirebaseAdapter!= null) {
             mFirebaseAdapter.stopListening();
+
         }
     }
 
