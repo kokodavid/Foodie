@@ -128,10 +128,6 @@ public class CocktailActivity extends AppCompatActivity implements CocktailView 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
-        MenuItem favoriteItem = menu.findItem(R.id.favorite);
-        Drawable favoriteItemColor = favoriteItem.getIcon();
-        setupColorActionBarIcon(favoriteItemColor);
         return true;
     }
 
