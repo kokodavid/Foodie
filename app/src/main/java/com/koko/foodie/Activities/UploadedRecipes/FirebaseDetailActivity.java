@@ -98,8 +98,8 @@ public class FirebaseDetailActivity extends AppCompatActivity {
         String ingredients = intent.getStringExtra("ingredients");
         String procedure = intent.getStringExtra("procedure");
 
-        servingsPeople.setText("Serving(s):" +" "+serving);
-        servingsTime.setText("Preparation:" +" "+ readyIn+ "Mins");
+        servingsPeople.setText("Serving(s):" +" "+readyIn);
+        servingsTime.setText("Preparation:" +" "+ serving+ "Mins");
         ingredientsDetail.setText(ingredients);
         procedureDetail.setText(procedure);
         UploadedBy.setText("By:"+ " " + uploadedBy);
