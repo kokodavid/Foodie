@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -188,6 +189,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         viewPagerCategory.setAdapter(pagerAdapter);
         viewPagerCategory.setPadding(10, 0, 500, 0);
         pagerAdapter.notifyDataSetChanged();
+
+
 
         pagerAdapter.setOnItemClickListener((view, position) -> {
             Intent intent = new Intent(this, CategoryActivity.class);

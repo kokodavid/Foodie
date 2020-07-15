@@ -165,6 +165,8 @@
 
                     />
 
+
+
                 <include android:id="@+id/shimmerCategory"
                     layout="@layout/item_recycler_category_shimmer" />
 
