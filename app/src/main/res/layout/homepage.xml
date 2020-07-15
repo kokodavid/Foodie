@@ -127,7 +127,7 @@
                     android:fontFamily="@font/roboto_medium"
                     android:layout_height="wrap_content"/>
 
-                <androidx.viewpager.widget.ViewPager
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/cocktailLatest"
                     android:foregroundGravity="center"
                     android:overScrollMode="never"
@@ -154,7 +154,7 @@
                     android:layout_height="wrap_content"/>
 
 
-                <androidx.viewpager.widget.ViewPager
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerLatest"
                     android:foregroundGravity="center"
                     android:overScrollMode="never"
@@ -184,7 +184,7 @@
                     android:fontFamily="@font/roboto_medium"
                     android:layout_height="wrap_content"/>
 
-                <androidx.viewpager.widget.ViewPager
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_marginTop="10dp"
                     android:id="@+id/viewPagerHeader"
                     android:foregroundGravity="center"

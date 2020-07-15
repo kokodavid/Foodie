@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -38,9 +39,12 @@ import com.koko.foodie.Activities.UploadRecipeActivity;
 import com.koko.foodie.Activities.category.CategoryActivity;
 import com.koko.foodie.Activities.detail.DetailActivity;
 
+import com.koko.foodie.Adapter.CategoryRecyclerView;
+import com.koko.foodie.Adapter.CocktailRecyclerAdapter;
 import com.koko.foodie.Adapter.CocktailViewPager;
 import com.koko.foodie.Adapter.FoodAdapter;
 import com.koko.foodie.Adapter.LatestViewPager;
+import com.koko.foodie.Adapter.RecyclerViewHomeAdapter;
 import com.koko.foodie.Adapter.ViewPagerAdapter;
 import com.koko.foodie.Models.Categories;
 import com.koko.foodie.Models.Food;
@@ -62,13 +66,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
 
     @BindView(R.id.viewPagerHeader)
-    ViewPager viewPagerCategory;
+    RecyclerView viewPagerCategory;
     @BindView(R.id.bottomnav)
     BottomNavigationView bm;
     @BindView(R.id.recyclerLatest)
-    ViewPager latestRecyclerView;
+    RecyclerView latestRecyclerView;
     @BindView(R.id.cocktailLatest)
-    ViewPager latestCocktail;
+    RecyclerView latestCocktail;
     @BindView(R.id.segmented2)
     SegmentedGroup segmentedGroup;
     @BindView(R.id.button2)
@@ -165,12 +169,16 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @Override
     public void setMeals(List<Meals.Meal> meal) {
-        LatestViewPager viewPager = new LatestViewPager(meal, this);
+        RecyclerViewHomeAdapter viewPager = new RecyclerViewHomeAdapter(meal, this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        latestRecyclerView.setLayoutManager(layoutManager);
         latestRecyclerView.setAdapter(viewPager);
-        latestRecyclerView.setPadding(10, 0, 400, 0);
+        latestRecyclerView.setClipToPadding(false);
+
+
         viewPager.notifyDataSetChanged();
 
-        viewPager.setOnItemClickListener(new LatestViewPager.ClickListener() {
+        viewPager.setOnItemClickListener(new RecyclerViewHomeAdapter.ClickListener() {
             @Override
             public void onClick(View v, int position) {
                 TextView meal = v.findViewById(R.id.mealName);
@@ -185,9 +193,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @Override
     public void setCategory(List<Categories.Category> category) {
-        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(category, this);
+        CategoryRecyclerView pagerAdapter = new CategoryRecyclerView(category, this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        viewPagerCategory.setLayoutManager(layoutManager);
         viewPagerCategory.setAdapter(pagerAdapter);
-        viewPagerCategory.setPadding(10, 0, 500, 0);
+        viewPagerCategory.setClipToPadding(false);
         pagerAdapter.notifyDataSetChanged();
 
 
@@ -203,13 +213,15 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @Override
     public void setCocktail(List<Cocktail.Drink> cocktail) {
-        CocktailViewPager CocktailPager = new CocktailViewPager(cocktail, this);
+        CocktailRecyclerAdapter CocktailPager = new CocktailRecyclerAdapter(cocktail, this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        latestCocktail.setLayoutManager(layoutManager);
+        latestCocktail.setClipToPadding(false);
         latestCocktail.setAdapter(CocktailPager);
-        latestCocktail.setPadding(10, 0, 400, 0);
         CocktailPager.notifyDataSetChanged();
 
 
-        CocktailPager.setOnItemClickListener(new CocktailViewPager.ClickListener() {
+        CocktailPager.setOnItemClickListener(new CocktailRecyclerAdapter.ClickListener() {
             @Override
             public void onClick(View v, int position) {
                 TextView meal = v.findViewById(R.id.cocktailName);

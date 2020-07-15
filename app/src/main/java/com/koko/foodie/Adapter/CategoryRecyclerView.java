@@ -20,39 +20,39 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHomeAdapter.RecyclerViewHolder> {
+public class CategoryRecyclerView extends RecyclerView.Adapter<CategoryRecyclerView.RecyclerViewHolder> {
 
-    private List<Meals.Meal> meals;
+    private List<Categories.Category> categories;
     private Context context;
     private static ClickListener clickListener;
 
-    public RecyclerViewHomeAdapter(List<Meals.Meal> meals, Context context) {
-        this.meals = meals;
+    public CategoryRecyclerView(List<Categories.Category> categories, Context context) {
+        this.categories = categories;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public RecyclerViewHomeAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_category,
+    public CategoryRecyclerView.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_view_pager_header,
                 viewGroup, false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHomeAdapter.RecyclerViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull CategoryRecyclerView.RecyclerViewHolder viewHolder, int i) {
 
-        String strCategoryThumb = meals.get(i).getStrMealThumb();
+        String strCategoryThumb = categories.get(i).getStrCategoryThumb();
         Picasso.get().load(strCategoryThumb).placeholder(R.drawable.ic_circle).into(viewHolder.categoryThumb);
 
-        String strMealName = meals.get(i).getStrMeal();
+        String strMealName = categories.get(i).getStrCategory();
         viewHolder.categoryName.setText(strMealName);
     }
 
 
     @Override
     public int getItemCount() {
-        return meals.size();
+        return categories.size();
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -74,7 +74,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
 
     public void setOnItemClickListener(ClickListener clickListener) {
-        RecyclerViewHomeAdapter.clickListener = clickListener;
+        CategoryRecyclerView.clickListener = clickListener;
     }
 
 

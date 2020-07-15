@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.koko.foodie.Models.Categories;
+import com.koko.foodie.Activities.Cocktails.Cocktail;
 import com.koko.foodie.Models.Meals;
 import com.koko.foodie.R;
 import com.squareup.picasso.Picasso;
@@ -20,45 +20,44 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHomeAdapter.RecyclerViewHolder> {
+public class CocktailRecyclerAdapter extends RecyclerView.Adapter<CocktailRecyclerAdapter.RecyclerViewHolder> {
 
-    private List<Meals.Meal> meals;
+    private List<Cocktail.Drink> cocktail;
     private Context context;
     private static ClickListener clickListener;
 
-    public RecyclerViewHomeAdapter(List<Meals.Meal> meals, Context context) {
-        this.meals = meals;
+    public CocktailRecyclerAdapter(List<Cocktail.Drink>cocktail,Context context){
+        this.cocktail = cocktail;
         this.context = context;
     }
-
     @NonNull
     @Override
-    public RecyclerViewHomeAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_category,
+    public CocktailRecyclerAdapter.RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager_cocktail,
                 viewGroup, false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHomeAdapter.RecyclerViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull CocktailRecyclerAdapter.RecyclerViewHolder viewHolder, int i) {
 
-        String strCategoryThumb = meals.get(i).getStrMealThumb();
+        String strCategoryThumb = cocktail.get(i).getStrDrinkThumb();
         Picasso.get().load(strCategoryThumb).placeholder(R.drawable.ic_circle).into(viewHolder.categoryThumb);
 
-        String strMealName = meals.get(i).getStrMeal();
+        String strMealName = cocktail.get(i).getStrDrink();
         viewHolder.categoryName.setText(strMealName);
     }
 
 
     @Override
     public int getItemCount() {
-        return meals.size();
+        return cocktail.size();
     }
 
     static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.mealThumb)
+        @BindView(R.id.cocktailThumb)
         ImageView categoryThumb;
-        @BindView(R.id.mealName)
+        @BindView(R.id.cocktailName)
         TextView categoryName;
         RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,7 +73,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
 
     public void setOnItemClickListener(ClickListener clickListener) {
-        RecyclerViewHomeAdapter.clickListener = clickListener;
+        CocktailRecyclerAdapter.clickListener = clickListener;
     }
 
 
