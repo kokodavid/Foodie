@@ -1,0 +1,57 @@
+{
+  "project_info": {
+    "project_number": "256398764617",
+    "firebase_url": "https://foodie-81f4f.firebaseio.com",
+    "project_id": "foodie-81f4f",
+    "storage_bucket": "foodie-81f4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256398764617:android:9c4445a2fe015c4180ed98",
+        "android_client_info": {
+          "package_name": "com.koko.foodie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256398764617-ecitfrl1m3tdd869t7639oa4i6qljo7e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.koko.foodie",
+            "certificate_hash": "7bd4e35075f4b281fdf0b12bb78a7e5ff5cc64da"
+          }
+        },
+        {
+          "client_id": "256398764617-fphjjrusttuk98fr87qqdd5gf16rgp5k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.koko.foodie",
+            "certificate_hash": "7d29d39a97a59c84864c82826353ef607f4cf617"
+          }
+        },
+        {
+          "client_id": "256398764617-jhdlabanakc1bn4meq14lr32iefbth4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy60fPH3z3IXgOFrAGJ8JtFbddl9qwLm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256398764617-jhdlabanakc1bn4meq14lr32iefbth4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-2470974563764561~9284103397"
+    }
+  ],
+  "configuration_version": "1"
+}

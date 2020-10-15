@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/winescard"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@color/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/bottomNavBackground"
+                android:id="@+id/first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/WineImage"
+                        android:layout_margin="10dp"
+                        android:layout_width="100dp"
+                        android:scaleType="centerCrop"
+                        android:layout_height="100dp"
+                        android:src="@drawable/sample_image_meal"/>
+
+                    <TextView
+                        android:textColor="@android:color/white"
+                        android:id="@+id/WineText"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toRightOf="@+id/WineImage"
+                        android:text="@string/common_google_play_services_notification_channel_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/bottomNavBackground"
+                android:layout_below="@+id/first"
+                android:id="@+id/second"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommended"
+                        android:textColor="@android:color/white"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/WineTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textB"
+                        android:layout_margin="5dp"
+                        android:textColor="@android:color/white"
+                        android:text="@string/common_google_play_services_notification_channel_name"/>
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

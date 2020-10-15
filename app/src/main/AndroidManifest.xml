@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.koko.foodie"
+    android:versionCode="2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Utils.Foodie"
+        android:allowBackup="true"
+        android:icon="@drawable/foodie"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/foodie"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.AboutActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr"></activity>
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseDetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Profile.ProfileActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Profile.UserProfileActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.UploadedRecipes.FirebaseActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.mealPlanner.MealPlanner"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Cocktails.AllCocktails"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.FoodDetails.FoodDetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Explore.ExploreActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.WinePairing.WinePairingActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.UploadRecipeActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Search.SearchActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.Favorite.FavoritesActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.profile.UserProfileActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2470974563764561~9284103397" />
+
+        <activity
+            android:name=".Activities.Cocktails.CocktailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.detail.DetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.category.CategoryActivity"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.home.HomeActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBarr" />
+        <activity
+            android:name=".Activities.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>

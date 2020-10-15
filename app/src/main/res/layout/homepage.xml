@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootView"
+    xmlns:segmentedgroup="http://schemas.android.com/tools"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--                <androidx.cardview.widget.CardView-->
+    <!--            android:id="@+id/searchView"-->
+    <!--            android:layout_marginTop="70dp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_marginLeft="10dp"-->
+    <!--            android:layout_marginRight="10dp"-->
+    <!--            app:cardCornerRadius="15dp"-->
+    <!--            android:elevation="10dp">-->
+
+    <!--            <TextView-->
+    <!--                android:drawableLeft="@drawable/ic_search"-->
+    <!--                android:padding="15dp"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:hint="Search Recipes"-->
+    <!--                android:clickable="false"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:background="@color/colorWhite"-->
+    <!--                />-->
+
+    <!--        </androidx.cardview.widget.CardView>-->
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/foodieorange" />
+
+
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:id="@+id/segmented2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/view"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+
+        >
+        <!--        segmentedgroup:sc_border_width="2dp"-->
+        <!--        segmentedgroup:sc_corner_radius="10dp">-->
+
+        <RadioButton
+            android:id="@+id/button21"
+            style="@style/RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending"
+            android:checked="true"
+            android:textColor="@android:color/white"/>
+
+        <RadioButton
+            android:id="@+id/button2"
+            style="@style/RadioButton"
+            android:onClick="Explore"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:textColor="@android:color/white"/>
+
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <ImageView
+        android:id="@+id/searchPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginRight="20dp"/>
+
+    <FrameLayout
+        android:layout_marginTop="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/cocktailText"
+                    android:text="What's hot!"
+                    android:textSize="19sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cocktailLatest"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never"
+                    android:clipToPadding="false"
+                    android:layout_below="@+id/cocktailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+                <include android:id="@+id/shimmerMeal2"
+                    layout="@layout/categories_shimmer" />
+
+
+                <TextView
+                    android:id="@+id/topMeals"
+                    android:text="Trending"
+                    android:textSize="19sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/cocktailLatest"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerLatest"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never"
+                    android:clipToPadding="false"
+                    android:layout_below="@+id/topMeals"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+
+                    />
+
+
+
+                <include android:id="@+id/shimmerCategory"
+                    layout="@layout/item_recycler_category_shimmer" />
+
+
+                <TextView
+                    android:id="@+id/catText"
+                    android:text="Categories"
+                    android:textSize="19sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/recyclerLatest"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/viewPagerHeader"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never"
+                    android:clipToPadding="false"
+                    android:layout_below="@+id/catText"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    />
+
+                <include
+                    android:id="@+id/shimmerMeal"
+                    layout="@layout/item_view_pager_header_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/catText"
+
+                     />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/spoonRecycler"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/viewPagerHeader"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="50dp"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        app:itemTextColor="@color/textColor"
+        app:itemIconTint="@color/textColor"
+        app:itemRippleColor="@color/start"
+        android:background="@color/bottomNavBackground"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

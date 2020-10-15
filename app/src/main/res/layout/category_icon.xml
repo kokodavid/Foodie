@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="0dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="25dp">
+
+    <ImageView
+        android:id="@+id/cocktailThumb"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sample_image_meal"
+        android:scaleType="centerCrop"
+        android:layout_gravity="left"/>
+
+    <TextView
+        android:id="@+id/cocktailName"
+        android:layout_width="214dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="30dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="3"
+        android:text="@string/meal_categories"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16sp" />
+
+
+</androidx.cardview.widget.CardView>

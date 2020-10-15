@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Foodie</string>
+    <string name="search_your_recipes">Search Recipes…</string>
+    <string name="meal_categories">Meal Categories</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dot_loading">Loading</string>
+    <string name="category">Category</string>
+    <string name="country">Country</string>
+    <string name="tags">Tags</string>
+    <string name="instructions">Procedure</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="youtube">Watch on </string>
+    <string name="favorite">favorite</string>
+
+    <string name="choose">Choose a Diet</string>
+    <string-array name="Diets">
+        <item>Gluten Free</item>
+        <item>Ketogenic</item>
+        <item>Vegetarian</item>
+        <item>Lacto-Vegetarian</item>
+        <item>Vegan</item>
+        <item>Pescetarian</item>
+        <item>Paleo</item>
+        <item>Primal</item>
+        <item>Whole30</item>
+    </string-array>
+
+    <string name="success">Recipe successfully uploaded</string>
+    <string name="about">Foodie is a Free App that provides Recipes for
+different Cocktails and Meals , All meals are
+categorized differently to help the User find all
+recipes with ease. We want to make it easier
+for foodies to do what they love- Cook, Eat and
+Share
+</string>
+    <string name="couldnt_launch_market" />
+</resources>
